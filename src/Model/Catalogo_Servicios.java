@@ -15,10 +15,6 @@ public class Catalogo_Servicios {
         return CodServicio;
     }
 
-    public void setCodServicio(String codServicio) {
-        CodServicio = codServicio;
-    }
-
     public String getNomServicio() {
         return NomServicio;
     }

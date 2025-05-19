@@ -18,4 +18,58 @@ public class Vehiculo {
         AñoVehiculo = añoVehiculo;
         ColorVehiculo = colorVehiculo;
     }
+
+    public String getPlacaVehiculo() {
+        return PlacaVehiculo;
+    }
+
+    public String getMarcaVehiculo() {
+        return MarcaVehiculo;
+    }
+
+    public void setMarcaVehiculo(String marcaVehiculo) {
+        MarcaVehiculo = marcaVehiculo;
+    }
+
+    public String getModeloVehiculo() {
+        return ModeloVehiculo;
+    }
+
+    public void setModeloVehiculo(String modeloVehiculo) {
+        ModeloVehiculo = modeloVehiculo;
+    }
+
+    public String getModChasis() {
+        return ModChasis;
+    }
+
+    public void setModChasis(String modChasis) {
+        ModChasis = modChasis;
+    }
+
+    public String getNumMotor() {
+        return NumMotor;
+    }
+
+    public void setNumMotor(String numMotor) {
+        NumMotor = numMotor;
+    }
+
+    public int getAñoVehiculo() {
+        return AñoVehiculo;
+    }
+
+    public void setAñoVehiculo(int añoVehiculo) {
+        AñoVehiculo = añoVehiculo;
+    }
+
+    public String getColorVehiculo() {
+        return ColorVehiculo;
+    }
+
+    public void setColorVehiculo(String colorVehiculo) {
+        ColorVehiculo = colorVehiculo;
+    }
+
+    
 }

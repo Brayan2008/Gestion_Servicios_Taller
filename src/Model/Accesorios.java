@@ -13,10 +13,6 @@ public class Accesorios {
         return CodAccesorio;
     }
 
-    public void setCodAccesorio(String codAccesorio) {
-        CodAccesorio = codAccesorio;
-    }
-
     public String getNombreAccesorio() {
         return NombreAccesorio;
     }
@@ -25,5 +21,4 @@ public class Accesorios {
         NombreAccesorio = nombreAccesorio;
     }
 
-    
 }

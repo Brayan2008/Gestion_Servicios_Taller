@@ -1,6 +1,6 @@
 package Model;
 
-public class VEHICULO {
+public class Vehiculo {
     private String PlacaVehiculo; 
     private String MarcaVehiculo;
     private String ModeloVehiculo;
@@ -9,7 +9,7 @@ public class VEHICULO {
     private int AñoVehiculo;
     private String ColorVehiculo;
 
-    public VEHICULO(String placaVehiculo, String marcaVehiculo, String modeloVehiculo, String modChasis,String numMotor, int añoVehiculo, String colorVehiculo) {
+    public Vehiculo(String placaVehiculo, String marcaVehiculo, String modeloVehiculo, String modChasis,String numMotor, int añoVehiculo, String colorVehiculo) {
         PlacaVehiculo = placaVehiculo;
         MarcaVehiculo = marcaVehiculo;
         ModeloVehiculo = modeloVehiculo;
@@ -18,5 +18,4 @@ public class VEHICULO {
         AñoVehiculo = añoVehiculo;
         ColorVehiculo = colorVehiculo;
     }
- 
 }

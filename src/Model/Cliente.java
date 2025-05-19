@@ -1,3 +1,4 @@
+package Model;
 public class Cliente {
     private String nroCliente;
     private int tipoDocumento;

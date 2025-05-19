@@ -1,18 +1,36 @@
 package Model;
-public class Cliente {
-    private String nroCliente;
-    private int tipoDocumento;
-    private String nombreCliente;
-    private String telefonoCliente;
-    private String direccionCliente;
-    private String distritoCliente;
 
-    public Cliente(String nroCliente, int tipoDocumento, String nombreCliente, String telefonoCliente, String direccionCliente, String distritoCliente) {
+public class Cliente extends Persona{
+    
+    private int tipoDocumento;
+    private String nroCliente;
+    private String distritoCliente;
+ 
+    public Cliente(String nombre, String telefono, String direccion, String nroCliente, int tipoDocumento, String distritoCliente) {
+        super(nombre, telefono, direccion);
         this.nroCliente = nroCliente;
         this.tipoDocumento = tipoDocumento;
-        this.nombreCliente = nombreCliente;
-        this.telefonoCliente = telefonoCliente;
-        this.direccionCliente = direccionCliente;
         this.distritoCliente = distritoCliente;
     }
+
+    public String getNroCliente() {
+        return nroCliente;
+    }
+
+    public int getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(int tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    } //A eliminar 
+
+    public String getDistritoCliente() {
+        return distritoCliente;
+    }
+
+    public void setDistritoCliente(String distritoCliente) {
+        this.distritoCliente = distritoCliente;
+    }
+    
 }

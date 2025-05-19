@@ -34,5 +34,5 @@ public abstract class Persona {
     public void setDireccion(String direccion) {
         Direccion = direccion;
     }
-
+    
 }

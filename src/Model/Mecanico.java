@@ -1,15 +1,16 @@
 package Model;
 
-public class Mecanico {
+public class Mecanico extends Persona{
+    
     private String codMecánico;
-    private String nombreMecanico;
-    private String telefonoMecanico;
-    private String direccionMecanico;
 
-    public Mecanico (String codMecánico, String nombreMecanico, String telefonoMecanico, String direccionMecanico) {
+    public Mecanico(String nombre, String telefono, String direccion, String codMecánico) {
+        super(nombre, telefono, direccion);
         this.codMecánico = codMecánico;
-        this.nombreMecanico = nombreMecanico;
-        this.telefonoMecanico = telefonoMecanico;
-        this.direccionMecanico = direccionMecanico;
     }
+
+    public String getCodMecánico() {
+        return codMecánico;
+    }
+    
 }

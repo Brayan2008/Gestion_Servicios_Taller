@@ -1,20 +1,24 @@
 package View;
 
-import java.util.ArrayList;
-
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
+import java.awt.*;
 
 import Controllers.ControladorCliente;
-import Model.Cliente;
 
-public class VistaCliente {
+public class VistaCliente extends JPanel {
 
     ControladorCliente sc = new ControladorCliente();
-    
-    public void init() {
-    }    
 
+    public VistaCliente() {
+        super(new FlowLayout(FlowLayout.CENTER));
+        AgregarCampos();
+    }
+
+    public void AgregarCampos() {
+        JLabel b = new JLabel("Clientes disponibles");
+        b.setFont(new Font("Arial Black", 2, 13));
+        this.add(b);
+    }
+    
 }

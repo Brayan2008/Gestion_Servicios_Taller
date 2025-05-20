@@ -11,14 +11,14 @@ public class Catalogo_Servicios {
         this.PrecioServicio = precioServicio;
     }
 
-    public String getCodServicio() {
+    /*public String getCodServicio() {
         return CodServicio;
-    }
-
+    }*/ 
+    
     public String getNomServicio() {
         return NomServicio;
     }
-
+    /* 
     public void setNomServicio(String nomServicio) {
         NomServicio = nomServicio;
     }
@@ -29,7 +29,10 @@ public class Catalogo_Servicios {
 
     public void setPrecioServicio(float precioServicio) {
         PrecioServicio = precioServicio;
-    }  
+    }  */
 
-    
+    @Override
+    public String toString() {
+        return "Código: " + CodServicio + "; Servicio: " + NomServicio + "; Precio: " + PrecioServicio; 
+    }
 }

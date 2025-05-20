@@ -1,12 +1,11 @@
 package Listas;
-import java.util.ArrayList;
+import java.util.HashMap;
 import Model.Accesorios;
 
 public class ListaAccesorios {
-    ArrayList<Accesorios> tablaAccesorio = new ArrayList<Accesorios>();
-
-    void setAccesorio(String id, String accesorio){
-        tablaAccesorio.add(new Accesorios(id, accesorio));
+    HashMap<Integer, Accesorios> tablaAccesorio = new HashMap<Integer, Accesorios>();
+    void setAccesorio(Accesorios accesorio){
+        tablaAccesorio.put(1, accesorio);
     }
 
     void getAccesorios(){

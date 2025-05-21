@@ -1,10 +1,5 @@
-import Controllers.ControladorServicios;
-import View.Inicio;
-import View.VistaCliente;
+import View.ClienteView;
 
-import java.util.Scanner;
-
-import javax.swing.JFrame;
 public class App {
     
 
@@ -17,7 +12,7 @@ public class App {
         serviciosController.createServicio("02", "Parchado de llanta", 5);
 
         serviciosController.readServicio(); */
-        Inicio b = new Inicio();
+        ClienteView vista = new ClienteView();
     }
 
 }

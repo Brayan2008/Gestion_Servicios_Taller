@@ -4,12 +4,18 @@ import java.util.HashMap;
 
 public interface CRUD<T> {
 
-    default void getList(HashMap<String, T> lista){
-        lista.forEach((k,v)-> System.out.println("Codigo " + k + "Objecto: " + v + "\n"));
-    };
+    /**
+     * Obtiene un T a partir de su ID
+     * @param id Cadena ID a buscar
+     * @return El valor T
+     */
+    T getByID(String id);
 
-
-    void getList();
+    /**
+     * Obtiene un HashMap de los objetos T
+     * @return un <code> HashMap </code>
+     */
+    HashMap<String, T> getList();
 
     /**
      * Agrega o sube un objecto generico

@@ -1,6 +1,11 @@
 package View.interfaces;
 
+import java.util.Scanner;
+
 public interface ConsoleTools {
+ 
+    static final Scanner lector = new Scanner(System.in);
+
     //Colores de texto
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";

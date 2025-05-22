@@ -1,12 +1,16 @@
-import java.util.Scanner;
-
 import View.ClienteView;
-import View.UserView;
-import View.UsuarioView;
+import View.LoginView;
+import View.UsuarioAdminView;
+import View.interfaces.ConsoleViews;
 
-public class App {
+public class App extends ConsoleViews<App> {
 
-    //Para pruebas aqui
+    LoginView l1 = new LoginView();
+    ClienteView c1 = new ClienteView();
+    UsuarioAdminView u1 = new UsuarioAdminView();
+    
+    // Para pruebas aqui
+
     public static void main(String[] args) throws Exception {
         /*
          * ControladorServicios serviciosController = new ControladorServicios();
@@ -16,26 +20,62 @@ public class App {
          * serviciosController.createServicio("01", "Cambio de aceite", 10);
          * serviciosController.createServicio("02", "Parchado de llanta", 5);
          * 
-         * serviciosController.readServicio(); 
+         * serviciosController.readServicio();
          */
-        ClienteView c1;
-        UsuarioView u1;
-        Scanner sc = new Scanner(System.in);
-        String opcion;
-        do {
-            System.out.println("Bienvenido");
-            System.out.println("1.- Cliente");
-            System.out.println("2.- Usuarios");
-            System.out.println("3.- Salir");
-            opcion = sc.nextLine();
-            switch (opcion) {
-                case "1" -> c1 = new ClienteView();            
-                case "2" -> u1 = new UsuarioView();            
-                default -> System.out.println("Error");
-            }
-        } while (!opcion.equals("3"));
-    
-    
+
+        App a1 = new App();
+        a1.init();        
+        lector.close();
     }
+    
+    @Override
+    public void init() {
+
+        String opcion = "";
+        boolean estado = false;
+        //No saldra hasta que seleccion tres
+        while (true) {        
+
+            //Iniciar sesion
+            while (!estado) {
+                l1.init();
+                estado = l1.salir;
+            }
+            
+            //Si selecciona 3 ("Salir") termina el programa
+            if (l1.opcion.equals("3")) break;   
+            
+            //Menu principal
+            opcion = ""; //Reiniciamos la opcion
+
+            //Cierra secion con 3
+            while (!opcion.equals("3")) {
+                imprimirMenu();
+                opcion = lector.nextLine();
+                switch (opcion) {
+                    case "1" -> c1.init();
+                    case "2" -> u1.init();
+                    case "3" -> {printlnInfo("SESION CERRADA");
+                                estado = false;
+                                lector.nextLine();}
+                    default -> {printlnError("ERROR");
+                                lector.nextLine();}
+                }
+            }
+
+        }
+    }
+    
+    @Override
+    public void imprimirMenu() {
+        limpiarPantalla();
+        System.out.println(CURVE + BOLD + "-".repeat(40) + "BIENVENIDO: " + "-".repeat(40) +"\n");
+        System.out.println("1.- Modulo de Cliente");
+        System.out.println("2.- Modulo de Usuarios");
+        System.out.println("3.- Cerrar Sesion" + DEFAULT + "\n\nSeleccione una opcion" + "\n".repeat(20));    
+    }
+    
+
+
 
 }

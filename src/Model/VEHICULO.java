@@ -1,7 +1,9 @@
 package Model;
 
 public class Vehiculo {
+    //ID
     private String PlacaVehiculo; 
+    
     private String MarcaVehiculo;
     private String ModeloVehiculo;
     private String ModChasis;

@@ -5,6 +5,9 @@ public abstract class Persona {
     private String Telefono;
     private String Direccion;
     
+    public Persona() {
+    }
+
     public Persona(String nombre, String telefono, String direccion) {
         Nombre = nombre;
         Telefono = telefono;

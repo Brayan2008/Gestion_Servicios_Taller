@@ -19,10 +19,11 @@ public interface CRUD<T> {
 
     /**
      * Agrega o sube un objecto generico
-     * @param t El objeto generico
+     * @param id El ID del objecto
+     * @param T El objeto generico
      * @return Devuelve <code>true</code> si es que el objecto se agrego correctamente, de lo contrario <code>false</code>
      */
-    boolean create(T T);
+    boolean create(String id, T T);
 
     /**
      * Actualiza un objecto generico a partir de su id

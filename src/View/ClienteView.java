@@ -1,18 +1,21 @@
 package View;
 
-import java.util.Scanner;
-
 import Model.Cliente;
 import Services.ClienteService;
-import View.interfaces.ConsoleTools;
+import View.interfaces.ConsoleViews;
 
-public class ClienteView implements ConsoleTools {
-
+public class ClienteView extends ConsoleViews<Cliente>{
+    
     private static final ClienteService cs = new ClienteService();
-    private static Scanner lector = new Scanner(System.in);
 
     public ClienteView() {
+        t = new Cliente();
+    }
+
+    @Override
+    public void init(){
         String opcion;
+        
         do {
             limpiarPantalla();
             imprimirMenu();
@@ -20,10 +23,10 @@ public class ClienteView implements ConsoleTools {
             switch (opcion) {
                 case "1" -> {
                     limpiarPantalla();
-                    verListaClientes();
+                    verLista();
                 }
-                case "2" -> registrarCliente();
-                case "3" -> cambiarDatosCliente();
+                case "2" -> registrar();
+                case "3" -> cambiarDatos();
                 case "4" -> eliminarDatos();
                 case "5" -> System.out.println("Goodbye!");
                 default -> System.out.println("Opcion no valida");
@@ -31,29 +34,22 @@ public class ClienteView implements ConsoleTools {
         } while (!opcion.equals("5"));
         limpiarPantalla();
         printlnInfo("Saliendo del modulo Cliente ...");
-    }
 
-    private void imprimirMenu() {
-        System.out.println(BOLD + CURVE + "--------------- GESTION DE CLIENTES ------------------- ");
-        System.out.println(" 1. Ver lista de clientes ");
-        System.out.println(" 2. Registrar un nuevo cliente ");
-        System.out.println(" 3. Modificar un cliente");
-        System.out.println(" 4. Eliminar un cliente");
-        System.out.println(" 5. Salir del modulo (exit) ");
-        System.out.println("\nSeleccione una opcion valida:" + DEFAULT + "\n".repeat(10));
     }
-
-    public void verListaClientes() {
+    
+    @Override
+    public void verLista() {
         printlnTitle_Green("************ Lista de Clientes *************");
         if (cs.getList().isEmpty()) {
             System.out.println("No hay datos aun\n");
         }
-        cs.getList().forEach((a, b) -> imprimirCliente(a, b));
+        cs.getList().forEach((key, map) -> imprimirObjeto(key, map));
         printlnInfo("Presione Enter para continuar");
         lector.nextLine();
     }
 
-    public void registrarCliente() {
+    @Override
+    public void registrar() {
         limpiarPantalla();
         printlnTitle_Cyan("************* BIENVENIDO AL MODULO PARA REGISTRAR CLIENTES ************* ");
         printlnInfo("\nPresione Enter para continuar");
@@ -63,7 +59,7 @@ public class ClienteView implements ConsoleTools {
         int tip_documento = lector.nextInt();
         lector.nextLine();
 
-        String ID = RegistrarID(lector, tip_documento);
+        String ID = RegistrarID(tip_documento);
 
         if (ID.isEmpty()) {
             printlnInfo("Presione Enter para regresar al menu");
@@ -81,7 +77,7 @@ public class ClienteView implements ConsoleTools {
         String distrito = lector.nextLine();
 
         // --
-        if (cs.create(new Cliente(ID, nombre, telefono, direccion, tip_documento, distrito))) {
+        if (cs.create(ID, new Cliente(ID, nombre, telefono, direccion, tip_documento, distrito))) {
             printlnInfo("\n¡El registro fue exitoso!\n");
         } else {
             printlnInfo("Ups, ya existe un cliente con el ID ingresado");
@@ -89,11 +85,12 @@ public class ClienteView implements ConsoleTools {
         lector.nextLine();
     }
 
-    public void cambiarDatosCliente() {
+    @Override
+    public void cambiarDatos() {
         limpiarPantalla();
         printlnTitle_Cyan("******** BIENVENIDO AL MODULO PARA MODIFICAR CLIENTES ********");
         printlnInstruction("A continuacion se mostrara la lista de clientes registrados: \n");
-        verListaClientes();
+        verLista();
         printlnInfo("Seleccione a un cliente por su ID: ");
         String dni_buscar = lector.nextLine();
         // ---
@@ -121,6 +118,7 @@ public class ClienteView implements ConsoleTools {
         // ---
     }
 
+    @Override
     public void eliminarDatos() {
         limpiarPantalla();
         printlnTitle_Red("****** WARMING: USTED A ENTRADO AL MODULO PARA ELIMINAR CLIENTES *******");
@@ -128,7 +126,7 @@ public class ClienteView implements ConsoleTools {
         String button = lector.nextLine();
         if (button.equals("1")) {
             printlnInstruction("A continuacion se muestra la lista de clientes: \n");
-            verListaClientes();
+            verLista();
             printlnInfo("Seleccione a un cliente por su ID para " + BOLD + BG_RED + " ELIMINARLO: ");
             String dni_buscar = lector.nextLine();
             if (cs.delete(dni_buscar)) {
@@ -141,18 +139,19 @@ public class ClienteView implements ConsoleTools {
         lector.nextLine();
     }
 
-    public void imprimirCliente(String a, Cliente b) {
+    @Override
+    public void imprimirObjeto(String key, Cliente map) {
         System.out.println("-".repeat(40));
-        System.out.println("ID: " + a);
-        System.out.println("Tipo de documento: " + b.getTipoDocumento());
-        System.out.println("Nombre: " + b.getNombre());
-        System.out.println("Telefono: " + b.getTelefono());
-        System.out.println("Direccion: " + b.getDireccion());
-        System.out.println("Distrito: " + b.getDistritoCliente());
+        System.out.println("ID: " + key);
+        System.out.println("Tipo de documento: " + map.getTipoDocumento());
+        System.out.println("Nombre: " + map.getNombre());
+        System.out.println("Telefono: " + map.getTelefono());
+        System.out.println("Direccion: " + map.getDireccion());
+        System.out.println("Distrito: " + map.getDistritoCliente());
         System.out.println("-".repeat(40) + "\n");
     }
 
-    public String RegistrarID(Scanner lector,int tipo_documento) {
+    private String RegistrarID(int tipo_documento) {
         String id = "";
         int i = 2;
         do {

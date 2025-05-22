@@ -11,7 +11,11 @@ public class UsuariosService implements CRUD<Usuarios> {
 
     @Override
     public Usuarios getByID(String id) {
-        return lista_users.get(id);
+        if (lista_users.containsKey(id)) {
+            return lista_users.get(id);
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -20,26 +24,49 @@ public class UsuariosService implements CRUD<Usuarios> {
     }
 
     @Override
-    public boolean create(Usuarios usuarios) {
-         if (lista_users.containsKey(usuarios.getNombre())) {
+    public boolean create(String id, Usuarios usuarios) {
+        if (usuarios.getID().isEmpty() || usuarios.getContraseña().isEmpty() || 
+            usuarios.getID().isBlank() || usuarios.getContraseña().isEmpty()) {
+            return false;
+        }
+
+         if (lista_users.containsKey(usuarios.getID())) {
             return false;
         } else {
-            lista_users.put(usuarios.getNombre(), usuarios);
+            lista_users.put(usuarios.getID(), usuarios);
             return true;
         }
     }
+    
 
     @Override
     public boolean put(Usuarios t, String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'put'");
+        return false;
     }
 
     @Override
     public boolean delete(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        if (lista_users.containsKey(id)) {
+            lista_users.remove(id);
+            return true;
+        }
+        return false;
     }
-    
+
+    public boolean validar(Usuarios usuario) {
+        var usuario_find = getByID(usuario.getID());
+        
+        if (usuario.getID().isEmpty() || usuario.getContraseña().isEmpty() ||
+            usuario.getID().isBlank() || usuario.getContraseña().isBlank()) {
+            return false;
+        }
+
+        if (usuario_find != null && usuario_find.getContraseña().equals(usuario.getContraseña())) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
 }

@@ -21,8 +21,7 @@ public class ClienteService implements CRUD<Cliente>{
 
     @Override
     public boolean create(Cliente cliente) {
-        var estado = (lista_cliente.get(cliente.getNroCliente())!=null);
-        if (estado) {
+        if (lista_cliente.containsKey(cliente.getNroCliente())) {
             return false;
         } else {
             lista_cliente.put(cliente.getNroCliente(), cliente);
@@ -32,34 +31,21 @@ public class ClienteService implements CRUD<Cliente>{
 
     @Override
     public boolean put(Cliente cliente, String id) {
-        if (cliente.getNombre() == null ||
-                cliente.getDireccion() == null ||
-                cliente.getDireccion() == null ||
-                cliente.getDistritoCliente() == null ||
-                cliente.getTelefono() == null) {
-            //System.out.println("Error, faltan campos");
-            return false;
+        if (lista_cliente.containsKey(id)) {
+            lista_cliente.put(id, cliente);
+            return true;
         }
-        
-        if (lista_cliente.get(id).equals(null)) {
-           // System.out.println("Error no existe el cliente");
-            return false;
-        }
-        
-        lista_cliente.put(id, cliente);
-       // System.out.println("El cliente se registro correctamente");
-        return true;
+        return false;
+                
     }
 
     @Override
     public boolean delete(String id) {
-        var estado = lista_cliente.get(id).equals(null);
-        if (estado) {
-         //   System.out.println("Error, ya existe el cliente");
-            return false;
+        if (lista_cliente.containsKey(id)) {
+            lista_cliente.remove(id);
+            return true;
         }
-        lista_cliente.remove(id);
-        return true;
+        return false;
     }
 
     

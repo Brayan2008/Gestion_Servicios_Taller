@@ -48,5 +48,8 @@ public interface ConsoleTools {
           System.out.println(BG_RED + BOLD + WHITE + mensaje + DEFAULT); 
     }
 
+    default void limpiarPantalla(){
+        System.out.println("\n".repeat(40));
+    }
 
 }

@@ -10,26 +10,18 @@ public class Catalogo_Servicios {
         this.NomServicio = nomServicio;
         this.PrecioServicio = precioServicio;
     }
-
-    /*public String getCodServicio() {
-        return CodServicio;
-    }*/ 
     
     public String getNomServicio() {
         return NomServicio;
     }
-    /* 
-    public void setNomServicio(String nomServicio) {
-        NomServicio = nomServicio;
+    
+    public String getCodServicio() {
+        return CodServicio;
     }
-
+    
     public float getPrecioServicio() {
         return PrecioServicio;
     }
-
-    public void setPrecioServicio(float precioServicio) {
-        PrecioServicio = precioServicio;
-    }  */
 
     @Override
     public String toString() {

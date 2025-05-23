@@ -1,28 +1,21 @@
+import View.AccesorioView;
 import View.ClienteView;
 import View.LoginView;
 import View.UsuarioAdminView;
+import View.VehiculoView;
 import View.utils.ConsoleViews;
 
 public class App extends ConsoleViews<App> {
 
     LoginView l1 = new LoginView();
     ClienteView c1 = new ClienteView();
+    AccesorioView A1 = new AccesorioView();
+    VehiculoView v1 = new VehiculoView();
     UsuarioAdminView u1 = new UsuarioAdminView();
     
     // Para pruebas aqui
 
     public static void main(String[] args) throws Exception {
-        /*
-         * ControladorServicios serviciosController = new ControladorServicios();
-         * System.out.println("Hello, World!");
-         * 
-         * System.out.println("Nuevo servicio: ");
-         * serviciosController.createServicio("01", "Cambio de aceite", 10);
-         * serviciosController.createServicio("02", "Parchado de llanta", 5);
-         * 
-         * serviciosController.readServicio();
-         */
-
         App a1 = new App();
         a1.init();        
         lector.close();
@@ -48,14 +41,16 @@ public class App extends ConsoleViews<App> {
             //Menu principal
             opcion = ""; //Reiniciamos la opcion
 
-            //Cierra secion con 3
-            while (!opcion.equals("3")) {
+            //Cierra session con 5
+            while (!opcion.equals("5")) {
                 imprimirMenu();
                 opcion = lector.nextLine();
                 switch (opcion) {
                     case "1" -> c1.init();
                     case "2" -> u1.init();
-                    case "3" -> {printlnInfo("SESION CERRADA");
+                    case "3" -> A1.init();
+                    case "4" -> v1.init(); 
+                    case "5" -> {printlnInfo("SESION CERRADA");
                                 estado = false;
                                 lector.nextLine();}
                     default -> {printlnError("ERROR");
@@ -72,7 +67,9 @@ public class App extends ConsoleViews<App> {
         System.out.println(CURVE + BOLD + "-".repeat(40) + "BIENVENIDO: " + "-".repeat(40) +"\n");
         System.out.println("1.- Modulo de Cliente");
         System.out.println("2.- Modulo de Usuarios");
-        System.out.println("3.- Cerrar Sesion" + DEFAULT + "\n\nSeleccione una opcion" + "\n".repeat(20));    
+        System.out.println("3.- Modulo de Accesorios");
+        System.out.println("4.- Modulo de Vehiculos");
+        System.out.println("5.- Cerrar Sesion" + DEFAULT + "\n\nSeleccione una opcion" + "\n".repeat(20));    
     }
     
 

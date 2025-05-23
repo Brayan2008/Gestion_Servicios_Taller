@@ -65,4 +65,26 @@ public class MecanicoView extends ConsoleViews<Mecanico> {
         mc.ValidarBusqueda(mecanico_find, dni_buscar);
     }
 
+    @Override
+    protected void eliminarDatos() {
+        limpiarPantalla();
+        printlnTitle_Red("****** WARMING: USTED A ENTRADO AL MODULO PARA ELIMINAR mecanicoS *******");
+        printlnInstruction("Presione 1 si desea continuar");
+        String button = lector.nextLine();
+        if (button.equals("1")) {
+            printlnInstruction("A continuacion se muestra la lista de mecanicos: \n");
+            verLista();
+            printlnInfo("Seleccione a un mecanico por su ID para " + BOLD + BG_RED + " ELIMINARLO: ");
+            String dni_buscar = lector.nextLine();
+            
+            if (mc.delete(dni_buscar)) {
+                printlnError(BOLD + "\nSe elimino correctamente");
+            } else {
+                printlnError("\nEl mecanico no existe");
+            }
+        }
+        printlnInfo("\nPresione Enter para volver al menu");
+        lector.nextLine();
+    }
+
 }

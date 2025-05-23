@@ -1,6 +1,7 @@
 import View.AccesorioView;
 import View.ClienteView;
 import View.LoginView;
+import View.MecanicoView;
 import View.UsuarioAdminView;
 import View.VehiculoView;
 import View.utils.ConsoleViews;
@@ -12,6 +13,7 @@ public class App extends ConsoleViews<App> {
     AccesorioView A1 = new AccesorioView();
     VehiculoView v1 = new VehiculoView();
     UsuarioAdminView u1 = new UsuarioAdminView();
+    MecanicoView m1 = new MecanicoView();
     
     // Para pruebas aqui
 
@@ -50,7 +52,8 @@ public class App extends ConsoleViews<App> {
                     case "2" -> u1.init();
                     case "3" -> A1.init();
                     case "4" -> v1.init(); 
-                    case "5" -> {printlnInfo("SESION CERRADA");
+                    case "5" -> m1.init();
+                    case "6" -> {printlnInfo("SESION CERRADA");
                                 estado = false;
                                 lector.nextLine();}
                     default -> {printlnError("ERROR");
@@ -69,7 +72,8 @@ public class App extends ConsoleViews<App> {
         System.out.println("2.- Modulo de Usuarios");
         System.out.println("3.- Modulo de Accesorios");
         System.out.println("4.- Modulo de Vehiculos");
-        System.out.println("5.- Cerrar Sesion" + DEFAULT + "\n\nSeleccione una opcion" + "\n".repeat(20));    
+        System.out.println("5.- Modulo de Mecanicos");
+        System.out.println("6.- Cerrar Sesion" + DEFAULT + "\n\nSeleccione una opcion" + "\n".repeat(20));    
     }
     
 

@@ -70,34 +70,7 @@ public class ClienteView extends ConsoleViews<Cliente>{
         String dni_buscar = lector.nextLine();
 
         Cliente cliente_find = cs.getByID(dni_buscar);
-        if (cliente_find != null) {
-
-            printlnInfo("\nCliente encontrado");
-            printlnInstruction("-".repeat(20) + "ID: " + cliente_find.getID() + "-".repeat(20));
-            
-            printInstruction("Nombre (Actual): " + cliente_find.getNombre() + "\tNombre (Modificacion): ");
-            String nombre = lector.nextLine();
-            
-            printInstruction("Telefono (Actual): " + cliente_find.getTelefono() + "\tTelefono (Modificacion): ");
-            String tel = lector.nextLine();
-            
-            printInstruction("Direccion (Actual): " + cliente_find.getDireccion() + "\tDireccion (Modificacion): ");
-            String direccion = lector.nextLine();
-            
-            printInstruction("Distrito (Actual): " + cliente_find.getDistritoCliente() + "\tDistrito (Modificacion): ");
-            String distrito = lector.nextLine();
-            
-            printlnInfo("Presione Enter para guardar");
-           
-            Cliente cliente_actualizado = new Cliente(dni_buscar, nombre, tel, direccion,
-                    cliente_find.getTipoDocumento(), distrito);
-            cs.put(cliente_actualizado, cliente_find.getID()); //Siempre devolvera verdadero 
-            printlnInfo("Se modifico correctamente");
-        } else {
-            printlnError("El usuario no existe, intentelo de nuevo");
-            lector.nextLine();
-        }
-        // ---
+        cs.ValidarBusqueda(cliente_find, dni_buscar);
     }
 
     @Override

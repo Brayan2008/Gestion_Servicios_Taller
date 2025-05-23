@@ -38,7 +38,7 @@ public class VehiculoView extends ConsoleViews<Vehiculo>{
         if (vs.create(codigo, new Vehiculo(codigo, marca, modelo, modchasis, motor, anio, color))) {
             printlnInfo("\n¡El registro fue exitoso!\n");
         } else {
-            printlnInfo("Ups, ya existe un Accesorio con el ID ingresado");
+            printlnInfo("Ups, ya existe un Vehiculo con el ID ingresado");
         }
         lector.nextLine();    
     }
@@ -90,7 +90,7 @@ public class VehiculoView extends ConsoleViews<Vehiculo>{
             vs.put(vehiculo_actualizado, vehiculo_find.getID()); //Siempre devolvera verdadero 
             printlnInfo("Se modifico correctamente");
         } else {
-            printlnError("El accesorio no existe, intentelo de nuevo");
+            printlnError("El vehiculo no existe, intentelo de nuevo");
             lector.nextLine();
         }
         // ---
@@ -115,6 +115,5 @@ public class VehiculoView extends ConsoleViews<Vehiculo>{
         }
         printlnInfo("\nPresione Enter para volver al menu");
         lector.nextLine();
-
     } 
 }

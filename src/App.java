@@ -5,6 +5,7 @@ import View.MecanicoView;
 import View.UsuarioAdminView;
 import View.VehiculoView;
 import View.utils.ConsoleViews;
+import View.CatalogoServiciosView;
 
 public class App extends ConsoleViews<App> {
 
@@ -14,6 +15,7 @@ public class App extends ConsoleViews<App> {
     VehiculoView v1 = new VehiculoView();
     UsuarioAdminView u1 = new UsuarioAdminView();
     MecanicoView m1 = new MecanicoView();
+    CatalogoServiciosView cs1 = new CatalogoServiciosView();
     
     // Para pruebas aqui
 
@@ -44,7 +46,7 @@ public class App extends ConsoleViews<App> {
             opcion = ""; //Reiniciamos la opcion
 
             //Cierra session con 5
-            while (!opcion.equals("5")) {
+            while (!opcion.equals("7")) {
                 imprimirMenu();
                 opcion = lector.nextLine();
                 switch (opcion) {
@@ -53,7 +55,8 @@ public class App extends ConsoleViews<App> {
                     case "3" -> A1.init();
                     case "4" -> v1.init(); 
                     case "5" -> m1.init();
-                    case "6" -> {printlnInfo("SESION CERRADA");
+                    case "6" -> cs1.init();
+                    case "7" -> {printlnInfo("SESION CERRADA");
                                 estado = false;
                                 lector.nextLine();}
                     default -> {printlnError("ERROR");
@@ -73,7 +76,8 @@ public class App extends ConsoleViews<App> {
         System.out.println("3.- Modulo de Accesorios");
         System.out.println("4.- Modulo de Vehiculos");
         System.out.println("5.- Modulo de Mecanicos");
-        System.out.println("6.- Cerrar Sesion" + DEFAULT + "\n\nSeleccione una opcion" + "\n".repeat(20));    
+        System.out.println("6.- Modulo de Servicios");
+        System.out.println("7.- Cerrar Sesion" + DEFAULT + "\n\nSeleccione una opcion" + "\n".repeat(20));    
     }
     
 

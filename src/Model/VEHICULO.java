@@ -81,9 +81,15 @@ public class Vehiculo {
 
     @Override
     public String toString() {
-        return "Vehiculo [PlacaVehiculo=" + PlacaVehiculo + ", MarcaVehiculo=" + MarcaVehiculo + ", ModeloVehiculo="
-                + ModeloVehiculo + ", ModChasis=" + ModChasis + ", NumMotor=" + NumMotor + ", AñoVehiculo="
-                + AñoVehiculo + ", ColorVehiculo=" + ColorVehiculo + "]";
+        return "-".repeat(40)                    + 
+            "\nPlaca del vehiculo: " + PlacaVehiculo                   +
+            "\nMarca del vehiculo " + MarcaVehiculo +
+            "\nModelo del vehiculo: " + ModeloVehiculo              +
+            "\nModelo del chasis: " + ModChasis          +
+            "\nNúmero del motor " + NumMotor          +
+            "\nAño del vehiculo " + AñoVehiculo          +
+            "\nColor del vehiculo" + ColorVehiculo + "\n"   +
+            "-".repeat(40);
     }
     
     

@@ -27,7 +27,10 @@ public class Accesorios {
 
     @Override
     public String toString() {
-        return "Accesorios [CodAccesorio=" + CodAccesorio + ", NombreAccesorio=" + NombreAccesorio + "]";
+        return "-".repeat(40)                    + 
+            "\nCodigo del accesorio: " + CodAccesorio                   +
+            "\nNombre del accesorio: " + NombreAccesorio + "\n"   +
+            "-".repeat(40);
     }
-
+    //
 }

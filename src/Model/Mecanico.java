@@ -4,15 +4,29 @@ import Model.templates.Persona;
 
 public class Mecanico extends Persona{
     
-    private String codMecánico;
+    private String codMecanico;
 
-    public Mecanico(String nombre, String telefono, String direccion, String codMecánico) {
+    public Mecanico() {
+        super();
+    }
+
+    public Mecanico(String nombre, String telefono, String direccion, String codMecanico) {
         super(nombre, telefono, direccion);
-        this.codMecánico = codMecánico;
+        this.codMecanico = codMecanico;
     }
 
     public String getID() {
-        return codMecánico;
+        return codMecanico;
+    }
+
+    @Override
+    public String toString() {
+        return "-".repeat(40)              +
+        "\nID: " + codMecanico                   +
+        "\nTNombre" + getNombre()                +
+        "\nTelefono: " + getTelefono()           +
+        "\n Direccion: " + getDireccion() + "\n" +
+        "-".repeat(40);
     }
     
 }

@@ -1,9 +1,12 @@
-package Services;
+package Services.interfaces;
 
 import java.util.HashMap;
 
-import Services.interfaces.CRUD;
-
+/**
+ * Clase que implementa un CRUD y se encarga de la logica comun de crear, obtener y
+ * actualizar y eliminar valores. Ademas crea una lista por cada clase hija del que sea
+ * extendida
+ */
 public abstract class Service<T> implements CRUD<T>{
     
     public final HashMap<String, T> lista = new HashMap<>();
@@ -35,7 +38,6 @@ public abstract class Service<T> implements CRUD<T>{
             return true;
         }
         return false;
-                
     }
 
     @Override

@@ -2,11 +2,11 @@ package View;
 
 import Model.Usuarios;
 import Services.UsuariosService;
-import View.interfaces.ConsoleViews;
+import View.utils.ConsoleViews;
 
 public class LoginView extends ConsoleViews<Usuarios>{
     
-    UsuariosService us = new UsuariosService();
+    UsuariosService us = UsuarioAdminView.us; //Solo puede haber una instancia de Usuarios Service
     public boolean salir = false;
     public String opcion = "";
     
@@ -46,12 +46,13 @@ public class LoginView extends ConsoleViews<Usuarios>{
         printlnTitle_Cyan("*".repeat(6) + "REGISTRATE" + "*".repeat(6));
         printlnInstruction("\nEscriba su ID de usuario");
         String ID_user = lector.nextLine();
-        System.out.println("Ingrese su Nombre");
+        printlnInstruction("Ingrese su Nombre");
         String nombre = lector.nextLine();
         printlnInstruction("Escriba su contraseña");
         String password = lector.nextLine();
         printlnInstruction("Escriba de nuevo su contraseña");
         String password2 = lector.nextLine();
+
         if(!password.equals(password2)) {
             printlnError("\nLas contraseñas no coinciden"); 
             return;
@@ -78,7 +79,7 @@ public class LoginView extends ConsoleViews<Usuarios>{
 
         Usuarios user = new Usuarios(user_id, null, password);
         
-        if(us.validar(user)){
+        if(us.validarLogin(user)){
             printlnInfo("\nINGRESASTE CORRECTAMENTE\n");
             salir = true;    
         } else {

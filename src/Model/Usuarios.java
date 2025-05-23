@@ -38,5 +38,14 @@ public class Usuarios {
 
     public void setContraseña(String contaseña) {
         this.contraseña = contaseña;
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return "-".repeat(40)                  + 
+               "\nID: " + getID()                      +
+               "\nNombre: " + getNombre() + "\n"     +
+               "-".repeat(40);
+    }
+    
 }

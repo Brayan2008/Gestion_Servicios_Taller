@@ -2,11 +2,11 @@ package View;
 
 import Model.Usuarios;
 import Services.UsuariosService;
-import View.interfaces.ConsoleViews;
+import View.utils.ConsoleViews;
 
 public class UsuarioAdminView extends ConsoleViews<Usuarios>{
     
-    private static final UsuariosService us = new UsuariosService();
+    protected static final UsuariosService us = new UsuariosService();
 
     public UsuarioAdminView() {
         t = new Usuarios();
@@ -49,19 +49,9 @@ public class UsuarioAdminView extends ConsoleViews<Usuarios>{
             System.out.println("No hay datos aun\n");
         }
 
-        us.getList().forEach((a, b) -> imprimirObjeto(a, b));
+        us.getList().forEach((a, b) -> System.out.println(b.toString()));
 
         printlnInfo("Presione Enter para continuar");
         lector.nextLine();        
-    }
- 
-
-    @Override
-    public void imprimirObjeto(String key, Usuarios map) {
-        System.out.println("-".repeat(30));
-        System.out.println("ID: " + key);
-        System.out.println("Nombre: " + map.getNombre());
-        System.out.println("-".repeat(30));
-    }
-    
+    }   
 }

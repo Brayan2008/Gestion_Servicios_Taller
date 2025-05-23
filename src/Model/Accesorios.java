@@ -9,7 +9,7 @@ public class Accesorios {
         this.NombreAccesorio = nombreAccesorio;
     }
 
-    public String getCodAccesorio() {
+    public String getID() {
         return CodAccesorio;
     }
 

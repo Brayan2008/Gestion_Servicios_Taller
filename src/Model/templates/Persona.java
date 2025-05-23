@@ -1,4 +1,4 @@
-package Model;
+package Model.templates;
 
 public abstract class Persona {
     private String Nombre;    

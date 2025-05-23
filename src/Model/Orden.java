@@ -30,4 +30,31 @@ public class Orden {
         this.Abollado = Abollado;
         this.Rayado = Rayado;
     }
+
+    public String getID() {
+        return CodOrden;
+    }
+
+    //Faltan las fk
+    @Override
+    public String toString() {
+        return "-".repeat(40)                      + 
+               "\nID: " +  getID()                       +
+               "\nFecha Orden: " + FechaOrden            +
+               "\nFecha Entrega " + FechaEntrega         +
+               "\nKilometraje: " + Kilometrage           +
+               "\nNumCombustible " + NumCombustible      +
+               "\nObservacion General: " + ObserGeneral  +
+               "\nEstado Orden: " + EstadoOrden          +
+               "\nTitulo de Propiedad: " + TProb         +
+               "\nManual de Propiedad: " + ManualProb    +
+               "\nDejo llave: " + Llave                  +
+               "\nVehiculo Abollado: " + Abollado        +
+               "\nVehiculo Quiñado: " + Quiñado          +
+               "\nVehiculo Rayado: " + Rayado +   "\n"   +
+               "-".repeat(40);
+    }
+
+    
+
 }

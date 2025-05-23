@@ -1,7 +1,7 @@
 import View.ClienteView;
 import View.LoginView;
 import View.UsuarioAdminView;
-import View.interfaces.ConsoleViews;
+import View.utils.ConsoleViews;
 
 public class App extends ConsoleViews<App> {
 

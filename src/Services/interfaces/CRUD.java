@@ -26,7 +26,8 @@ public interface CRUD<T> {
     boolean create(String id, T T);
 
     /**
-     * Actualiza un objecto generico a partir de su id
+     * Actualiza un objecto generico a partir de su id, verificando si existe o no,
+     * esto para evitar inserciones por accidente
      * @param t Tipo generico
      * @param id Id del generico
      * @return <code>true</code> si es que se logro modificar el objecto, de lo contrario <code>false</code>

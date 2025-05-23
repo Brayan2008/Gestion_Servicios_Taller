@@ -2,54 +2,29 @@ package View;
 
 import Model.Cliente;
 import Services.ClienteService;
-import View.interfaces.ConsoleViews;
+import View.utils.ConsoleViews;
 
 public class ClienteView extends ConsoleViews<Cliente>{
     
-    private static final ClienteService cs = new ClienteService();
+    private final ClienteService cs = new ClienteService();
 
     public ClienteView() {
         t = new Cliente();
     }
 
     @Override
-    public void init(){
-        String opcion;
-        
-        do {
-            limpiarPantalla();
-            imprimirMenu();
-            opcion = lector.nextLine();
-            switch (opcion) {
-                case "1" -> {
-                    limpiarPantalla();
-                    verLista();
-                }
-                case "2" -> registrar();
-                case "3" -> cambiarDatos();
-                case "4" -> eliminarDatos();
-                case "5" -> System.out.println("Goodbye!");
-                default -> System.out.println("Opcion no valida");
-            }
-        } while (!opcion.equals("5"));
-        limpiarPantalla();
-        printlnInfo("Saliendo del modulo Cliente ...");
-
-    }
-    
-    @Override
-    public void verLista() {
+    protected void verLista() {
         printlnTitle_Green("************ Lista de Clientes *************");
         if (cs.getList().isEmpty()) {
             System.out.println("No hay datos aun\n");
         }
-        cs.getList().forEach((key, map) -> imprimirObjeto(key, map));
+        cs.getList().forEach((key, map) -> System.out.println(map.toString()));
         printlnInfo("Presione Enter para continuar");
         lector.nextLine();
     }
 
     @Override
-    public void registrar() {
+    protected void registrar() {
         limpiarPantalla();
         printlnTitle_Cyan("************* BIENVENIDO AL MODULO PARA REGISTRAR CLIENTES ************* ");
         printlnInfo("\nPresione Enter para continuar");
@@ -86,30 +61,37 @@ public class ClienteView extends ConsoleViews<Cliente>{
     }
 
     @Override
-    public void cambiarDatos() {
+    protected void cambiarDatos() {
         limpiarPantalla();
         printlnTitle_Cyan("******** BIENVENIDO AL MODULO PARA MODIFICAR CLIENTES ********");
         printlnInstruction("A continuacion se mostrara la lista de clientes registrados: \n");
         verLista();
         printlnInfo("Seleccione a un cliente por su ID: ");
         String dni_buscar = lector.nextLine();
-        // ---
+
         Cliente cliente_find = cs.getByID(dni_buscar);
         if (cliente_find != null) {
+
             printlnInfo("\nCliente encontrado");
-            printlnInstruction("-".repeat(20) + "ID: " + cliente_find.getNroCliente() + "-".repeat(20));
+            printlnInstruction("-".repeat(20) + "ID: " + cliente_find.getID() + "-".repeat(20));
+            
             printInstruction("Nombre (Actual): " + cliente_find.getNombre() + "\tNombre (Modificacion): ");
             String nombre = lector.nextLine();
+            
             printInstruction("Telefono (Actual): " + cliente_find.getTelefono() + "\tTelefono (Modificacion): ");
             String tel = lector.nextLine();
+            
             printInstruction("Direccion (Actual): " + cliente_find.getDireccion() + "\tDireccion (Modificacion): ");
             String direccion = lector.nextLine();
+            
             printInstruction("Distrito (Actual): " + cliente_find.getDistritoCliente() + "\tDistrito (Modificacion): ");
             String distrito = lector.nextLine();
+            
             printlnInfo("Presione Enter para guardar");
+           
             Cliente cliente_actualizado = new Cliente(dni_buscar, nombre, tel, direccion,
                     cliente_find.getTipoDocumento(), distrito);
-            cs.put(cliente_actualizado, cliente_find.getNroCliente());
+            cs.put(cliente_actualizado, cliente_find.getID()); //Siempre devolvera verdadero 
             printlnInfo("Se modifico correctamente");
         } else {
             printlnError("El usuario no existe, intentelo de nuevo");
@@ -119,7 +101,7 @@ public class ClienteView extends ConsoleViews<Cliente>{
     }
 
     @Override
-    public void eliminarDatos() {
+    protected void eliminarDatos() {
         limpiarPantalla();
         printlnTitle_Red("****** WARMING: USTED A ENTRADO AL MODULO PARA ELIMINAR CLIENTES *******");
         printlnInstruction("Presione 1 si desea continuar");
@@ -137,18 +119,6 @@ public class ClienteView extends ConsoleViews<Cliente>{
         }
         printlnInfo("\nPresione Enter para volver al menu");
         lector.nextLine();
-    }
-
-    @Override
-    public void imprimirObjeto(String key, Cliente map) {
-        System.out.println("-".repeat(40));
-        System.out.println("ID: " + key);
-        System.out.println("Tipo de documento: " + map.getTipoDocumento());
-        System.out.println("Nombre: " + map.getNombre());
-        System.out.println("Telefono: " + map.getTelefono());
-        System.out.println("Direccion: " + map.getDireccion());
-        System.out.println("Distrito: " + map.getDistritoCliente());
-        System.out.println("-".repeat(40) + "\n");
     }
 
     private String RegistrarID(int tipo_documento) {

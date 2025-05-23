@@ -1,5 +1,7 @@
 package Model;
 
+import Model.templates.Persona;
+
 public class Mecanico extends Persona{
     
     private String codMecánico;
@@ -9,7 +11,7 @@ public class Mecanico extends Persona{
         this.codMecánico = codMecánico;
     }
 
-    public String getCodMecánico() {
+    public String getID() {
         return codMecánico;
     }
     

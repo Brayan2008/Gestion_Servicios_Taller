@@ -1,5 +1,7 @@
 package Model;
 
+import Model.templates.Persona;
+
 public class Cliente extends Persona{
     
     private int tipoDocumento;
@@ -17,7 +19,7 @@ public class Cliente extends Persona{
         this.distritoCliente = distritoCliente;
     }
 
-    public String getNroCliente() {
+    public String getID() {
         return nroCliente;
     }
 
@@ -36,5 +38,18 @@ public class Cliente extends Persona{
     public void setDistritoCliente(String distritoCliente) {
         this.distritoCliente = distritoCliente;
     }
+
+    @Override
+    public String toString() {
+        return "-".repeat(40)                    + 
+               "\nID: " + nroCliente                   +
+               "\nTipo de documento: " + tipoDocumento +
+               "\nNombre: " + getNombre()              +
+               "\nTelefono: " + getTelefono()          +
+               "\nDireccion" + getDireccion()          +
+               "\nDistrito" + distritoCliente + "\n"   +
+               "-".repeat(40);
+    }
+    
     
 }

@@ -1,6 +1,10 @@
 package Model;
 
 public class Accesorios {
+    
+    public Accesorios() {
+    }
+    
     private String CodAccesorio;
     private String NombreAccesorio;
     
@@ -19,6 +23,11 @@ public class Accesorios {
 
     public void setNombreAccesorio(String nombreAccesorio) {
         NombreAccesorio = nombreAccesorio;
+    }
+
+    @Override
+    public String toString() {
+        return "Accesorios [CodAccesorio=" + CodAccesorio + ", NombreAccesorio=" + NombreAccesorio + "]";
     }
 
 }

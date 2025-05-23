@@ -3,7 +3,6 @@ package Model;
 public class Vehiculo {
     //ID
     private String PlacaVehiculo; 
-    
     private String MarcaVehiculo;
     private String ModeloVehiculo;
     private String ModChasis;
@@ -11,18 +10,29 @@ public class Vehiculo {
     private int AñoVehiculo;
     private String ColorVehiculo;
 
-    public Vehiculo(String placaVehiculo, String marcaVehiculo, String modeloVehiculo, String modChasis,String numMotor, int añoVehiculo, String colorVehiculo) {
-        PlacaVehiculo = placaVehiculo;
-        MarcaVehiculo = marcaVehiculo;
-        ModeloVehiculo = modeloVehiculo;
-        ModChasis = modChasis;
-        NumMotor = numMotor;
-        AñoVehiculo = añoVehiculo;
-        ColorVehiculo = colorVehiculo;
+    public Vehiculo(String PlacaVehiculo, String MarcaVehiculo, String ModeloVehiculo, String ModChasis,String NumMotor, int AñoVehiculo, String ColorVehiculo) {
+        this.PlacaVehiculo = PlacaVehiculo;
+        this.MarcaVehiculo = MarcaVehiculo;
+        this.ModeloVehiculo = ModeloVehiculo;
+        this.ModChasis = ModChasis;
+        this.NumMotor = NumMotor;
+        this.AñoVehiculo = AñoVehiculo;
+        this.ColorVehiculo = ColorVehiculo;
     }
 
-    public String getPlacaVehiculo() {
+    public Vehiculo() {
+    }
+
+    public String getID() {
         return PlacaVehiculo;
+    }
+
+    public void setPlacaVehiculo(String placaVehiculo) {
+        PlacaVehiculo = placaVehiculo;
+    }
+
+    public String getMarcaVehiculo() {
+        return MarcaVehiculo;
     }
 
     public void setMarcaVehiculo(String marcaVehiculo) {
@@ -69,5 +79,12 @@ public class Vehiculo {
         ColorVehiculo = colorVehiculo;
     }
 
+    @Override
+    public String toString() {
+        return "Vehiculo [PlacaVehiculo=" + PlacaVehiculo + ", MarcaVehiculo=" + MarcaVehiculo + ", ModeloVehiculo="
+                + ModeloVehiculo + ", ModChasis=" + ModChasis + ", NumMotor=" + NumMotor + ", AñoVehiculo="
+                + AñoVehiculo + ", ColorVehiculo=" + ColorVehiculo + "]";
+    }
+    
     
 }

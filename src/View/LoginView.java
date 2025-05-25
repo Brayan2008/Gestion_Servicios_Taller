@@ -6,9 +6,10 @@ import View.utils.ConsoleViews;
 
 public class LoginView extends ConsoleViews<Usuarios>{
     
-    UsuariosService us = UsuarioAdminView.us; //Solo puede haber una instancia de Usuarios Service
+    UsuariosService us = UsuarioAdminView.us; //Solo puede haber una instancia de Usuarios Service (SOLO UNA LISTA DE USUARIOS)
     public boolean salir = false;
     public String opcion = "";
+    public static String token_ID = "";
     
     public LoginView() {
         t = new Usuarios();
@@ -26,7 +27,9 @@ public class LoginView extends ConsoleViews<Usuarios>{
                 case "3" -> {printlnInfo("GOODBYE");
                             lector.nextLine();
                             salir = true;}
-                default -> printlnError("Opcion no conocida");
+                default -> {printlnError("Opcion no valida");
+                            lector.nextLine();
+                            }
             }
             if(salir) break;
         }
@@ -37,7 +40,7 @@ public class LoginView extends ConsoleViews<Usuarios>{
         System.out.println(BOLD + CURVE + "-".repeat(30) + " SISTEMA DE GESTION DE SERVICIOS " + "-".repeat(40));
         System.out.println("1. Iniciar Sesion ");
         System.out.println("2. Registrate ");
-        System.out.println("3. Salir del programa" + DEFAULT + "\n".repeat(10));
+        System.out.println("3. Salir del programa" + DEFAULT + "\n".repeat(18));
     }
 
     @Override
@@ -55,11 +58,12 @@ public class LoginView extends ConsoleViews<Usuarios>{
 
         if(!password.equals(password2)) {
             printlnError("\nLas contraseñas no coinciden"); 
+            lector.nextLine();
             return;
         }
 
         Usuarios new_user = new Usuarios(ID_user,nombre, password);
-        if (us.create(ID_user, new_user)) {
+        if (!us.CamposVacios(new_user) && us.create(ID_user, new_user)) {
             printlnInfo("Se creo correctamente");  
         } else{
             printlnError("ERROR: Los campos estan vacios, o el cliente ya existe. Intentelo de nuevo" );
@@ -81,6 +85,7 @@ public class LoginView extends ConsoleViews<Usuarios>{
         
         if(us.validarLogin(user)){
             printlnInfo("\nINGRESASTE CORRECTAMENTE\n");
+            token_ID = user_id;
             salir = true;    
         } else {
             printlnError("Error en las credenciales");

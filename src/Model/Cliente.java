@@ -46,8 +46,8 @@ public class Cliente extends Persona{
                "\nTipo de documento: " + tipoDocumento +
                "\nNombre: " + getNombre()              +
                "\nTelefono: " + getTelefono()          +
-               "\nDireccion" + getDireccion()          +
-               "\nDistrito" + distritoCliente + "\n"   +
+               "\nDireccion: " + getDireccion()          +
+               "\nDistrito: " + distritoCliente + "\n"   +
                "-".repeat(40);
     }
     

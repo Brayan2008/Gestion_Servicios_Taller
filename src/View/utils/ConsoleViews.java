@@ -25,7 +25,8 @@ public abstract class ConsoleViews<T> implements ConsoleTools{
                 case "3" -> cambiarDatos();
                 case "4" -> eliminarDatos();
                 case "5" -> System.out.println("Goodbye!");
-                default -> System.out.println("Opcion no valida");
+                default -> {printlnError("OPCION NO VALIDA\n\n");
+                            lector.nextLine();}
             }
         } while (!opcion.equals("5"));
         

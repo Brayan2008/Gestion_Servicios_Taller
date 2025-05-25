@@ -51,13 +51,21 @@ public class App extends ConsoleViews<App> {
                 opcion = lector.nextLine();
                 switch (opcion) {
                     case "1" -> c1.init();
-                    case "2" -> u1.init();
+                    case "2" -> cs1.init();
                     case "3" -> A1.init();
                     case "4" -> v1.init(); 
                     case "5" -> m1.init();
-                    case "6" -> cs1.init();
+                    case "6" -> {u1.init();
+                                if(u1.eliminacion) {
+                                    System.out.println("Saliste si eliminaste");
+                                    estado = false;
+                                    l1.salir = false;
+                                    opcion = "7";
+                                }
+                                }
                     case "7" -> {printlnInfo("SESION CERRADA");
-                                estado = false;
+                                estado = false; 
+                                l1.salir = false;
                                 lector.nextLine();}
                     default -> {printlnError("ERROR");
                                 lector.nextLine();}
@@ -72,11 +80,11 @@ public class App extends ConsoleViews<App> {
         limpiarPantalla();
         System.out.println(CURVE + BOLD + "-".repeat(40) + "BIENVENIDO: " + "-".repeat(40) +"\n");
         System.out.println("1.- Modulo de Cliente");
-        System.out.println("2.- Modulo de Usuarios");
-        System.out.println("3.- Modulo de Accesorios");
-        System.out.println("4.- Modulo de Vehiculos");
-        System.out.println("5.- Modulo de Mecanicos");
-        System.out.println("6.- Modulo de Servicios");
+        System.out.println("2.- Modulo de Accesorios");
+        System.out.println("3.- Modulo de Vehiculos");
+        System.out.println("4.- Modulo de Mecanicos");
+        System.out.println("5.- Modulo de Servicios");
+        System.out.println("6.- Configurar mi perfil");
         System.out.println("7.- Cerrar Sesion" + DEFAULT + "\n\nSeleccione una opcion" + "\n".repeat(20));    
     }
     

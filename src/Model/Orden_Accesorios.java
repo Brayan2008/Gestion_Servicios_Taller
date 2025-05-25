@@ -1,8 +1,10 @@
 package Model;
 
 public class Orden_Accesorios {
+    
     private Accesorios accesorio;
     private Orden orden; 
+
     private int CantAccesorio;
     private String ObserAccesorio;
     private boolean EstadoAccesorio;

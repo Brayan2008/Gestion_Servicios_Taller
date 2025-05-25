@@ -2,6 +2,8 @@ package Services.interfaces;
 
 import java.util.HashMap;
 
+import Model.Usuarios;
+
 /**
  * Clase que implementa un CRUD y se encarga de la logica comun de crear, obtener y
  * actualizar y eliminar valores. Ademas crea una lista por cada clase hija del que sea
@@ -47,6 +49,13 @@ public abstract class Service<T> implements CRUD<T>{
             return true;
         }
         return false;
+    }
+
+    public boolean IDvacia(Usuarios user) {
+        if (user.getID().isBlank() || user.getID().isEmpty()) {
+            return true;   
+        }
+        return false;   
     }
 
     

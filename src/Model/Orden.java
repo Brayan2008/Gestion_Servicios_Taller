@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.List;
+
 public class Orden {
     private String CodOrden;
     private String FechaOrden;
@@ -15,7 +17,9 @@ public class Orden {
     private boolean Abollado;
     private boolean Rayado;
 
-    public Orden(String CodOrden, String FechaOrden, String FechaEntrega, double Kilometrage, double NumCombustible, String ObserGeneral, String EstadoOrden, boolean TProb, boolean ManualProb, boolean Llave, boolean Quiñado, boolean Abollado, boolean Rayado){
+    private List<Orden_Accesorios> AccesoriosXOrden;
+    
+    public Orden(String CodOrden, String FechaOrden, String FechaEntrega, double Kilometrage, double NumCombustible, String ObserGeneral, String EstadoOrden, boolean TProb, boolean ManualProb, boolean Llave, boolean Quiñado, boolean Abollado, boolean Rayado, List<Orden_Accesorios> AccesoriosXOrden){
         this.CodOrden = CodOrden;
         this.FechaOrden = FechaOrden;
         this.FechaEntrega = FechaEntrega;
@@ -29,8 +33,14 @@ public class Orden {
         this.Quiñado = Quiñado;
         this.Abollado = Abollado;
         this.Rayado = Rayado;
+        //fks
+        this.AccesoriosXOrden = AccesoriosXOrden;
     }
 
+    public List<Orden_Accesorios> getAccesoriosXOrden() {
+        return AccesoriosXOrden;
+    }
+    
     public String getID() {
         return CodOrden;
     }

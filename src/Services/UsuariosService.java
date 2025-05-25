@@ -14,9 +14,8 @@ public class UsuariosService extends Service<Usuarios> {
     public boolean validarLogin(Usuarios usuario) {
         var usuario_find = getByID(usuario.getID());
         
-        if (usuario.getID().isEmpty() || usuario.getContraseña().isEmpty() ||
-            usuario.getID().isBlank() || usuario.getContraseña().isBlank()) {
-            return false;
+        if (CamposVacios(usuario)) {
+            return false;    
         }
 
         if (usuario_find != null && usuario_find.getContraseña().equals(usuario.getContraseña())) {
@@ -24,6 +23,13 @@ public class UsuariosService extends Service<Usuarios> {
         } else {
             return false;
         }
+    }
+    
+    public boolean CamposVacios(Usuarios user) {
+        if (user.getContraseña().isEmpty() || user.getContraseña().isBlank() || IDvacia(user)) {
+            return true;
+        }
+        return false;
     }
 
 }

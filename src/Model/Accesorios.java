@@ -2,11 +2,13 @@ package Model;
 
 public class Accesorios {
     
-    public Accesorios() {
-    }
     
     private String CodAccesorio;
     private String NombreAccesorio;
+    
+    public Accesorios() {
+
+    }
     
     public Accesorios(String codAccesorio, String nombreAccesorio) {
         this.CodAccesorio = codAccesorio;

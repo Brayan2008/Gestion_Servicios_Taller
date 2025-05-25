@@ -51,12 +51,5 @@ public abstract class Service<T> implements CRUD<T>{
         return false;
     }
 
-    public boolean IDvacia(Usuarios user) {
-        if (user.getID().isBlank() || user.getID().isEmpty()) {
-            return true;   
-        }
-        return false;   
-    }
-
     
 }

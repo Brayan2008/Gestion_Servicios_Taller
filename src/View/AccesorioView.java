@@ -21,10 +21,11 @@ public class AccesorioView extends ConsoleViews<Accesorios> {
         printlnInstruction("Ingrese el Codigo del Accesorio ");
         String codigo = lector.nextLine();
         printlnInstruction("Ingrese el Nombre del Accesorio ");
-        String nombre = lector.nextLine();
-  
-        // --
-        if (as.create(codigo,new Accesorios(codigo, nombre))) {
+        String nombre = lector.nextLine();        
+
+        Accesorios ac= new Accesorios(codigo, nombre);
+        
+        if (!as.IDvacia(ac) && as.create(codigo,ac)) {
             printlnInfo("\n¡El registro fue exitoso!\n");
         } else {
             printlnInfo("Ups, ya existe un Accesorio con el ID ingresado");

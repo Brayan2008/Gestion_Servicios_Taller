@@ -51,10 +51,10 @@ public class App extends ConsoleViews<App> {
                 opcion = lector.nextLine();
                 switch (opcion) {
                     case "1" -> c1.init();
-                    case "2" -> cs1.init();
-                    case "3" -> A1.init();
-                    case "4" -> v1.init(); 
-                    case "5" -> m1.init();
+                    case "2" -> A1.init();
+                    case "3" -> v1.init(); 
+                    case "4" -> m1.init();
+                    case "5" -> cs1.init();
                     case "6" -> {u1.init();
                                 if(u1.eliminacion) {
                                     System.out.println("Saliste si eliminaste");

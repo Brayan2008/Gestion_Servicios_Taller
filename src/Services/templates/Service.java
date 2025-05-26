@@ -1,8 +1,6 @@
-package Services.interfaces;
+package Services.templates;
 
 import java.util.HashMap;
-
-import Model.Usuarios;
 
 /**
  * Clase que implementa un CRUD y se encarga de la logica comun de crear, obtener y
@@ -12,7 +10,7 @@ import Model.Usuarios;
 public abstract class Service<T> implements CRUD<T>{
     
     public final HashMap<String, T> lista = new HashMap<>();
-    
+
     @Override
     public T getByID(String id) {
         return lista.get(id);

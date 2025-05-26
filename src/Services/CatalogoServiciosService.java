@@ -1,7 +1,7 @@
 package Services;
 
 import Model.Catalogo_Servicios;
-import Services.interfaces.Service;
+import Services.templates.Service;
 
 public class CatalogoServiciosService extends Service<Catalogo_Servicios>{
     

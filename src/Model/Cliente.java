@@ -29,7 +29,7 @@ public class Cliente extends Persona{
 
     public void setTipoDocumento(int tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
-    } //A eliminar 
+    } 
 
     public String getDistritoCliente() {
         return distritoCliente;

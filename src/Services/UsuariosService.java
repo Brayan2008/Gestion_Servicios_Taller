@@ -1,7 +1,7 @@
 package Services;
 
 import Model.Usuarios;
-import Services.interfaces.Service;;
+import Services.templates.Service;;
 
 
 public class UsuariosService extends Service<Usuarios> {
@@ -12,11 +12,12 @@ public class UsuariosService extends Service<Usuarios> {
      * de lo contrario <code> false </code>
      */
     public boolean validarLogin(Usuarios usuario) {
-        var usuario_find = getByID(usuario.getID());
-        
         if (CamposVacios(usuario)) {
             return false;    
         }
+
+        var usuario_find = getByID(usuario.getID());
+        
 
         if (usuario_find != null && usuario_find.getContraseña().equals(usuario.getContraseña())) {
             return true;

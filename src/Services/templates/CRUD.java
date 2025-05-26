@@ -1,4 +1,4 @@
-package Services.interfaces;
+package Services.templates;
 
 import java.util.HashMap;
 
@@ -18,8 +18,8 @@ public interface CRUD<T> {
     HashMap<String, T> getList();
 
     /**
-     * Agrega o sube un objecto generico
-     * @param id El ID del objecto
+     * Agrega o sube un objecto generico al HashMap
+     * @param id El ID del objeto
      * @param T El objeto generico
      * @return Devuelve <code>true</code> si es que el objecto se agrego correctamente, de lo contrario <code>false</code>
      */

@@ -1,7 +1,7 @@
 package Services;
 
 import Model.Mecanico;
-import Services.interfaces.Service;
+import Services.templates.Service;
 import View.utils.ConsoleTools;
 
 public class MecanicoService extends Service<Mecanico> implements ConsoleTools{    
@@ -12,7 +12,7 @@ public class MecanicoService extends Service<Mecanico> implements ConsoleTools{
         do {
             printlnInstruction("Ingrese el DNI (8 digitos): ");
             id = lector.nextLine();
-            if (id.length() != 8 || !id.matches("[0-9]{8}")) {
+            if (!id.matches("[0-9]{8}")) {
             printlnError(RED + "El DNI ingresado no es correcto. (" + i + " de 3 opotunidades.)" + DEFAULT);
             id = ""; 
             i--;

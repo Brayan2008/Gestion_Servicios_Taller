@@ -2,7 +2,7 @@ package Model;
 
 public class Accesorios {
     
-    
+
     private String CodAccesorio;
     private String NombreAccesorio;
     
@@ -26,7 +26,7 @@ public class Accesorios {
     public void setNombreAccesorio(String nombreAccesorio) {
         NombreAccesorio = nombreAccesorio;
     }
-
+    
     @Override
     public String toString() {
         return "-".repeat(40)                    + 
@@ -34,5 +34,6 @@ public class Accesorios {
             "\nNombre del accesorio: " + NombreAccesorio + "\n"   +
             "-".repeat(40);
     }
+    
     //
 }

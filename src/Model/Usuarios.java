@@ -19,15 +19,10 @@ public class Usuarios {
     public String getID() {
         return idUser;
     }
-    
-    public void setID(String idUser) {
-        this.idUser = idUser;
-    }
-    
+   
     public String getNombre() {
         return nombre;
     }
-
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

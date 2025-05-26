@@ -27,10 +27,6 @@ public class Vehiculo {
         return PlacaVehiculo;
     }
 
-    public void setPlacaVehiculo(String placaVehiculo) {
-        PlacaVehiculo = placaVehiculo;
-    }
-
     public String getMarcaVehiculo() {
         return MarcaVehiculo;
     }

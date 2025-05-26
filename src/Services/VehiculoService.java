@@ -1,6 +1,6 @@
 package Services;
 import Model.Vehiculo;
-import Services.interfaces.Service;
+import Services.templates.Service;
 
 public class VehiculoService extends Service<Vehiculo> {
     

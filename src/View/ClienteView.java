@@ -68,7 +68,6 @@ public class ClienteView extends ConsoleViews<Cliente>{
         verLista();
         printlnInfo("Seleccione a un cliente por su ID: ");
         String dni_buscar = lector.nextLine();
-
         Cliente cliente_find = cs.getByID(dni_buscar);
         cs.ValidarBusqueda(cliente_find, dni_buscar);
     }

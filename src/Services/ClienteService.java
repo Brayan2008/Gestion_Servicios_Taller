@@ -65,7 +65,7 @@ public class ClienteService extends Service<Cliente> implements ConsoleTools{
             String distrito = lector.nextLine();
             
             printlnInfo("Presione Enter para guardar");
-           
+        
             Cliente cliente_actualizado = new Cliente(dni_busqueda, nombre, tel, direccion,
                     cliente.getTipoDocumento(), distrito);
             put(cliente_actualizado, cliente.getID()); //Siempre devolvera verdadero 

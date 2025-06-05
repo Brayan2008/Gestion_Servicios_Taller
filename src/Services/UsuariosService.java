@@ -33,7 +33,6 @@ public class UsuariosService extends Service<Usuarios> {
         return false;
     }
 
-
     //------------------
     public boolean IDvacia(Usuarios user) {
         if (user.getID().isBlank() || user.getID().isEmpty()) {
@@ -41,5 +40,4 @@ public class UsuariosService extends Service<Usuarios> {
         }
         return false;   
     }
-
 }

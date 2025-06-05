@@ -60,6 +60,5 @@ public abstract class ConsoleViews<T> implements ConsoleTools{
     protected void eliminarDatos(){
         System.out.println("No implementado");
     };
-
 }
 

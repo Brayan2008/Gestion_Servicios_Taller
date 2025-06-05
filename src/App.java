@@ -87,8 +87,4 @@ public class App extends ConsoleViews<App> {
         System.out.println("6.- Configurar mi perfil");
         System.out.println("7.- Cerrar Sesion" + DEFAULT + "\n\nSeleccione una opcion" + "\n".repeat(20));    
     }
-    
-
-
-
 }

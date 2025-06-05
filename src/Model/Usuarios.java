@@ -6,7 +6,7 @@ public class Usuarios {
     private String contraseña;
     
     public Usuarios() {
-   
+
     }
 
     public Usuarios(String idUser, String nombre, String contraseña) {
@@ -19,7 +19,7 @@ public class Usuarios {
     public String getID() {
         return idUser;
     }
-   
+
     public String getNombre() {
         return nombre;
     }
@@ -38,9 +38,8 @@ public class Usuarios {
     @Override
     public String toString() {
         return "-".repeat(40)                  + 
-               "\nID: " + getID()                      +
-               "\nNombre: " + getNombre() + "\n"     +
-               "-".repeat(40);
-    }
-    
+            "\nID: " + getID()                      +
+            "\nNombre: " + getNombre() + "\n"     +
+            "-".repeat(40);
+    }  
 }

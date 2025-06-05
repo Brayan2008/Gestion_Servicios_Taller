@@ -81,7 +81,6 @@ public class UsuarioAdminView extends ConsoleViews<Usuarios> {
 
         printlnInfo("\nPresione ENTER para volver");
         lector.nextLine();
-
     }
 
     @Override

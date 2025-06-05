@@ -74,15 +74,15 @@ public interface ConsoleTools {
 
     //Para titulos
     default void printlnTitle_Cyan(String mensaje){
-          System.out.println(BG_CYAN + BOLD + mensaje + DEFAULT); 
+        System.out.println(BG_CYAN + BOLD + mensaje + DEFAULT); 
     }
 
     default void printlnTitle_Green(String mensaje){
-          System.out.println(BG_GREEN + BOLD + mensaje + DEFAULT); 
+        System.out.println(BG_GREEN + BOLD + mensaje + DEFAULT); 
     }
     
     default void printlnTitle_Red(String mensaje){
-          System.out.println(BG_RED + BOLD + WHITE + mensaje + DEFAULT); 
+        System.out.println(BG_RED + BOLD + WHITE + mensaje + DEFAULT); 
     }
 
     /**

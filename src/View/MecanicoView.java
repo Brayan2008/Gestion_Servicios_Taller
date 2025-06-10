@@ -2,9 +2,9 @@ package View;
 
 import Model.Mecanico;
 import Services.MecanicoService;
-import View.utils.ConsoleViews;
+import View.utils.JViews;
 
-public class MecanicoView extends ConsoleViews<Mecanico> {
+public class MecanicoView extends JViews<Mecanico> {
     
     private final MecanicoService mc = new MecanicoService();
 

@@ -1,10 +1,10 @@
 package View;
 
 import Model.Catalogo_Servicios;
-import View.utils.ConsoleViews;
+import View.utils.JViews;
 import Services.CatalogoServiciosService;
 
-public class CatalogoServiciosView extends ConsoleViews<Catalogo_Servicios> {
+public class CatalogoServiciosView extends JViews<Catalogo_Servicios> {
 
     private final CatalogoServiciosService css = new CatalogoServiciosService();
 

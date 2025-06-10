@@ -1,10 +1,10 @@
 package View;
 
 import Model.Vehiculo;
-import View.utils.ConsoleViews;
+import View.utils.JViews;
 import Services.VehiculoService;
 
-public class VehiculoView extends ConsoleViews<Vehiculo>{
+public class VehiculoView extends JViews<Vehiculo>{
     
     private final VehiculoService vs = new VehiculoService();
 

@@ -7,7 +7,7 @@ import java.util.Scanner;
  * a los caracteres <code>UNICODE</code> que reconoce Java
  * <div>Ademas contiene un <code>Scanner</code> universal para todas las vistas</div>
  */
-public interface ConsoleTools {
+public interface Tools {
  
     static final Scanner lector = new Scanner(System.in);
 

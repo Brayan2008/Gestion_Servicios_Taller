@@ -48,6 +48,4 @@ public abstract class Service<T> implements CRUD<T>{
         }
         return false;
     }
-
-    
 }

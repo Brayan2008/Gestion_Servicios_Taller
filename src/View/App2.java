@@ -1,12 +1,19 @@
+package View;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
-import View.LoginView;
 import View.utils.JViews;
+import controllers.LoginViewController;
+
 import java.awt.*;
 
-public class App extends JFrame implements JViews {
+public class App2 extends JFrame implements JViews {
+
+    public static JFrame punteroFrame;
+    
+    public static JFrame getPunteroFrame() {
+        return punteroFrame;
+    }
 
     private LoginView l1 = new LoginView();
     /*
@@ -17,31 +24,30 @@ public class App extends JFrame implements JViews {
      * private CatalogoServiciosView cs1 = new CatalogoServiciosView();
      */
 
-    public static void main(String[] args) throws Exception {
-        SwingUtilities.invokeLater(() -> new App());
-    }
-
-    public App() {
+    public App2() {
         super("Gestion de servicios de un taller de autos");
+        punteroFrame = this;
+        setUndecorated(true); //Undecorated sin
         init();
         setResizable(true);
     }
-
+    
     // #region Metodos
     @Override
     public void init() {
-        setBounds(new Rectangle(600, 450));
+        setBounds(new Rectangle(590, 450));
         setLocationRelativeTo(null);
-        setVisible(true);
         setLayout(new BorderLayout());
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
         agregarComponentes();
+        FadeWindowsIn(this);
+        setVisible(true);
     }
 
     @Override
     public void agregarComponentes() {
         add(l1);
+        new LoginViewController(l1);        
     }
     // #endregion
 

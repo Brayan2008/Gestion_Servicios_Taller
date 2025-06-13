@@ -5,6 +5,13 @@ import Services.templates.Service;;
 
 
 public class UsuariosService extends Service<Usuarios> {
+
+    public UsuariosService(){
+        t = new Usuarios();
+        Service.getConnection();
+        init();
+    }
+
     /**
      * Valida el ingreso de datos en el "Iniciar Sesion"
      * @param usuario El usuario ingresado
@@ -33,7 +40,7 @@ public class UsuariosService extends Service<Usuarios> {
         return false;
     }
 
-    //------------------
+
     public boolean IDvacia(Usuarios user) {
         if (user.getID().isBlank() || user.getID().isEmpty()) {
             return true;   

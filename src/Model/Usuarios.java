@@ -2,16 +2,14 @@ package Model;
 
 public class Usuarios {
     private String idUser;
-    private String nombre; 
     private String contraseña;
     
     public Usuarios() {
 
     }
 
-    public Usuarios(String idUser, String nombre, String contraseña) {
+    public Usuarios(String idUser, String contraseña) {
         this.idUser = idUser;
-        this.nombre = nombre;
         this.contraseña = contraseña;
     }
     
@@ -20,13 +18,6 @@ public class Usuarios {
         return idUser;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
     public String getContraseña() {
         return contraseña;
     }
@@ -39,7 +30,6 @@ public class Usuarios {
     public String toString() {
         return "-".repeat(40)                  + 
             "\nID: " + getID()                      +
-            "\nNombre: " + getNombre() + "\n"     +
             "-".repeat(40);
     }  
 }

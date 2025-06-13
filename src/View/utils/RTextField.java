@@ -25,6 +25,8 @@ public class RTextField extends JTextField {
         this.heigth = heigth;
         this.color = color;
         this.copy_color = color;
+        
+        setFont(Colors.FieldText);
         setPreferredSize(new Dimension(width, heigth));
         setOpaque(false);
         setBorder(new EmptyBorder(3, 9, 3, 9));

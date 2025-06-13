@@ -1,6 +1,6 @@
 package Services.templates;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public interface CRUD<T> {
 
@@ -15,7 +15,7 @@ public interface CRUD<T> {
      * Obtiene un HashMap de los objetos T
      * @return un <code> HashMap </code>
      */
-    HashMap<String, T> getList();
+    ArrayList<T> getList();
 
     /**
      * Agrega o sube un objecto generico al HashMap

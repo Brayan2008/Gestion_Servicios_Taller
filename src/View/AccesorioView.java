@@ -1,6 +1,5 @@
 package View;
 
-import Model.Accesorios;
 import Services.AccesoriosService;
 import View.utils.JViews;
 

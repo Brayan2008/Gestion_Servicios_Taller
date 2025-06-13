@@ -15,7 +15,7 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
-public class RButton extends JButton {
+public class RButton extends JButton implements Animation {
 
     int width, heigth;
     String text;
@@ -37,7 +37,6 @@ public class RButton extends JButton {
         setText(text);
         setFocusPainted(false);
         addMouseListener(mouseactions);
-        addFocusListener(focusAdapter);
     }
 
     public RButton setTamaño(int width, int heigth){
@@ -54,7 +53,7 @@ public class RButton extends JButton {
         return this;
     }
 
-    public RButton textColor(Color color1, Color color2) {
+    public RButton setTextColor(Color color1, Color color2) {
         this.textColor = color1;
         this.textColor2 = color2;
         this.copy_text = color1;
@@ -77,7 +76,7 @@ public class RButton extends JButton {
         setForeground(textColor);
         repaint();
     }
-
+    
     public void noFocus() {
         color = copy_color;
         textColor = copy_text;
@@ -88,17 +87,17 @@ public class RButton extends JButton {
     MouseAdapter mouseactions = new MouseAdapter() {
         @Override
         public void mouseEntered(MouseEvent e) {
-                inFocus();
+            inFocus();
         }
 
         @Override
         public void mouseExited(MouseEvent e) {            
-                noFocus();
+           noFocus();
         }
-
     };
 
-    FocusAdapter focusAdapter = new FocusAdapter() {
+    FocusAdapter focus = new FocusAdapter() {
+        
         @Override
         public void focusGained(FocusEvent e) {
             inFocus();

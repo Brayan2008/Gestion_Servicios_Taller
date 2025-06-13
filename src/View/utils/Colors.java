@@ -12,7 +12,13 @@ public interface Colors {
     static final Color BLUE_BLACK_DESA =new Color(90, 112, 140);
     static final Color GRAY = new Color(210, 210, 210);
 
+    //Tema 1
+
+    static final Color TEMA_BUTTONS = new Color(2, 115, 94); 
+    static final Color FONDO_1 = new Color(1, 64, 52); 
+
     static final Font Titles = new Font("Arial Black", Font.BOLD,18);
     static final Font FieldText = new Font("Arial", Font.PLAIN,14);
     static final Font NormalText = new Font("Arial", Font.PLAIN,10);
+    static final Font ButtonText1 = new Font("Arial Black", Font.BOLD,14);
 }

@@ -1,6 +1,5 @@
 package View;
 
-
 import javax.swing.JPanel;
 
 import Services.ClienteService;

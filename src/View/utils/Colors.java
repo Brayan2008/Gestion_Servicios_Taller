@@ -18,6 +18,7 @@ public interface Colors {
     static final Color FONDO_1 = new Color(1, 64, 52); 
 
     static final Font Titles = new Font("Arial Black", Font.BOLD,18);
+    static final Font SubTitles = new Font("Arial Black", Font.BOLD,14);
     static final Font FieldText = new Font("Arial", Font.PLAIN,14);
     static final Font NormalText = new Font("Arial", Font.PLAIN,10);
     static final Font ButtonText1 = new Font("Arial Black", Font.BOLD,14);

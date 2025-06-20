@@ -31,7 +31,7 @@ public abstract class Service<T> implements CRUD<T> {
     private static Connection puntero = null;
 
    protected String nombreTabla;
-   protected Field[] campos;
+   protected Field[] campos; //El id de cada entidad debe ser el primer atributo declarado
 
     public void init() {
         nombreTabla = t.getClass().getSimpleName();
@@ -151,21 +151,27 @@ public abstract class Service<T> implements CRUD<T> {
     }
 
     
-
+    //aun en desarrollo
     @Override
     public boolean put(T T, String id) {
         var object = getByID(id); 
         if (object == null) return false;
         Field[] campos_copy = campos;
         Arrays.sort(campos_copy,Comparator.comparing((v) -> v.getName()));
-        //-----------------------------------------------------------
-
+        
         return true;
     }
 
     @Override
     public boolean delete(String id) {
         if (getByID(id) == null) return false;
+        String sql = "DELETE FROM " + nombreTabla + " WHERE " + campos[0].getName() + "= ?";
+        try (PreparedStatement paquete = puntero.prepareStatement(sql)) {
+            paquete.setInt(1, Integer.parseInt(id));
+            paquete.executeUpdate();
+        } catch (Exception e) {
+            return false;
+        }
         return true;
 
     }

@@ -1,0 +1,8 @@
+{
+    "dataworkspace.excludedProjects": [
+        "Prueba/Prueba.sqlproj"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ]
+}

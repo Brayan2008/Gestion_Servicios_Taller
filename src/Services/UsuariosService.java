@@ -6,7 +6,7 @@ import Services.templates.Service;;
 
 public class UsuariosService extends Service<Usuarios> {
 
-    public UsuariosService(){
+    public UsuariosService() {
         t = new Usuarios();
         Service.getConnection();
         init();

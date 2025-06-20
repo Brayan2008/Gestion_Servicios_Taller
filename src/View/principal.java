@@ -182,7 +182,7 @@ public class principal extends JFrame implements JViews {
     }
 
     public void abrirAccesorios() {
-        lado_derecho.setBackground(Color.red);
+
     }
     
     public void abrirCliente() {

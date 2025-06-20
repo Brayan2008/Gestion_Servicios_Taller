@@ -18,7 +18,7 @@ public class AccesorioView implements JViews {
 
     @Override
     public void agregarComponentes() {
-
+    
     }
 
 }

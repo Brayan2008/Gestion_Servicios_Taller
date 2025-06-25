@@ -19,7 +19,7 @@ public class UsuarioAdminView extends JPanel implements JViews {
 
     @Override
     public void init() {
-        setLayout();
+       
     }
 
     @Override

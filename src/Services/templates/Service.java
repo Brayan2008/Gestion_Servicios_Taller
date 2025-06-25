@@ -25,9 +25,9 @@ public abstract class Service<T> implements CRUD<T> {
 
     protected T t;
    
-    private static final String CONNECTION_URL = "jdbc:sqlserver://DESKTOP-CTAAIJA\\SQLMISSAEL:1433;databaseName=BIBLIOTECA;encrypt=false";
-    private static final String USERNAME = "sa";
-    private static final String PASSWORD = "123456789";
+    private static final String CONNECTION_URL = ConnectionBD.URL;
+    private static final String USERNAME = ConnectionBD.USER;
+    private static final String PASSWORD = ConnectionBD.PASSWORD;
     private static Connection puntero = null;
 
    protected String nombreTabla;

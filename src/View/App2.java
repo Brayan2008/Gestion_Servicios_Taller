@@ -26,6 +26,7 @@ public class App2 extends JFrame implements JViews {
 
     public App2() {
         super("Gestion de servicios de un taller de autos");
+        System.out.println( Thread.currentThread() + " " + System.currentTimeMillis());
         punteroFrame = this;
         setUndecorated(true); //Undecorated sin
         init();

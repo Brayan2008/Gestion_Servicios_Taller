@@ -6,6 +6,6 @@ import View.App2;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        SwingUtilities.invokeLater(()->new App2());
+        SwingUtilities.invokeLater(()->new App2());        
     }
 }

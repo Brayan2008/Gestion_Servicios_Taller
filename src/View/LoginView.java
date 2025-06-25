@@ -53,7 +53,7 @@ public class LoginView extends ImagePanel implements JViews {
         init();
         login = this;
     }
-
+    
     @Override
     public void init() {
         agregarComponentes();

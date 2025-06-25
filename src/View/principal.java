@@ -27,13 +27,17 @@ public class principal extends JFrame implements JViews {
     RButton orden, accesorios, Servicios, vehiculos, Mecanicos, Clientes;
     JPanel lado_derecho;
 
+    public static void main(String[] args) {
+        new principal("Pruebas");
+    }
+
     public principal(String nombre) {
         this.nombre = nombre;
         init();
         agregarComponentes();
         addListeners();
     }
-    
+
     @Override
     public void init() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -164,14 +168,14 @@ public class principal extends JFrame implements JViews {
 
     public void addListeners() {
         icon_config.addMouseListener(abrirConfig());
-        accesorios.addActionListener(e->abrirAccesorios());
-        Clientes.addActionListener(e->abrirCliente());
-        Mecanicos.addActionListener(e->abrirMecanicos());
-        orden.addActionListener(e->abrirOrden());
-        Servicios.addActionListener(e->abrirServicios());
-        vehiculos.addActionListener(e->abrirVehiculos());
+        accesorios.addActionListener(e -> abrirAccesorios());
+        Clientes.addActionListener(e -> abrirCliente());
+        Mecanicos.addActionListener(e -> abrirMecanicos());
+        orden.addActionListener(e -> abrirOrden());
+        Servicios.addActionListener(e -> abrirServicios());
+        vehiculos.addActionListener(e -> abrirVehiculos());
     }
-    
+
     public MouseAdapter abrirConfig() {
         return new MouseAdapter() {
             @Override
@@ -182,9 +186,12 @@ public class principal extends JFrame implements JViews {
     }
 
     public void abrirAccesorios() {
-
+        lado_derecho.add(new AccesorioView());
+        revalidate();
+        repaint();
+        System.out.println("XD");
     }
-    
+
     public void abrirCliente() {
         lado_derecho.setBackground(Color.orange);
     }
@@ -200,7 +207,7 @@ public class principal extends JFrame implements JViews {
     public void abrirServicios() {
         lado_derecho.setBackground(Color.GRAY);
     }
-    
+
     public void abrirVehiculos() {
         lado_derecho.setBackground(Color.YELLOW);
     }

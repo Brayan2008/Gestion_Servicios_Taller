@@ -86,7 +86,7 @@ public class LoginViewController implements Animation {
         minimizar_ventana.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {    
-               punteroWindow.setState(JFrame.ICONIFIED);
+            punteroWindow.setState(JFrame.ICONIFIED);
             }
         });
 
@@ -108,7 +108,7 @@ public class LoginViewController implements Animation {
             if (us.validarLogin(usuario)) {
                 JOptionPane.showMessageDialog(null, "Inicio correcto", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 FadeWindowsOut(punteroWindow);
-                 new principal(user);
+                new principal(user);
             } else{
                 JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
             }

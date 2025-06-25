@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -50,6 +51,7 @@ public class principal extends JFrame implements JViews {
     @Override
     public void agregarComponentes() {
         lado_derecho = new JPanel();
+        lado_derecho.setLayout(new GridLayout());
         lado_derecho.setBackground(Color.BLUE);
         add(lado_derecho, BorderLayout.CENTER);
 
@@ -189,7 +191,6 @@ public class principal extends JFrame implements JViews {
         lado_derecho.add(new AccesorioView());
         revalidate();
         repaint();
-        System.out.println("XD");
     }
 
     public void abrirCliente() {

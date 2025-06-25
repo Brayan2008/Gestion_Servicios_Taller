@@ -138,18 +138,13 @@ public abstract class Service<T> implements CRUD<T> {
                     case "boolean" -> paquete.setBoolean(i, Boolean.getBoolean(valor.toString())); 
                     default -> throw new SQLDataException("Tipo de dato no soportado");
                 }
-            
             }
-
             return paquete.executeUpdate() == 1;                         
-
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-
     }
-
     
     //aun en desarrollo
     @Override
@@ -173,6 +168,5 @@ public abstract class Service<T> implements CRUD<T> {
             return false;
         }
         return true;
-
     }
 }

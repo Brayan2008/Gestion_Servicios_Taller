@@ -1,7 +1,7 @@
 package Services.templates;
 
 public class ConnectionBD {
-    static final String URL = "jdbc:sqlserver://DESKTOP-CTAAIJA\\SQLMISSAEL:1433;databaseName=BIBLIOTECA;encrypt=false";
+    static final String URL = "jdbc:sqlserver://ANDY-DESKTOP\\SQLEXPRESS:1433;databaseName=TALLER;encrypt=false";
     static final String USER = "sa";
-    static final String PASSWORD = "123456789";
+    static final String PASSWORD = "sa";
 }

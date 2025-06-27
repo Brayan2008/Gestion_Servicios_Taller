@@ -12,7 +12,7 @@ public class AccesorioView extends JPanel implements JViews {
 
     private final AccesoriosService as = new AccesoriosService();
     public JButton btnAgregar = new JButton("Agregar Accesorio");
-    public JButton btnListar = new JButton("Listar Accesorio");
+    //public JButton btnListar = new JButton("Listar Accesorio");
     public JButton btnModificar = new JButton("Modificar Accesorio");
     public JButton btnEliminar = new JButton("Eliminar Accesorio");
     public JPanel panelCentral = new JPanel();
@@ -51,20 +51,20 @@ public static void main(String[] args) {
         // Definir dimensiones uniformes
         Dimension dimensionBoton = new Dimension(150, 35);
         btnAgregar.setMaximumSize(dimensionBoton);
-        btnListar.setMaximumSize(dimensionBoton);
+        //btnListar.setMaximumSize(dimensionBoton);
         btnModificar.setMaximumSize(dimensionBoton);
         btnEliminar.setMaximumSize(dimensionBoton);
 
         btnAgregar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnListar.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //btnListar.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnModificar.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnEliminar.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Agregar botones al panel izquierdo con espacio entre ellos
         PanelDerecho.add(Box.createVerticalStrut(20)); // espacio superior
         PanelDerecho.add(btnAgregar);
-        PanelDerecho.add(Box.createVerticalStrut(10));
-        PanelDerecho.add(btnListar);
+        //PanelDerecho.add(Box.createVerticalStrut(10));
+        //PanelDerecho.add(btnListar);
         PanelDerecho.add(Box.createVerticalStrut(10));
         PanelDerecho.add(btnModificar);
         PanelDerecho.add(Box.createVerticalStrut(10));

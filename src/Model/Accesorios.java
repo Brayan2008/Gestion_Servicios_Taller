@@ -19,6 +19,10 @@ public class Accesorios {
         return CodAccesorio;
     }
 
+    public void  setID(String codAccesorio){
+        CodAccesorio = codAccesorio;
+    }
+
     public String getNombreAccesorio() {
         return NombreAccesorio;
     }

@@ -3,7 +3,6 @@ package View;
 import Services.CatalogoServiciosService;
 import View.utils.JViews;
 
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -64,13 +63,25 @@ public class CatalogoServiciosView extends JPanel implements JViews {
         PCentral.add(scrollPane, BorderLayout.CENTER);
 
         this.add(PCentral, BorderLayout.CENTER);
+        
+        // eventos
+        btnAdd.addActionListener(e -> mostrarVentanaAgregar());
+
+        
+
+    }
+
+    private void mostrarVentanaAgregar() {
+    new VentanaAgregarServicio(null, css);}
+    
+    
+    @Override
+    public void init() {
     }
 
     @Override
-    public void init() {}
-
-    @Override
-    public void agregarComponentes() {}
+    public void agregarComponentes() {
+    }
 
     public JPanel getPCentral() {
         return PCentral;
@@ -80,4 +91,3 @@ public class CatalogoServiciosView extends JPanel implements JViews {
         return tablaServicios;
     }
 }
-

@@ -1,5 +1,5 @@
 package Services;
-
+import java.math.BigDecimal;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,4 +35,23 @@ public class CatalogoServiciosService {
         }
         return modelo;
     }
+
+    public void insertarServicio(String codser, String nomser, double precser) throws Exception {
+    String sql = "{call PA_CRUD_InsertarServicio(?, ?, ?)}";
+
+    try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
+        CallableStatement cs = con.prepareCall(sql)) {
+
+        cs.setString(1, codser);
+        cs.setString(2, nomser);
+        cs.setBigDecimal(3, BigDecimal.valueOf(precser));
+
+        cs.execute();
+
+    } catch (SQLException e) {
+        // para propagar el error del RAISERROR al JOptionPane
+        throw new Exception(e.getMessage());
+    }
+}
+
 }

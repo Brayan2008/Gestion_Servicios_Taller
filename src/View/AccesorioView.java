@@ -1,7 +1,6 @@
 package View;
 
-import Services.AccesoriosService;
-import Services.CatalogoServiciosService;
+import Services.AccesoriosServices;
 import View.utils.JViews;
 
 
@@ -10,12 +9,12 @@ import java.awt.*;
 
 public class AccesorioView extends JPanel implements JViews {
 
-    private final AccesoriosService css = new AccesoriosService() 
+    private final AccesoriosServices as = new AccesoriosServices(); 
     public JButton btnAdd = new JButton("Agregar Accesorios");
     public JButton btnMod = new JButton("Modificar Accesorios");
     public JButton btnDel = new JButton("Eliminar Accesorios");
     public JPanel PCentral = new JPanel();
-    private JTable tablaServicios; // tabla para mostrar Accesorios
+    private JTable tablaAccesorios; // tabla para mostrar Accesorios
 
     public static void main(String[] args) {
         JFrame prueba = new JFrame("Gestión de Accesorios");
@@ -60,8 +59,8 @@ public class AccesorioView extends JPanel implements JViews {
         PCentral.setLayout(new BorderLayout());
         PCentral.setBackground(Color.WHITE);
 
-        tablaServicios = new JTable(css.listarServicios());
-        JScrollPane scrollPane = new JScrollPane(tablaServicios);
+        tablaAccesorios = new JTable(as.listarAccesorios());
+        JScrollPane scrollPane = new JScrollPane(tablaAccesorios);
         PCentral.add(scrollPane, BorderLayout.CENTER);
 
         this.add(PCentral, BorderLayout.CENTER);
@@ -78,6 +77,6 @@ public class AccesorioView extends JPanel implements JViews {
     }
 
     public JTable getTablaServicios() {
-        return tablaServicios;
+        return tablaAccesorios;
     }
 }

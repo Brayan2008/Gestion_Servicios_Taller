@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import Services.templates.ConnectionBD;
 
 /**
  * Clase que implementa un CRUD y se encarga de la logica comun de crear,

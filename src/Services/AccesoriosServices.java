@@ -1,12 +1,13 @@
 package Services;
+import Services.templates.ConnectionBD;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 
 public class AccesoriosServices{
 
-    private final String cadenaConexion = "jdbc:sqlserver://ANDY-DESKTOP\\SQLEXPRESS:1433;databaseName=TALLER;encrypt=false";
-    private final String usuario = "sa"; // cámbialo
-    private final String clave = "sa";     // cámbialo
+    private final String cadenaConexion = ConnectionBD.URL;
+    private final String usuario = ConnectionBD.USER;
+    private final String clave = ConnectionBD.PASSWORD;
 
     public DefaultTableModel listarAccesorios() {
         // Creamos un DefaultTableModel anónimo

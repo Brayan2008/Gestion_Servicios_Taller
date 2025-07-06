@@ -12,10 +12,13 @@ public class VentanaAgregarServicio extends JDialog {
     private JTextField txtNombre;
     private JTextField txtPrecio;
     private final CatalogoServiciosService serviciosService;
+    private final CatalogoServiciosView vistaPadre;
 
-    public VentanaAgregarServicio(JFrame parent, CatalogoServiciosService serviciosService) {
+    public VentanaAgregarServicio(JFrame parent, CatalogoServiciosView vistaPadre, CatalogoServiciosService serviciosService) {
         super(parent, "Agregar Servicio", true);
         this.serviciosService = serviciosService;
+        this.vistaPadre = vistaPadre;
+
 
         // panel campos
         JPanel panelCampos = new JPanel(new GridLayout(3, 2, 10, 10));
@@ -66,12 +69,23 @@ public class VentanaAgregarServicio extends JDialog {
         }
 
         try {
+            precioStr = precioStr.replace(',','.');
             double precio = Double.parseDouble(precioStr);
+
+            if (precio <= 0) {
+            JOptionPane.showMessageDialog(this, "El precio debe ser mayor a cero");
+            return;
+        }
 
             // llamamos al servicio
             serviciosService.insertarServicio(cod, nombre, precio);
-
             JOptionPane.showMessageDialog(this, "Servicio agregado correctamente.");
+            //funcion para refrescar la tabla del view 
+            if(getParent() instanceof CatalogoServiciosView){
+                ((CatalogoServiciosView)getParent()).cargarDatosServicios();
+            }
+            vistaPadre.cargarDatosServicios(); //recarga la tabla
+
             dispose();
 
         } catch (NumberFormatException ex) {

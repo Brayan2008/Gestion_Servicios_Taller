@@ -4,6 +4,8 @@ import Services.CatalogoServiciosService;
 import View.utils.JViews;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.*;
 
 public class CatalogoServiciosView extends JPanel implements JViews {
@@ -63,18 +65,16 @@ public class CatalogoServiciosView extends JPanel implements JViews {
         PCentral.add(scrollPane, BorderLayout.CENTER);
 
         this.add(PCentral, BorderLayout.CENTER);
-        
+
         // eventos
         btnAdd.addActionListener(e -> mostrarVentanaAgregar());
-
-        
 
     }
 
     private void mostrarVentanaAgregar() {
-    new VentanaAgregarServicio(null, css);}
-    
-    
+        new VentanaAgregarServicio(null,this, css);
+    }
+
     @Override
     public void init() {
     }
@@ -82,6 +82,20 @@ public class CatalogoServiciosView extends JPanel implements JViews {
     @Override
     public void agregarComponentes() {
     }
+
+    public void cargarDatosServicios() {
+    try {
+        JTable tabla = new JTable(css.listarServicios());
+        tabla.setEnabled(false); // no editable
+
+        PCentral.removeAll();
+        PCentral.add(new JScrollPane(tabla), BorderLayout.CENTER);
+        PCentral.revalidate();
+        PCentral.repaint();
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error cargando datos: " + ex.getMessage());
+    }
+}
 
     public JPanel getPCentral() {
         return PCentral;

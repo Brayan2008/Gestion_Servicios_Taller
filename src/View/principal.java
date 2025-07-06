@@ -19,7 +19,9 @@ import javax.swing.WindowConstants;
 import View.utils.Colors;
 import View.utils.JViews;
 import View.utils.RButton;
+import controllers.AccesorioViewController;
 import controllers.ClienteViewController;
+import controllers.ServicioViewController;
 
 public class principal extends JFrame implements JViews {
 
@@ -190,7 +192,8 @@ public class principal extends JFrame implements JViews {
 
     public void abrirAccesorios() {
         lado_derecho.removeAll();
-        lado_derecho.add(new AccesorioView()); 
+        var accesorio = new AccesorioViewController();
+        lado_derecho.add(accesorio.getVw()); 
         revalidate();
         repaint();
     }
@@ -213,7 +216,8 @@ public class principal extends JFrame implements JViews {
 
     public void abrirServicios() {
         lado_derecho.removeAll();
-        lado_derecho.add(new CatalogoServiciosView());
+        var servicio = new ServicioViewController();
+        lado_derecho.add(servicio.getVw());
         revalidate();
         repaint();
     }

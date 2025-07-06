@@ -9,22 +9,22 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JTable;
 
-import View.AgregarAccesorioView;
-import View.AccesorioView;
+import View.AgregarServicioView;
+import View.CatalogoServiciosView;
 import View.principal;
 import View.utils.Colors;
 import View.utils.RButton;
 import View.utils.RTextField;
 
-public class AccesorioViewController {
+public class ServicioViewController {
 
-    AccesorioView vw;
+    CatalogoServiciosView vw;
     private RTextField text; 
     private JTable table;
     private RButton btnAdd,btnMod,btnDel;
 
-    public AccesorioViewController() {
-        this.vw = new AccesorioView();
+    public ServicioViewController() {
+        this.vw = new CatalogoServiciosView();
         text = vw.buscar;
         table = vw.tablaServicios;
         btnAdd = (RButton) vw.btnAdd;       
@@ -37,7 +37,7 @@ public class AccesorioViewController {
         addListeners();
     }
     
-    public AccesorioView getVw() {
+    public CatalogoServiciosView getVw() {
         return vw;
     }
 
@@ -73,8 +73,7 @@ public class AccesorioViewController {
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AgregarAccesorioController(vw.css);
-                
+                new AgregarServicioController(vw.css);
             }
         });
     }

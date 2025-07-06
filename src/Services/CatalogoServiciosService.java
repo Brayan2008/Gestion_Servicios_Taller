@@ -7,9 +7,9 @@ import javax.swing.table.DefaultTableModel;
 
 public class CatalogoServiciosService {
 
-    private final String cadenaConexion = "jdbc:sqlserver://DESKTOP-CTAAIJA\\SQLMISSAEL:1433;databaseName=TALLER;encrypt=false";
+    private final String cadenaConexion = "jdbc:sqlserver://ANDY-DESKTOP\\SQLEXPRESS:1433;databaseName=TALLER;encrypt=false";
     private final String usuario = "sa"; // cámbialo
-    private final String clave = "123456789"; // cámbialo
+    private final String clave = "sa"; // cámbialo
     public static DefaultTableModel modelo;
     private String[] head = { "Código", "Nombre del Servicio", "Precio del servicio" };
 

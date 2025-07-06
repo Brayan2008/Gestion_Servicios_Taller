@@ -19,6 +19,7 @@ import javax.swing.WindowConstants;
 import View.utils.Colors;
 import View.utils.JViews;
 import View.utils.RButton;
+import controllers.ClienteViewController;
 
 public class principal extends JFrame implements JViews {
 
@@ -39,10 +40,11 @@ public class principal extends JFrame implements JViews {
         addListeners();
     }
 
+
     @Override
     public void init() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setBounds(0, 0, 700, 550);
+        setBounds(0, 0, 1020, 650);
         setLocationRelativeTo(null);
         setVisible(true);
         setLayout(new BorderLayout());
@@ -57,7 +59,7 @@ public class principal extends JFrame implements JViews {
 
         JPanel dash = new JPanel(null);
         dash.setBackground(Colors.FONDO_1);
-        dash.setPreferredSize(new Dimension(220, HEIGHT));
+        dash.setPreferredSize(new Dimension(220, HEIGHT)); 
         add(dash, BorderLayout.WEST);
 
         JLabel logo = new JLabel(new ImageIcon("src/resources/principal/logoTaller2.png"));
@@ -145,7 +147,6 @@ public class principal extends JFrame implements JViews {
         animacionDerecha(Clientes, x -= 125, Clientes.getX());
         Clientes.addMouseListener(addFocus(Clientes));
         dash.add(Clientes);
-
     }
 
     // #region Listeners
@@ -188,13 +189,18 @@ public class principal extends JFrame implements JViews {
     }
 
     public void abrirAccesorios() {
-        lado_derecho.add(new AccesorioView());
+        lado_derecho.removeAll();
+        lado_derecho.add(new AccesorioView()); 
         revalidate();
         repaint();
     }
-
+    
     public void abrirCliente() {
-        lado_derecho.setBackground(Color.orange);
+        lado_derecho.removeAll();
+        var cliente = new ClienteViewController();
+        lado_derecho.add(cliente.getVw());
+        revalidate();
+        repaint();
     }
 
     public void abrirMecanicos() {
@@ -206,12 +212,14 @@ public class principal extends JFrame implements JViews {
     }
 
     public void abrirServicios() {
-        lado_derecho.setBackground(Color.GRAY);
+        lado_derecho.removeAll();
+        lado_derecho.add(new CatalogoServiciosView());
+        revalidate();
+        repaint();
     }
-
+    
     public void abrirVehiculos() {
         lado_derecho.setBackground(Color.YELLOW);
     }
     // #endregion
-
 }

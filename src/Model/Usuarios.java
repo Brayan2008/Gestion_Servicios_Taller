@@ -3,16 +3,21 @@ package Model;
 public class Usuarios {
     private String idUser;
     private String contraseña;
+    private String nombre;
     
     public Usuarios() {
-
+        
     }
-
+    
     public Usuarios(String idUser, String contraseña) {
         this.idUser = idUser;
         this.contraseña = contraseña;
     }
     
+    
+    public String getNombre() {
+        return nombre;
+    }
 
     public String getID() {
         return idUser;

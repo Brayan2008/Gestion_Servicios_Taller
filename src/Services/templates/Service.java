@@ -28,7 +28,7 @@ public abstract class Service<T> implements CRUD<T> {
     private static final String CONNECTION_URL = ConnectionBD.URL;
     private static final String USERNAME = ConnectionBD.USER;
     private static final String PASSWORD = ConnectionBD.PASSWORD;
-    private static Connection puntero = null;
+    public static Connection puntero = null;
 
    protected String nombreTabla;
    protected Field[] campos; //El id de cada entidad debe ser el primer atributo declarado

@@ -2,7 +2,6 @@ package controllers;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.function.Function;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;

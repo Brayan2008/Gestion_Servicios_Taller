@@ -234,7 +234,6 @@ public class LoginView extends ImagePanel implements JViews {
         constraint.gridx = 1;
         constraint.insets = new Insets(40, 0, 20, 0);
         panel_registro.add(registrarseButton, constraint);
-
     }
     // #endregion
 

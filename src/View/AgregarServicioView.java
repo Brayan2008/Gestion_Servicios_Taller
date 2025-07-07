@@ -13,7 +13,7 @@ public class AgregarServicioView extends JDialog implements JViews {
     public RTextField txtCodigo;
     public RTextField txtNombre;
     public RTextField txtPrecio;
-public JLabel titleLabel;
+    public JLabel titleLabel;
     public RButton btnGuardar, btnCancelar;
 
     public AgregarServicioView(JFrame parent) {

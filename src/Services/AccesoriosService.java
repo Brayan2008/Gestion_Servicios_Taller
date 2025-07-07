@@ -1,4 +1,5 @@
 package Services;
+
 import java.sql.*;
 
 import javax.swing.table.DefaultTableModel;
@@ -25,10 +26,10 @@ public class AccesoriosService extends Service {
             while (rs.next()) {
                 String codigo = rs.getString("Codigo");
                 String nombre = rs.getString("Nombre del Accesorio");
-                
+
                 modelo.addRow(new Object[] { codigo, nombre });
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -37,36 +38,36 @@ public class AccesoriosService extends Service {
 
     public void insertarServicio(String codser, String nomser) throws Exception {
         String sql = "{call PA_CRUD_InsertarAccesorio(?, ?)}";
-        
+
         try (CallableStatement cs = puntero.prepareCall(sql)) {
-            
+
             cs.setString(1, codser);
             cs.setString(2, nomser);
-            
-            cs.execute();            
+
+            cs.execute();
         } catch (SQLException e) {
             throw new Exception(e.getMessage());
-        }        
+        }
     }
-    
+
     public void buscarCliente(String cadena) throws Exception {
         String sql = "{call PA_FiltrarAccesorio(?)}";
-        
-        try (CallableStatement cs = puntero.prepareCall(sql)) {            
+
+        try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, cadena);
-            cs.execute();            
-            
+            cs.execute();
+
             ResultSet rs = cs.executeQuery();
             modelo.setRowCount(0);
 
             while (rs.next()) {
                 String codigo = rs.getString("Cod_Accesorio");
-                String nombre = rs.getString("Nom_Accesorio");          
+                String nombre = rs.getString("Nom_Accesorio");
                 modelo.addRow(new Object[] { codigo, nombre });
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }       
+        }
     }
 
     public void actualizarCliente(String codser, String nomser) throws SQLException {

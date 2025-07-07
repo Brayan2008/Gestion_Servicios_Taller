@@ -9,6 +9,7 @@ import Services.templates.Service;;
 public class UsuariosService extends Service {
 
     public UsuariosService() {
+        t = new Usuarios();
         ExecutorService hilo = Executors.newFixedThreadPool(2);
         hilo.submit(() -> {
             Service.getConnection();
@@ -16,6 +17,7 @@ public class UsuariosService extends Service {
         });
         hilo.shutdown();
         System.out.println( Thread.currentThread() + " " + System.currentTimeMillis());
+        init();
     }
 
     /**
@@ -26,8 +28,7 @@ public class UsuariosService extends Service {
      *         contraseña,
      *         de lo contrario <code> false </code>
      */
-     /* @Deprecated
-     public boolean validarLogin(Usuarios usuario) {
+    public boolean validarLogin(Usuarios usuario) {
         if (CamposVacios(usuario)) {
             return false;
         }
@@ -39,7 +40,7 @@ public class UsuariosService extends Service {
         } else {
             return false;
         }
-    } */
+    }
 
     public boolean CamposVacios(Usuarios user) {
         if (user.getContraseña().isEmpty() || user.getContraseña().isBlank() || IDvacia(user)) {
@@ -54,5 +55,4 @@ public class UsuariosService extends Service {
         }
         return false;
     }
-    
 }

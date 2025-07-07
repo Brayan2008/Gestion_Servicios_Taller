@@ -2,7 +2,6 @@ package Services.templates;
 
 import java.util.ArrayList;
 
-@Deprecated
 public interface CRUD<T> {
 
     /**

@@ -70,8 +70,7 @@ public class VehiculoViewController {
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Aquí puedes agregar la lógica para abrir la vista de agregar vehículo
-                // new AgregarVehiculoController(vw.vs);
+                new AgregarVehiculoController(vw.vs);
             }
         });
     }

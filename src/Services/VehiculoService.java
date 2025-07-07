@@ -58,7 +58,30 @@ public class VehiculoService  {
         }
     }
 
-    public void buscarVehiculo(String cadena) throws Exception{
+    public void buscarVehiculo(String cadena) throws Exception {
+        String sql = "{call PA_FiltrarVehiculo(?)}";
         
+        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
+        CallableStatement cs = con.prepareCall(sql)) {            
+            cs.setString(1, cadena);
+            cs.execute();            
+            
+            ResultSet rs = cs.executeQuery();
+            modelo.setRowCount(0); // Limpiar tabla
+
+            while (rs.next()) {
+                String placa = rs.getString("Placa");
+                String marca = rs.getString("Marca");
+                String modeloVehiculo = rs.getString("Modelo");
+                String chasis = rs.getString("Chasis");
+                String numMotor = rs.getString("Numero de motor");
+                int anio = rs.getInt("Año");
+                String color = rs.getString("Color");
+                
+                modelo.addRow(new Object[] { placa, marca, modeloVehiculo, chasis, numMotor, anio, color });
+            }
+        } catch (SQLException e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }

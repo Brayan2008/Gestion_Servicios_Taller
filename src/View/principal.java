@@ -22,6 +22,7 @@ import View.utils.RButton;
 import controllers.AccesorioViewController;
 import controllers.ClienteViewController;
 import controllers.ServicioViewController;
+//import controllers.VehiculoViewController;
 
 public class principal extends JFrame implements JViews {
 
@@ -223,7 +224,11 @@ public class principal extends JFrame implements JViews {
     }
     
     public void abrirVehiculos() {
-        lado_derecho.setBackground(Color.YELLOW);
+        /*lado_derecho.setBackground(Color.YELLOW);
+        var vehiculo = new VehiculoViewController();
+        lado_derecho.add(vehiculo);
+        revalidate();
+        repaint();*/
     }
     // #endregion
 }

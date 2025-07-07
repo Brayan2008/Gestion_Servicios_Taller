@@ -1,7 +1,7 @@
 USE TALLER
 GO
 --Insertar
-CREATE PROCEDURE PA_Crear_Vehiculo
+CREATE OR ALTER PROCEDURE PA_Crear_Vehiculo
     (
     @placa AS CHAR(7),
     @marca AS VARCHAR(20),
@@ -91,9 +91,9 @@ AS
     SELECT Placa_Vehiculo AS 'Placa',
         Marca_Vehiculo AS 'Marca',
         Modelo_Vehiculo AS 'Modelo',
-        Mod_Chasis AS 'Modelo de chasis',
-        Num_Motor AS 'Numero de motor',
-        Año_Vehiculo AS 'Año del modelo',
+        Mod_Chasis AS 'Chasis',
+        Num_Motor AS 'Motor',
+        Año_Vehiculo AS 'Año',
         Color_Vehiculo AS 'Color'
     FROM VEHICULOS
 GO

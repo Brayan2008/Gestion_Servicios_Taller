@@ -3,10 +3,13 @@ import java.sql.*;
 
 import javax.swing.table.DefaultTableModel;
 
-import Services.templates.Service;
+import Services.templates.ConnectionBD;
 
-public class AccesoriosService extends Service {
+public class AccesoriosService {
 
+    private final String cadenaConexion = ConnectionBD.URL;
+    private final String usuario = ConnectionBD.USER;
+    private final String clave = ConnectionBD.PASSWORD;
     public static DefaultTableModel modelo;
     private String[] head = { "Código", "Nombre del Accesorio"};
 
@@ -19,7 +22,8 @@ public class AccesoriosService extends Service {
             }
         };
 
-        try (CallableStatement cs = puntero.prepareCall("{call PA_CRUD_ListarAccesorios}")) {
+        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
+                CallableStatement cs = con.prepareCall("{call PA_CRUD_ListarAccesorios}")) {
 
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
@@ -39,7 +43,8 @@ public class AccesoriosService extends Service {
     public void insertarServicio(String codser, String nomser) throws Exception {
         String sql = "{call PA_CRUD_InsertarAccesorio(?, ?)}";
         
-        try (CallableStatement cs = puntero.prepareCall(sql)) {
+        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
+        CallableStatement cs = con.prepareCall(sql)) {
             
             cs.setString(1, codser);
             cs.setString(2, nomser);
@@ -53,7 +58,8 @@ public class AccesoriosService extends Service {
     public void buscarCliente(String cadena) throws Exception {
         String sql = "{call PA_FiltrarAccesorio(?)}";
         
-        try (CallableStatement cs = puntero.prepareCall(sql)) {            
+        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
+        CallableStatement cs = con.prepareCall(sql)) {            
             cs.setString(1, cadena);
             cs.execute();            
             

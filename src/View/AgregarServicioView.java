@@ -38,7 +38,7 @@ public class AgregarServicioView extends JDialog implements JViews {
         
         JPanel panelCampos = new JPanel(null);
         
-        JLabel titleLabel = new JLabel("AGREGAR ");
+        JLabelz titleLabel = new JLabel("AGREGAR ");
         titleLabel.setFont(Colors.Titles);
         titleLabel.setBounds(x,y,200,30);
         animacionDerecha(titleLabel, x-170, x);

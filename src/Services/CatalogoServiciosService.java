@@ -1,14 +1,16 @@
 package Services;
+import Services.templates.ConnectionBD;
 
 import java.math.BigDecimal;
 import java.sql.*;
 
 import javax.swing.table.DefaultTableModel;
 
-import Services.templates.Service;
+public class CatalogoServiciosService {
 
-public class CatalogoServiciosService extends Service {
-
+    private final String cadenaConexion = ConnectionBD.URL;
+    private final String usuario = ConnectionBD.USER;
+    private final String clave = ConnectionBD.PASSWORD;
     public static DefaultTableModel modelo;
     private String[] head = { "Código", "Nombre del Servicio", "Precio del servicio" };
 
@@ -21,13 +23,15 @@ public class CatalogoServiciosService extends Service {
             }
         };
 
-        try (CallableStatement cs = puntero.prepareCall("{call PA_CRUD_ListarServicios}")) {
+        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
+                CallableStatement cs = con.prepareCall("{call PA_CRUD_ListarServicios}")) {
+
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
                 String codigo = rs.getString("Codigo");
                 String nombre = rs.getString("Nombre del Servicio");
                 double precio = rs.getDouble("Precio del servicio");
-
+                
                 modelo.addRow(new Object[] { codigo, nombre, precio });
             }
             
@@ -39,67 +43,39 @@ public class CatalogoServiciosService extends Service {
 
     public void insertarServicio(String codser, String nomser, double precser) throws Exception {
         String sql = "{call PA_CRUD_InsertarServicio(?, ?, ?)}";
-
-        try (CallableStatement cs = puntero.prepareCall(sql)) {
-
+        
+        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
+        CallableStatement cs = con.prepareCall(sql)) {
+            
             cs.setString(1, codser);
             cs.setString(2, nomser);
             cs.setBigDecimal(3, BigDecimal.valueOf(precser));
-
-            cs.execute();
+            
+            cs.execute();            
         } catch (SQLException e) {
-            e.printStackTrace();
-            throw new Exception();
-        }
+            throw new Exception(e.getMessage());
+        }        
     }
-
+    
     public void buscarCliente(String cadena) throws Exception {
         String sql = "{call PA_FiltrarServicio(?)}";
-
-        try (CallableStatement cs = puntero.prepareCall(sql)) {
+        
+        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
+        CallableStatement cs = con.prepareCall(sql)) {            
             cs.setString(1, cadena);
-            cs.execute();
-
+            cs.execute();            
+            
             ResultSet rs = cs.executeQuery();
-            modelo.setRowCount(0); // Reinicia la tabla
+            modelo.setRowCount(0);
 
             while (rs.next()) {
                 String codigo = rs.getString("Cod_Servicio");
                 String nombre = rs.getString("Nom_Servicio");
-                double precio = rs.getDouble("Precio_Servicio");
+                double precio = rs.getDouble("Precio_Servicio");          
                 modelo.addRow(new Object[] { codigo, nombre, precio });
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }       
     }
-
-    public void actualizarCliente(String codser, String nomser, double precser) throws SQLException {
-        String sql = "{call PA_CRUD_ModificarServicio(?, ?, ?)}";
-
-        try (CallableStatement cs = puntero.prepareCall(sql)) {
-            cs.setString(1, codser);
-            cs.setString(2, nomser);
-            cs.setDouble(3, precser);
-            cs.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException();
-        }
-
-    }
-    
-    public void eliminarCliente(String codser) throws SQLException {
-        String sql = "{call PA_CRUD_EliminarServicio(?)}";
-
-        try (CallableStatement cs = puntero.prepareCall(sql)) {
-            cs.setString(1, codser);
-            cs.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException();
-        }
-    }
-
 }

@@ -1,16 +1,14 @@
 package Services;
-import Services.templates.ConnectionBD;
 
 import java.math.BigDecimal;
 import java.sql.*;
 
 import javax.swing.table.DefaultTableModel;
 
-public class CatalogoServiciosService {
+import Services.templates.Service;
 
-    private final String cadenaConexion = ConnectionBD.URL;
-    private final String usuario = ConnectionBD.USER;
-    private final String clave = ConnectionBD.PASSWORD;
+public class CatalogoServiciosService extends Service {
+
     public static DefaultTableModel modelo;
     private String[] head = { "Código", "Nombre del Servicio", "Precio del servicio" };
 
@@ -23,15 +21,13 @@ public class CatalogoServiciosService {
             }
         };
 
-        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
-                CallableStatement cs = con.prepareCall("{call PA_CRUD_ListarServicios}")) {
-
+        try (CallableStatement cs = puntero.prepareCall("{call PA_CRUD_ListarServicios}")) {
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
                 String codigo = rs.getString("Codigo");
                 String nombre = rs.getString("Nombre del Servicio");
                 double precio = rs.getDouble("Precio del servicio");
-                
+
                 modelo.addRow(new Object[] { codigo, nombre, precio });
             }
             
@@ -43,39 +39,67 @@ public class CatalogoServiciosService {
 
     public void insertarServicio(String codser, String nomser, double precser) throws Exception {
         String sql = "{call PA_CRUD_InsertarServicio(?, ?, ?)}";
-        
-        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
-        CallableStatement cs = con.prepareCall(sql)) {
-            
+
+        try (CallableStatement cs = puntero.prepareCall(sql)) {
+
             cs.setString(1, codser);
             cs.setString(2, nomser);
             cs.setBigDecimal(3, BigDecimal.valueOf(precser));
-            
-            cs.execute();            
+
+            cs.execute();
         } catch (SQLException e) {
-            throw new Exception(e.getMessage());
-        }        
+            e.printStackTrace();
+            throw new Exception();
+        }
     }
-    
+
     public void buscarCliente(String cadena) throws Exception {
         String sql = "{call PA_FiltrarServicio(?)}";
-        
-        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
-        CallableStatement cs = con.prepareCall(sql)) {            
+
+        try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, cadena);
-            cs.execute();            
-            
+            cs.execute();
+
             ResultSet rs = cs.executeQuery();
-            modelo.setRowCount(0);
+            modelo.setRowCount(0); // Reinicia la tabla
 
             while (rs.next()) {
                 String codigo = rs.getString("Cod_Servicio");
                 String nombre = rs.getString("Nom_Servicio");
-                double precio = rs.getDouble("Precio_Servicio");          
+                double precio = rs.getDouble("Precio_Servicio");
                 modelo.addRow(new Object[] { codigo, nombre, precio });
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }       
+        }
     }
+
+    public void actualizarCliente(String codser, String nomser, double precser) throws SQLException {
+        String sql = "{call PA_CRUD_ModificarServicio(?, ?, ?)}";
+
+        try (CallableStatement cs = puntero.prepareCall(sql)) {
+            cs.setString(1, codser);
+            cs.setString(2, nomser);
+            cs.setDouble(3, precser);
+            cs.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException();
+        }
+
+    }
+    
+    public void eliminarCliente(String codser) throws SQLException {
+        String sql = "{call PA_CRUD_EliminarServicio(?)}";
+
+        try (CallableStatement cs = puntero.prepareCall(sql)) {
+            cs.setString(1, codser);
+            cs.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException();
+        }
+    }
+
 }

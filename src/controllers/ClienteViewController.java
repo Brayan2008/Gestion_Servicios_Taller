@@ -87,18 +87,18 @@ public class ClienteViewController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 desactivar();
-                new AgregarClienteController(ClienteView.css, 0); // (1 -> Editar, 2-> Eliminar, 0 -> Guardar)
+                new ClienteCRUDController(ClienteView.css, 0); // (1 -> Editar, 2-> Eliminar, 0 -> Guardar)
             }
         });
 
         btnMod.addActionListener(e -> {
             desactivar();
-            new AgregarClienteController(ClienteView.css, 1); // 1
+            new ClienteCRUDController(ClienteView.css, 1); // 1
         });
         
         btnDel.addActionListener(e -> {
             desactivar();
-            new AgregarClienteController(ClienteView.css, 2);
+            new ClienteCRUDController(ClienteView.css, 2);
         });
     }
 }

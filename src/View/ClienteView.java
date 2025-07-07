@@ -15,7 +15,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import Services.CatalogoServiciosService;
+import Services.ClienteService;
 import View.utils.Colors;
 import View.utils.JViews;
 import View.utils.RButton;
@@ -23,7 +23,7 @@ import View.utils.RTextField;
 
 public class ClienteView extends JPanel implements JViews {
 
-    public static final CatalogoServiciosService css = new CatalogoServiciosService();//---- cambiar a controller
+    public static final ClienteService css = new ClienteService();
 
     public RButton btnAdd = new RButton("Agregar")
                                 .setTamaño(120,25)
@@ -74,7 +74,7 @@ public class ClienteView extends JPanel implements JViews {
         btnMod.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnDel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        tablaServicios = new JTable(css.listarServicios());
+        tablaServicios = new JTable(css.listarClientes());
         tablaServicios.setGridColor(Colors.LIGHT_GRAY);
         tablaServicios.setRowHeight(23);
         tablaServicios.setRowMargin(5);

@@ -3,6 +3,7 @@ package View;
 import View.utils.Colors;
 import View.utils.JViews;
 import View.utils.RButton;
+import View.utils.ROptionString;
 import View.utils.RTextField;
 
 import javax.swing.*;
@@ -10,18 +11,16 @@ import java.awt.*;
 
 public class AgregarClienteView extends JDialog implements JViews {
 
-    public RTextField txtCodigo;
-    public RTextField txtNombre;
-    public RTextField txtPrecio;
+    public JComboBox<String> tipo_doc;
+    public RTextField txtCodigo,txtNombre,txtTelefono,txtDireccion,txtDistrito;
     public JLabel titleLabel;
     public RButton btnGuardar, btnCancelar;
-
     public AgregarClienteView(JFrame parent) {
-        super(parent, "Servicios");
+        super(parent, "Clientes");
         
         agregarComponentes();
 
-        this.setSize(320, 300);
+        this.setSize(320, 480);
         this.setLocationRelativeTo(parent);
         this.setVisible(true);
         this.setLayout(new BorderLayout(10, 10));
@@ -45,38 +44,73 @@ public class AgregarClienteView extends JDialog implements JViews {
         animacionDerecha(titleLabel, x-170, x);
         panelCampos.add(titleLabel);
         
-        JLabel codigo_label = new JLabel("Código:");
+        JLabel tipo_doc_label = new JLabel("Tipo de documento:");
+        tipo_doc_label.setFont(Colors.FieldBoldText);
+        tipo_doc_label.setBounds(x, y=y+45, 200, 20);
+        animacionDerecha(tipo_doc_label, x-120, x);
+        panelCampos.add(tipo_doc_label);
+ 
+        String[] tipos = {"DNI", "PASAPORTE"};
+
+        tipo_doc = new JComboBox<>(tipos);
+        tipo_doc.setBounds(x, y=y+25, 270, h);
+        animacionDerecha(tipo_doc, x-150, x);
+        panelCampos.add(tipo_doc);
+        
+        JLabel codigo_label = new JLabel("Codigo:");
         codigo_label.setFont(Colors.FieldBoldText);
-        codigo_label.setBounds(x, y=y+45, 200, 20);
-        animacionDerecha(codigo_label, x-120, x);
+        codigo_label.setBounds(x, y=y+30, 270, 20);
+        animacionDerecha(codigo_label, x-170, x);
         panelCampos.add(codigo_label);
         
         txtCodigo = new RTextField(150,25,Color.WHITE);
-        txtCodigo.setBounds(x, y=y+25, 270, h);
-        animacionDerecha(txtCodigo, x-150, x);
+        txtCodigo.setBounds(x, y= y+25, 270, h);
+        animacionDerecha(txtCodigo, x-190,x);
         panelCampos.add(txtCodigo);
         
-        JLabel nombre_label = new JLabel("Nombre del servicio:");
+        JLabel nombre_label = new JLabel("Nombre: ");
         nombre_label.setFont(Colors.FieldBoldText);
-        nombre_label.setBounds(x, y=y+30, 270, 20);
-        animacionDerecha(nombre_label, x-170, x);
+        nombre_label.setBounds(x, y= y+30, 270, 20);
+        animacionDerecha(nombre_label, x-210, x);
         panelCampos.add(nombre_label);
         
-        txtNombre = new RTextField(150,25,Color.WHITE);
-        txtNombre.setBounds(x, y= y+25, 270, h);
-        animacionDerecha(txtNombre, x-190,x);
+        txtNombre = new RTextField(200,25,Color.WHITE);
+        txtNombre.setBounds(x, y =y+25, 270, h);
+        animacionDerecha(txtNombre, x-220,x);
         panelCampos.add(txtNombre);
+      
+        JLabel telefono_label = new JLabel("Telefono: ");
+        telefono_label.setFont(Colors.FieldBoldText);
+        telefono_label.setBounds(x, y= y+30, 270, 20);
+        animacionDerecha(telefono_label, x-230, x);
+        panelCampos.add(telefono_label);
         
-        JLabel precio_label = new JLabel("Precio:");
-        precio_label.setFont(Colors.FieldBoldText);
-        precio_label.setBounds(x, y= y+30, 270, 20);
-        animacionDerecha(precio_label, x-210, x);
-        panelCampos.add(precio_label);
+        txtTelefono = new RTextField(200,25,Color.WHITE);
+        txtTelefono.setBounds(x, y =y+25, 270, h);
+        animacionDerecha(txtTelefono, x-240,x);
+        panelCampos.add(txtTelefono);
+      
+        JLabel direccion_label = new JLabel("Direccion: ");
+        direccion_label.setFont(Colors.FieldBoldText);
+        direccion_label.setBounds(x, y= y+30, 270, 20);
+        animacionDerecha(direccion_label, x-250, x);
+        panelCampos.add(direccion_label);
         
-        txtPrecio = new RTextField(200,25,Color.WHITE);
-        txtPrecio.setBounds(x, y =y+25, 270, h);
-        animacionDerecha(txtPrecio, x-220,x);
-        panelCampos.add(txtPrecio);
+        txtDireccion = new RTextField(200,25,Color.WHITE);
+        txtDireccion.setBounds(x, y =y+25, 270, h);
+        animacionDerecha(txtDireccion, x-260,x);
+        panelCampos.add(txtDireccion);
+      
+        JLabel distrito_label = new JLabel("Distrito: ");
+        distrito_label.setFont(Colors.FieldBoldText);
+        distrito_label.setBounds(x, y= y+30, 270, 20);
+        animacionDerecha(distrito_label, x-270, x);
+        panelCampos.add(distrito_label);
+        
+        txtDistrito = new RTextField(200,25,Color.WHITE);
+        txtDistrito.setBounds(x, y =y+25, 270, h);
+        animacionDerecha(txtDistrito, x-280,x);
+        panelCampos.add(txtDistrito);
 
         // panel botones
         JPanel panelBotones = new JPanel();
@@ -87,6 +121,5 @@ public class AgregarClienteView extends JDialog implements JViews {
     
         this.add(panelCampos, BorderLayout.CENTER);
         this.add(panelBotones, BorderLayout.SOUTH);
-
     }
 }

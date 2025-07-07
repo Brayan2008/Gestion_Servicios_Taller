@@ -12,7 +12,7 @@ public class AgregarAccesorioView extends JDialog implements JViews {
 
     public RTextField txtCodigo;
     public RTextField txtNombre;
-    //public RTextField txtPrecio;
+    public JLabel titleLabel;
     public RButton btnGuardar, btnCancelar;
 
     public AgregarAccesorioView(JFrame parent) {
@@ -38,7 +38,7 @@ public class AgregarAccesorioView extends JDialog implements JViews {
         
         JPanel panelCampos = new JPanel(null);
         
-        JLabel titleLabel = new JLabel("AGREGAR ");
+        titleLabel = new JLabel("AGREGAR ");
         titleLabel.setFont(Colors.Titles);
         titleLabel.setBounds(x,y,200,30);
         animacionDerecha(titleLabel, x-170, x);

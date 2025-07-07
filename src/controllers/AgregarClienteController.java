@@ -116,7 +116,6 @@ public class AgregarClienteController {
             }
             // llamamos al servicio (1.- Editar)
             if (opcion == 1) {
-                System.out.println("Aaaaa");
                 ser.actualizarCliente(cod, nombre, precio);
                 JOptionPane.showMessageDialog(av, "Servicio actualizado correctamente.");
             } else {

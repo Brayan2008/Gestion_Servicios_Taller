@@ -23,7 +23,7 @@ import View.utils.RTextField;
 
 public class CatalogoServiciosView extends JPanel implements JViews {
 
-    public final CatalogoServiciosService css = new CatalogoServiciosService();//---- cambiar a controller
+    public static final CatalogoServiciosService css = new CatalogoServiciosService();//---- cambiar a controller
 
     public RButton btnAdd = new RButton("Agregar")
                                 .setTamaño(120,25)

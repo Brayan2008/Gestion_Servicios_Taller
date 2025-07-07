@@ -24,7 +24,7 @@ import View.utils.RTextField;
 
 public class AccesorioView extends JPanel implements JViews {
 
-    public final AccesoriosService css = new AccesoriosService();//---- cambiar a controller
+    public static final AccesoriosService css = new AccesoriosService();//---- cambiar a controller
 
     public RButton btnAdd = new RButton("Agregar")
                                 .setTamaño(120,25)

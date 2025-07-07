@@ -3,11 +3,13 @@ import java.sql.*;
 
 import javax.swing.table.DefaultTableModel;
 
+import Services.templates.ConnectionBD;
+
 public class AccesoriosService {
 
-    private final String cadenaConexion = "jdbc:sqlserver://ANDY-DESKTOP\\SQLEXPRESS:1433;databaseName=TALLER;encrypt=false";
-    private final String usuario = "sa"; // cámbialo
-    private final String clave = "sa"; // cámbialo
+    private final String cadenaConexion = ConnectionBD.URL;
+    private final String usuario = ConnectionBD.USER;
+    private final String clave = ConnectionBD.PASSWORD;
     public static DefaultTableModel modelo;
     private String[] head = { "Código", "Nombre del Accesorio"};
 

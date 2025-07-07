@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
+import Services.templates.Service;
 import View.utils.Colors;
 import View.utils.JViews;
 import View.utils.RButton;
@@ -32,6 +33,7 @@ public class principal extends JFrame implements JViews {
     JPanel lado_derecho;
 
     public static void main(String[] args) {
+        Service.getConnection(); 
         new principal("Pruebas");
     }
 

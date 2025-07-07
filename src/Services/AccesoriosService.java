@@ -3,11 +3,10 @@ import java.sql.*;
 
 import javax.swing.table.DefaultTableModel;
 
-public class AccesoriosService {
+import Services.templates.Service;
 
-    private final String cadenaConexion = "jdbc:sqlserver://ANDY-DESKTOP\\SQLEXPRESS:1433;databaseName=TALLER;encrypt=false";
-    private final String usuario = "sa"; // cámbialo
-    private final String clave = "sa"; // cámbialo
+public class AccesoriosService extends Service {
+
     public static DefaultTableModel modelo;
     private String[] head = { "Código", "Nombre del Accesorio"};
 
@@ -20,8 +19,7 @@ public class AccesoriosService {
             }
         };
 
-        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
-                CallableStatement cs = con.prepareCall("{call PA_CRUD_ListarAccesorios}")) {
+        try (CallableStatement cs = puntero.prepareCall("{call PA_CRUD_ListarAccesorios}")) {
 
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
@@ -41,8 +39,7 @@ public class AccesoriosService {
     public void insertarServicio(String codser, String nomser) throws Exception {
         String sql = "{call PA_CRUD_InsertarAccesorio(?, ?)}";
         
-        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
-        CallableStatement cs = con.prepareCall(sql)) {
+        try (CallableStatement cs = puntero.prepareCall(sql)) {
             
             cs.setString(1, codser);
             cs.setString(2, nomser);
@@ -56,8 +53,7 @@ public class AccesoriosService {
     public void buscarCliente(String cadena) throws Exception {
         String sql = "{call PA_FiltrarAccesorio(?)}";
         
-        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
-        CallableStatement cs = con.prepareCall(sql)) {            
+        try (CallableStatement cs = puntero.prepareCall(sql)) {            
             cs.setString(1, cadena);
             cs.execute();            
             

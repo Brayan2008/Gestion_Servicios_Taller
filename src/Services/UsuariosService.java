@@ -6,10 +6,9 @@ import java.util.concurrent.Executors;
 import Model.Usuarios;
 import Services.templates.Service;;
 
-public class UsuariosService extends Service<Usuarios> {
+public class UsuariosService extends Service {
 
     public UsuariosService() {
-        t = new Usuarios();
         ExecutorService hilo = Executors.newFixedThreadPool(2);
         hilo.submit(() -> {
             Service.getConnection();
@@ -17,7 +16,6 @@ public class UsuariosService extends Service<Usuarios> {
         });
         hilo.shutdown();
         System.out.println( Thread.currentThread() + " " + System.currentTimeMillis());
-        init();
     }
 
     /**
@@ -28,7 +26,8 @@ public class UsuariosService extends Service<Usuarios> {
      *         contraseña,
      *         de lo contrario <code> false </code>
      */
-    public boolean validarLogin(Usuarios usuario) {
+     /* @Deprecated
+     public boolean validarLogin(Usuarios usuario) {
         if (CamposVacios(usuario)) {
             return false;
         }
@@ -40,7 +39,7 @@ public class UsuariosService extends Service<Usuarios> {
         } else {
             return false;
         }
-    }
+    } */
 
     public boolean CamposVacios(Usuarios user) {
         if (user.getContraseña().isEmpty() || user.getContraseña().isBlank() || IDvacia(user)) {
@@ -55,4 +54,5 @@ public class UsuariosService extends Service<Usuarios> {
         }
         return false;
     }
+    
 }

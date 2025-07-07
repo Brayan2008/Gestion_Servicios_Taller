@@ -227,6 +227,7 @@ public class principal extends JFrame implements JViews {
     }
     
     public void abrirVehiculos() {
+        lado_derecho.removeAll();
         var vehiculo = new VehiculoViewController();
         lado_derecho.add(vehiculo.getVw());
         revalidate();

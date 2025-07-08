@@ -2,6 +2,7 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
@@ -15,9 +16,10 @@ import View.utils.RButton;
 import View.utils.RTextField;
 
 public class VehiculoViewController {
-    VehiculoView vw;
+    protected VehiculoView vw;
     private RTextField text;
-    private JTable table;
+    public static JTable table;
+    public static int row;
     private RButton btnAdd, btnMod, btnDel;
 
     public VehiculoViewController() {
@@ -38,7 +40,21 @@ public class VehiculoViewController {
         return vw;
     }
 
+    public void desactivar() {
+        row = table.getSelectedRow();
+        btnMod.setEnabled(false);
+        btnDel.setEnabled(false);
+        btnMod.setColor(Colors.GRAY, Colors.GRAY);
+        btnDel.setColor(Colors.GRAY, Colors.GRAY);
+    }
+
     public void addListeners() {
+        text.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                desactivar();
+            }
+        });
         text.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -58,20 +74,27 @@ public class VehiculoViewController {
                 btnMod.setEnabled(true);               
                 btnDel.setEnabled(true);                               
             }
+
             @Override
-            public void focusLost(FocusEvent e) {
-                btnDel.setColor(Colors.GRAY, Colors.GRAY);
-                btnMod.setColor(Colors.GRAY, Colors.GRAY);
-                btnMod.setEnabled(false);               
-                btnDel.setEnabled(false);                               
-            }
+            public void focusLost(FocusEvent e) {}
         });
 
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AgregarVehiculoController(vw.vs);
+                desactivar();
+                new AgregarVehiculoController(vw.vs,0);
             }
+        });
+
+        btnMod.addActionListener(e -> {
+            desactivar();
+            new AgregarVehiculoController(vw.vs, 1); // 1
+        });
+
+        btnDel.addActionListener(e -> {
+            desactivar();
+            new AgregarVehiculoController(vw.vs, 2);
         });
     }
 }

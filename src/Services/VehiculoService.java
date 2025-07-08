@@ -2,13 +2,14 @@ package Services;
 import Services.templates.ConnectionBD;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import Services.templates.Service;
 
-public class VehiculoService  {
+public class VehiculoService extends Service {
     private final String cadenaConexion = ConnectionBD.URL;
     private final String usuario = ConnectionBD.USER;
     private final String clave = ConnectionBD.PASSWORD;
     public static DefaultTableModel modelo;
-    private String[] head = { "Placa", "Marca", "Modelo", "Color","Chasis","Numero de motor", "Año", "Color" };
+    private String[] head = { "Placa", "Marca", "Modelo","Chasis","Numero de motor", "Año", "Color" };
 
     public DefaultTableModel listarVehiculos() {
         modelo = new DefaultTableModel(head, 0) {
@@ -18,8 +19,7 @@ public class VehiculoService  {
             }
         };
 
-        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
-                CallableStatement cs = con.prepareCall("{call PA_Listar_Vehiculos}")) {
+        try (CallableStatement cs = puntero.prepareCall("{call PA_Listar_Vehiculos}")) {
             
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
@@ -75,7 +75,7 @@ public class VehiculoService  {
                 String marca = rs.getString("Marca");
                 String modeloVehiculo = rs.getString("Modelo");
                 String chasis = rs.getString("Chasis");
-                String numMotor = rs.getString("Numero de motor");
+                String numMotor = rs.getString("Motor");
                 int anio = rs.getInt("Año");
                 String color = rs.getString("Color");
                 
@@ -83,6 +83,37 @@ public class VehiculoService  {
             }
         } catch (SQLException e) {
             throw new Exception(e.getMessage());
+        }
+    }
+
+    public void actualizarVehiculo(String placa, String marca, String modelo, String chasis, String motor, int año, String color) throws SQLException {
+        String sql = "{call PA_ActualizarVehiculo(?, ?, ?, ?, ?, ?, ?)}";
+
+        try (CallableStatement cs = puntero.prepareCall(sql)) {
+            cs.setString(1, placa);
+            cs.setString(2, marca);
+            cs.setString(3, modelo);
+            cs.setString(4, chasis);
+            cs.setString(5, motor);
+            cs.setInt(6, año);
+            cs.setString(7, color);
+            cs.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException();
+        }
+    }
+
+    public void eliminarVehiculo(String placaVeh) throws SQLException {
+        String sql = "{call PA_Eliminar_Vehiculo(?)}";
+
+        try (CallableStatement cs = puntero.prepareCall(sql)) {
+            cs.setString(1, placaVeh);
+            cs.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException();
         }
     }
 }

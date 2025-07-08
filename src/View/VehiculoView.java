@@ -64,7 +64,7 @@ public class VehiculoView extends JPanel implements JViews{
         gbc.weightx = 1;
         gbc.gridwidth = 4;
         
-        JLabel titulo = new JLabel("LISTA DE SERVICIOS");
+        JLabel titulo = new JLabel("LISTA DE VEHICULOS");
         titulo.setFont(Colors.Titles);
         titulo.setBounds(50, 20, 250, 40);
         add(titulo, gbc);
@@ -107,7 +107,7 @@ public class VehiculoView extends JPanel implements JViews{
         add(buscar_label,gbc);
         
         buscar = new RTextField(2, 30, Color.WHITE);
-        buscar.setToolTipText("Buscar Servicio");
+        buscar.setToolTipText("Buscar Vehiculo");
         gbc.gridwidth = 4;
         gbc.gridx = 0;
         gbc.insets = new Insets(10, 150, 10, 100);
@@ -137,5 +137,13 @@ public class VehiculoView extends JPanel implements JViews{
         gbc.gridx = 1;
         gbc.insets = new Insets(0, 30, 10, 100);
         add(Box.createHorizontalStrut(50),gbc);
+    }
+
+    public JPanel getPCentral() {
+        return PCentral;
+    }
+
+    public JTable getTablaServicios() {
+        return tablaVehiculos;
     }
 }

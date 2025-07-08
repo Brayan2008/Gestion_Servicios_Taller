@@ -10,7 +10,8 @@ import javax.swing.*;
 
 public class AgregarOrdenController {
     private final OrdenService os;
-    private final AgregarOrdenView view;
+
+    AgregarOrdenView view;
     int opcion; // 0=agregar, 1=modificar, 2=eliminar
     JTable tabla;
     JLabel tittle;
@@ -20,12 +21,18 @@ public class AgregarOrdenController {
     JComboBox<String> cmbEstado;
 
     public AgregarOrdenController(OrdenService os, int opcion) {
+        
         this.view = new AgregarOrdenView(null);
+
+        this.view.setModal(false);
+        this.view.setVisible(false);
+        
         this.os = os;
         this.opcion = opcion;
         this.tittle = view.titleLabel;
         this.btnCancelar = view.btnCancelar;
         this.btnGuardar = view.btnGuardar;
+
         this.tabla = OrdenViewController.table;
         this.txtOrden = view.txtNroOrden;
         this.txtFecha = view.txtFechaOrden;
@@ -45,12 +52,13 @@ public class AgregarOrdenController {
         this.chkAbollado = view.chkAbollado;
         this.cmbEstado = view.cmbEstado;
         addListeners();
+
         this.view.setModal(true);
         this.view.setVisible(true);
     }
 
 
-    protected void addListeners() {
+    protected void addListeners() { //Modificar quiza
         btnGuardar.addActionListener(e -> {
             if (opcion == 0) {
                 guardarOrden();
@@ -61,6 +69,17 @@ public class AgregarOrdenController {
             }
         });
         btnCancelar.addActionListener(e -> view.dispose());
+
+        if (opcion == 2 || opcion == 1) {
+            txtOrden.setText(tabla.getValueAt(OrdenViewController.row, 1).toString());
+            txtFecha.setText(tabla.getValueAt(OrdenViewController.row, 2).toString());
+            txtKilometraje.setText(tabla.getValueAt(OrdenViewController.row, 3).toString());
+            txtFechaEntrega.setText(tabla.getValueAt(OrdenViewController.row, 4).toString());
+            txtCombustible.setText(tabla.getValueAt(OrdenViewController.row, 5).toString());
+            txtObservacion.setText(tabla.getValueAt(OrdenViewController.row, 6).toString());
+
+
+        }
     }
 
     private void guardarOrden() {

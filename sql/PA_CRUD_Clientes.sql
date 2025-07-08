@@ -82,7 +82,7 @@ AS
     FROM Cliente
 GO
 
-CREATE OR ALTER proc PA_Orden_Obtener
+CREATE OR ALTER proc PA_Listar_Cliente
 as
 BEGIN
     SELECT *

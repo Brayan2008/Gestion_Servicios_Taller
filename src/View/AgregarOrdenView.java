@@ -30,12 +30,12 @@ public class AgregarOrdenView extends JDialog implements JViews {
     public RButton btnGuardar, btnCancelar;
 
     public AgregarOrdenView(JFrame parent) {
-        super(parent, "Agregar/Editar Orden", true);
+        super(parent, "Agregar/Editar Orden");
         agregarComponentes();
         this.setSize(500, 700);
         this.setLocationRelativeTo(parent);
+        setVisible(true);
         this.setLayout(new BorderLayout(15, 15));
-        // this.setVisible(true); // Quitado para evitar mostrar la ventana antes de tiempo
     }
 
     @Override
@@ -53,6 +53,7 @@ public class AgregarOrdenView extends JDialog implements JViews {
         titleLabel = new JLabel("AGREGAR ORDEN");
         titleLabel.setFont(Colors.Titles);
         titleLabel.setBounds(x, y, 350, 35);
+        animacionDerecha(titleLabel, x - 170, x);
         panelCampos.add(titleLabel);
 
         // Nro. Orden

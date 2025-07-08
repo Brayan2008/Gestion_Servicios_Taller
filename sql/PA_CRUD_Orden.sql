@@ -150,3 +150,14 @@ BEGIN
     FROM Vw_MostrarOrden
 END
 GO
+
+CREATE OR ALTER VIEW Vw_OrdenFiltradas AS
+	SELECT Cod_Orden, Estado_Orden, Nro_Cliente, Tipo_Documento, Cod_Mecanico, Placa_Vehiculo FROM ORDEN
+GO
+
+CREATE OR ALTER PROC PA_FiltrarOrden (@cadena varchar (50)) AS
+	BEGIN
+		SELECT* FROM Vw_OrdenFiltradas 
+		WHERE (Cod_Orden+Estado_Orden+Nro_Cliente+Tipo_Documento+Cod_Mecanico+Placa_Vehiculo) LIKE ('%'+@cadena+'%')
+	END
+GO

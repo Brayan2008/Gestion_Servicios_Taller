@@ -24,8 +24,8 @@ import controllers.AccesorioViewController;
 import controllers.ClienteViewController;
 import controllers.Mecanico1ViewController;
 import controllers.ServicioViewController;
-//import controllers.VehiculoViewController;
 import controllers.VehiculoViewController;
+import controllers.OrdenViewController;
 
 public class principal extends JFrame implements JViews {
 
@@ -221,7 +221,11 @@ public class principal extends JFrame implements JViews {
     }
 
     public void abrirOrden() {
-        lado_derecho.setBackground(Color.white);
+        lado_derecho.removeAll();;
+        var orden = new OrdenViewController();
+        lado_derecho.add(orden.getVw());
+        revalidate();
+        repaint();
     }
 
     public void abrirServicios() {

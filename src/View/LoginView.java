@@ -37,6 +37,7 @@ public class LoginView extends ImagePanel implements JViews {
     // Campos Register
     private RPasswordField contraseña2UsuarioRegistrar;
     private RTextField nombreUsuarioRegistrar;
+    public RTextField codigo_registro;
     private RPasswordField contraseñaUsuarioRegistrar;
     private RButton registrarseButton;
     private RButton salirButton;
@@ -53,7 +54,7 @@ public class LoginView extends ImagePanel implements JViews {
         init();
         login = this;
     }
-    
+
     @Override
     public void init() {
         agregarComponentes();
@@ -65,7 +66,7 @@ public class LoginView extends ImagePanel implements JViews {
     @Override
     public void agregarComponentes() {
         setLayout(null);
-        
+
         cardLayout = new RPanel(230, 360, Colors.LIGHT_GRAY).Posicion(40, 40);
         cardLayout.setLayout(new GridBagLayout());
         add(cardLayout);
@@ -144,7 +145,7 @@ public class LoginView extends ImagePanel implements JViews {
         repaint();
     }
 
-    public void addToPanelOscuro(JPanel panel) {       
+    public void addToPanelOscuro(JPanel panel) {
         minimizar = new JLabel(new ImageIcon("src/resources/Login/mini.png"));
         minimizar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         minimizar.setBounds(210, -2, 35, 35);
@@ -183,16 +184,29 @@ public class LoginView extends ImagePanel implements JViews {
         constraint.gridy = 0;
         panel_registro.add(titulo_registro, constraint);
 
+        JLabel codigo_label = new JLabel("Ingrese su DNI");
+        codigo_label.setFont(Colors.FieldText);
+        codigo_label.setHorizontalAlignment(SwingUtilities.LEFT);
+        codigo_label.setPreferredSize(new Dimension(200, 20));
+        constraint.gridy = 1;
+        constraint.insets = new Insets(10, 4, 4, 4);
+        panel_registro.add(codigo_label, constraint);
+
+        codigo_registro = new RTextField(200, 25, Color.WHITE);
+        constraint.gridy = 2;
+        constraint.insets = JViews.sinMargin;
+        panel_registro.add(codigo_registro, constraint);
+
         JLabel nombre_usuario = new JLabel("Ingrese su nombre de usuario");
         nombre_usuario.setFont(Colors.FieldText);
         nombre_usuario.setHorizontalAlignment(SwingUtilities.LEFT);
         nombre_usuario.setPreferredSize(new Dimension(200, 20));
-        constraint.gridy = 1;
+        constraint.gridy = 3;
         constraint.insets = new Insets(10, 4, 4, 4);
         panel_registro.add(nombre_usuario, constraint);
 
         nombreUsuarioRegistrar = new RTextField(200, 25, Color.WHITE);
-        constraint.gridy = 2;
+        constraint.gridy = 4;
         constraint.insets = JViews.sinMargin;
         panel_registro.add(nombreUsuarioRegistrar, constraint);
 
@@ -201,11 +215,11 @@ public class LoginView extends ImagePanel implements JViews {
         contraseñaRegistrar.setHorizontalAlignment(SwingUtilities.LEFT);
         contraseñaRegistrar.setPreferredSize(new Dimension(200, 20));
         constraint.insets = new Insets(10, 4, 4, 4);
-        constraint.gridy = 3;
+        constraint.gridy = 5;
         panel_registro.add(contraseñaRegistrar, constraint);
 
         contraseñaUsuarioRegistrar = new RPasswordField(200, 25, Color.WHITE);
-        constraint.gridy = 4;
+        constraint.gridy = 6;
         constraint.insets = JViews.sinMargin;
         panel_registro.add(contraseñaUsuarioRegistrar, constraint);
 
@@ -214,23 +228,23 @@ public class LoginView extends ImagePanel implements JViews {
         contraseña2Registrar.setHorizontalAlignment(SwingUtilities.LEFT);
         contraseña2Registrar.setPreferredSize(new Dimension(200, 20));
         constraint.insets = new Insets(10, 4, 4, 4);
-        constraint.gridy = 5;
+        constraint.gridy = 7;
         panel_registro.add(contraseña2Registrar, constraint);
 
         contraseña2UsuarioRegistrar = new RPasswordField(200, 25, Color.WHITE);
-        constraint.gridy = 6;
+        constraint.gridy = 8;
         constraint.insets = JViews.sinMargin;
         panel_registro.add(contraseña2UsuarioRegistrar, constraint);
 
         constraint.gridwidth = 1;
 
         salirButton = new RButton("Salir").setColor(Color.GREEN, Color.RED).setTamaño(60, 20);
-        constraint.gridy = 7;
+        constraint.gridy = 9;
         constraint.insets = new Insets(40, 20, 20, 0);
         panel_registro.add(salirButton, constraint);
 
         registrarseButton = new RButton("Registrarse").setColor(Color.CYAN, Color.BLACK).setTamaño(90, 20);
-        constraint.gridy = 7;
+        constraint.gridy = 9;
         constraint.gridx = 1;
         constraint.insets = new Insets(40, 0, 20, 0);
         panel_registro.add(registrarseButton, constraint);
@@ -240,6 +254,11 @@ public class LoginView extends ImagePanel implements JViews {
     // #endregion
 
     // #region Getters
+
+    public RTextField getCodigo_registro() {
+        return codigo_registro;
+    }
+    
     public RTextField getUsuario() {
         return usuario;
     }

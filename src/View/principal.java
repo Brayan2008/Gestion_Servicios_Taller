@@ -12,7 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
@@ -22,6 +24,7 @@ import View.utils.JViews;
 import View.utils.RButton;
 import controllers.AccesorioViewController;
 import controllers.ClienteViewController;
+import controllers.DetallesCuentaController;
 import controllers.Mecanico1ViewController;
 import controllers.ServicioViewController;
 import controllers.VehiculoViewController;
@@ -30,23 +33,24 @@ import controllers.OrdenViewController;
 public class principal extends JFrame implements JViews {
 
     String nombre;
-
     JLabel icon_config;
-    RButton orden, accesorios, Servicios, vehiculos, Mecanicos, Clientes;
+    RButton orden, accesorios, Servicios, vehiculos, Mecanicos, Clientes, salir_Button;
     JPanel lado_derecho;
 
+    public static principal puntero;
+
     public static void main(String[] args) {
-        Service.getConnection(); 
+        Service.getConnection();
         new principal("Pruebas");
     }
 
     public principal(String nombre) {
         this.nombre = nombre;
+        puntero = this;
         init();
         agregarComponentes();
         addListeners();
     }
-
 
     @Override
     public void init() {
@@ -66,7 +70,7 @@ public class principal extends JFrame implements JViews {
 
         JPanel dash = new JPanel(null);
         dash.setBackground(Colors.FONDO_1);
-        dash.setPreferredSize(new Dimension(220, HEIGHT)); 
+        dash.setPreferredSize(new Dimension(220, HEIGHT));
         add(dash, BorderLayout.WEST);
 
         JLabel logo = new JLabel(new ImageIcon("src/resources/principal/logoTaller2.png"));
@@ -154,6 +158,16 @@ public class principal extends JFrame implements JViews {
         animacionDerecha(Clientes, x -= 125, Clientes.getX());
         Clientes.addMouseListener(addFocus(Clientes));
         dash.add(Clientes);
+
+        salir_Button = new RButton("▬▬    Salir                   ")
+                .setColor(Colors.FONDO_1, Colors.TEMA_BUTTONS)
+                .setTextColor(Color.white, Color.white);
+        salir_Button.setBounds(-18, y = y + 110, 212, 50);
+        salir_Button.setForeground(Color.WHITE);
+        salir_Button.setFont(Colors.ButtonText1);
+        animacionDerecha(salir_Button, x -= 125, salir_Button.getX());
+        salir_Button.addMouseListener(addFocus(salir_Button));
+        dash.add(salir_Button);
     }
 
     // #region Listeners
@@ -184,13 +198,27 @@ public class principal extends JFrame implements JViews {
         orden.addActionListener(e -> abrirOrden());
         Servicios.addActionListener(e -> abrirServicios());
         vehiculos.addActionListener(e -> abrirVehiculos());
+        salir_Button.addActionListener(e -> {
+            int respuesta = JOptionPane.showConfirmDialog(this,
+                    "¿Estás seguro de salir?",
+                    "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+            if (respuesta == JOptionPane.YES_OPTION) {
+                this.dispose();
+                SwingUtilities.invokeLater(() -> new App2());
+            }
+        });
     }
 
     public MouseAdapter abrirConfig() {
         return new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                lado_derecho.setBackground(Color.CYAN);
+                lado_derecho.removeAll();
+                var user_config = new DetallesCuentaController();
+                lado_derecho.add(user_config.getVw());
+                revalidate();
+                repaint();
             }
         };
     }
@@ -198,11 +226,11 @@ public class principal extends JFrame implements JViews {
     public void abrirAccesorios() {
         lado_derecho.removeAll();
         var accesorio = new AccesorioViewController();
-        lado_derecho.add(accesorio.getVw()); 
+        lado_derecho.add(accesorio.getVw());
         revalidate();
         repaint();
     }
-    
+
     public void abrirCliente() {
         lado_derecho.removeAll();
         var cliente = new ClienteViewController();
@@ -235,7 +263,7 @@ public class principal extends JFrame implements JViews {
         revalidate();
         repaint();
     }
-    
+
     public void abrirVehiculos() {
         lado_derecho.removeAll();
         var vehiculo = new VehiculoViewController();

@@ -3,7 +3,6 @@ package View;
 import View.utils.Colors;
 import View.utils.JViews;
 import View.utils.RButton;
-import View.utils.ROptionString;
 import View.utils.RTextField;
 
 import javax.swing.*;

@@ -10,9 +10,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JTable;
 
-import View.AgregarClienteView;
 import View.ClienteView;
-import View.principal;
 import View.utils.Colors;
 import View.utils.RButton;
 import View.utils.RTextField;

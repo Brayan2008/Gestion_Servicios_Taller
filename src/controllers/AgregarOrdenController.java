@@ -87,9 +87,9 @@ public class AgregarOrdenController {
             os.insertarOrden(
                 txtOrden.getText(),
                 txtFecha.getText(),
-                Double.parseDouble(txtKilometraje.getText()),
+                Double.parseDouble(txtKilometraje.getText().trim()),
                 txtFechaEntrega.getText(),
-                Double.parseDouble(txtCombustible.getText()),
+                Double.parseDouble(txtCombustible.getText().trim()),
                 txtObservacion.getText(),
                 chkTarjeta.isSelected(),
                 chkManual.isSelected(),

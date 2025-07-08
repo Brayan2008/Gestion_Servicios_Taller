@@ -49,63 +49,6 @@ public class AgregarOrdenController {
         this.view.setVisible(true);
     }
 
-    public AgregarOrdenController(OrdenService os, int opcion, String[] datos) {
-        this(os, opcion);
-        System.out.println("AAAQAA");
-        if (datos != null) {
-            llenarCampos(datos);
-            if (opcion == 2) {
-                tittle.setText("ELIMINAR");
-                btnGuardar.setColor(Colors.TEMA_BUTTONS_ROJO, Colors.BUTTONS_FONDO_ROJO);
-                btnGuardar.setText("Eliminar");
-                btnCancelar.setColor(Colors.TEMA_BUTTONS2, Colors.BUTTONS_FONDO_2);
-                txtOrden.setEditable(false);
-                txtFecha.setEditable(false);
-                txtKilometraje.setEditable(false);
-                txtFechaEntrega.setEditable(false);
-                txtCombustible.setEditable(false);
-                txtObservacion.setEditable(false);
-                chkTarjeta.setEnabled(false);
-                chkManual.setEnabled(false);
-                chkLlave.setEnabled(false);
-                cmbEstado.setEnabled(false);
-                chkQuiniado.setEnabled(false);
-                chkRayado.setEnabled(false);
-                chkAbollado.setEnabled(false);
-                txtDocumento.setEditable(false);
-                txtNroDocumento.setEditable(false);
-                txtMecanico.setEditable(false);
-                txtPlaca.setEditable(false);
-            } else if (opcion == 1) {
-                tittle.setText("EDITAR");
-                btnGuardar.setText("Guardar Cambios");
-            }
-        }
-    }
-
-    private void llenarCampos(String[] datos) {
-        txtOrden.setText(datos[0]);
-        txtFecha.setText(datos[1]);
-        txtKilometraje.setText(datos[2]);
-        txtFechaEntrega.setText(datos[3]);
-        txtCombustible.setText(datos[4]);
-        txtObservacion.setText(datos[5]);
-        chkTarjeta.setSelected("Sí".equals(datos[6]));
-        chkManual.setSelected("Sí".equals(datos[7]));
-        chkLlave.setSelected("Sí".equals(datos[8]));
-        try {
-            cmbEstado.setSelectedIndex(Integer.parseInt(datos[9]));
-        } catch (Exception e) {
-            cmbEstado.setSelectedIndex(0);
-        }
-        chkQuiniado.setSelected("Sí".equals(datos[10]));
-        chkRayado.setSelected("Sí".equals(datos[11]));
-        chkAbollado.setSelected("Sí".equals(datos[12]));
-        txtDocumento.setText(datos[13]);
-        txtNroDocumento.setText(datos[14]);
-        txtMecanico.setText(datos[15]);
-        txtPlaca.setText(datos[16]);
-    }
 
     protected void addListeners() {
         btnGuardar.addActionListener(e -> {

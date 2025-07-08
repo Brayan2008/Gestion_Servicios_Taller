@@ -33,5 +33,5 @@ public interface Colors {
     static final Font FieldBoldText = new Font("Arial Black", Font.BOLD,12);
     static final Font FieldText = new Font("Arial", Font.PLAIN,14);
     static final Font NormalText = new Font("Arial", Font.PLAIN,12);
-    static final Font ButtonText1 = new Font("Arial Black", Font.BOLD,14);
+    static final Font ButtonText1 = new Font("Arial Black", Font.PLAIN,12);
 }

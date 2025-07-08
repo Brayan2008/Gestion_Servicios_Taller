@@ -71,13 +71,13 @@ public class VehiculoService extends Service {
             modelo.setRowCount(0); // Limpiar tabla
 
             while (rs.next()) {
-                String placa = rs.getString("Placa");
-                String marca = rs.getString("Marca");
-                String modeloVehiculo = rs.getString("Modelo");
-                String chasis = rs.getString("Chasis");
-                String numMotor = rs.getString("Motor");
-                int anio = rs.getInt("Año");
-                String color = rs.getString("Color");
+                String placa = rs.getString("Placa_Vehiculo");
+                String marca = rs.getString("Marca_Vehiculo");
+                String modeloVehiculo = rs.getString("Modelo_Vehiculo");
+                String chasis = rs.getString("Mod_Chasis");
+                String numMotor = rs.getString("Num_motor");
+                int anio = rs.getInt("Año_Vehiculo");
+                String color = rs.getString("Color_Vehiculo");
                 
                 modelo.addRow(new Object[] { placa, marca, modeloVehiculo, chasis, numMotor, anio, color });
             }

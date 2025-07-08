@@ -123,7 +123,7 @@ GO
 
 CREATE OR ALTER VIEW Vw_MostrarOrden
 AS
-    SELECT Cod_Orden AS 'codigo de orden',
+    SELECT Cod_Orden AS 'Codigo de orden',
         Fecha_Orden AS 'Fecha de la Orden',
         kilometraje,
         Num_Combustible AS 'cantidad de combustible',

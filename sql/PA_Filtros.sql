@@ -50,14 +50,35 @@ BEGIN
 END
 GO
 
-Create VIEW Vw_AccesoriosFiltrados AS
+Create or alter VIEW Vw_AccesoriosFiltrados AS
 	SELECT Cod_Accesorio, Nom_Accesorio FROM ACCESORIOS
 GO
 
-Create PROC PA_FiltrarAccesorio (@Cadena varchar(50)) AS
+Create or alter PROC PA_FiltrarAccesorio (@Cadena varchar(50)) AS
 	BEGIN 
 		SELECT * FROM Vw_AccesoriosFiltrados 
 		WHERE (Cod_Accesorio+Nom_Accesorio) LIKE ('%'+@Cadena +'%')
 	END
 GO
 
+CREATE OR ALTER VIEW Vw_VehiculosFiltrados AS
+	SELECT Placa_Vehiculo, Modelo_Vehiculo, Marca_Vehiculo, Mod_Chasis, Num_Motor, Año_Vehiculo, Color_Vehiculo FROM VEHICULOS
+GO
+
+CREATE OR ALTER PROC PA_FiltrarVehiculo (@Cadena varchar(50)) AS
+	BEGIN 
+		SELECT * FROM Vw_VehiculosFiltrados 
+		WHERE (Placa_Vehiculo+Modelo_Vehiculo+Marca_Vehiculo + Mod_Chasis + Num_Motor + Color_Vehiculo) LIKE ('%'+@Cadena +'%')
+	END
+GO
+
+CREATE OR ALTER VIEW Vw_OrdenFiltradas AS
+	SELECT Cod_Orden, Estado_Orden, Nro_Cliente, Tipo_Documento, Cod_Mecanico, Placa_Vehiculo FROM ORDEN
+GO
+
+CREATE OR ALTER PROC PA_FiltrarOrden (@cadena varchar (50)) AS
+	BEGIN
+		SELECT* FROM Vw_OrdenFiltradas 
+		WHERE (Cod_Orden+Estado_Orden+Nro_Cliente+Tipo_Documento+Cod_Mecanico+Placa_Vehiculo) LIKE ('%'+@cadena+'%')
+	END
+GO

@@ -34,7 +34,7 @@ public class principal extends JFrame implements JViews {
 
     String nombre;
     JLabel icon_config;
-    RButton orden, accesorios, Servicios, vehiculos, Mecanicos, Clientes, salir_Button;
+    RButton orden, accesorios, Servicios, vehiculos, Mecanicos, Clientes, salir_Button, consultas;
     JPanel lado_derecho;
 
     public static principal puntero;
@@ -96,75 +96,107 @@ public class principal extends JFrame implements JViews {
         dash.add(icon_config);
         FadeComponentIn(icon_config);
 
-        int y = 170; // Distribuir cada 120 px
+        int y = 150; // Distribuir cada "y" px
         int x = -100; // Para las animaciones
 
-        orden = new RButton("▬▬ Orden de sercicio")
+        JLabel transacciones = new JLabel("▬▬  Transacciones  ");
+        transacciones.setBounds(-15, y = y + 20, 212, 25);
+        transacciones.setFont(Colors.FieldBoldText);
+        transacciones.setForeground(Color.WHITE);
+        animacionDerecha(transacciones, x, transacciones.getX());
+        dash.add(transacciones);
+
+        orden = new RButton("    Orden de servicio")
                 .setColor(Colors.FONDO_1, Colors.TEMA_BUTTONS)
                 .setTextColor(Color.white, Color.white);
-        orden.setBounds(-18, y, 212, 50);
+        orden.setBounds(-18, y = y + 25, 212, 30);
         orden.setForeground(Color.WHITE);
+        orden.setIcon(new ImageIcon("src/resources/principal/orden.png"));
         orden.setFont(Colors.ButtonText1);
         orden.addMouseListener(addFocus(orden));
         animacionDerecha(orden, x, orden.getX());
         dash.add(orden);
 
-        accesorios = new RButton("▬▬ Accesorios           ")
+        JLabel mantenimiento = new JLabel("▬▬  Mantenimiento  ");
+        mantenimiento.setBounds(-15, y = y + 40, 212, 25);
+        mantenimiento.setFont(Colors.FieldBoldText);
+        mantenimiento.setForeground(Color.WHITE);
+        animacionDerecha(mantenimiento, x, mantenimiento.getX());
+        dash.add(mantenimiento);
+
+        accesorios = new RButton("   Accesorios          ")
                 .setColor(Colors.FONDO_1, Colors.TEMA_BUTTONS)
                 .setTextColor(Color.white, Color.white);
-        accesorios.setBounds(-18, y = y + 55, 212, 50);
+        accesorios.setBounds(-18, y = y + 35, 212, 30);
         accesorios.setForeground(Color.WHITE);
+        accesorios.setIcon(new ImageIcon("src/resources/principal/accesorios.png"));
         accesorios.setFont(Colors.ButtonText1);
         accesorios.addMouseListener(addFocus(accesorios));
         animacionDerecha(accesorios, x -= 125, accesorios.getX());
         dash.add(accesorios);
 
-        Servicios = new RButton("▬▬ Servicios              ")
+        Servicios = new RButton("  Servicios            ")
                 .setColor(Colors.FONDO_1, Colors.TEMA_BUTTONS)
                 .setTextColor(Color.white, Color.white);
-        Servicios.setBounds(-18, y = y + 55, 212, 50);
+        Servicios.setBounds(-18, y = y + 40, 212, 30);
         Servicios.setForeground(Color.WHITE);
+        Servicios.setIcon(new ImageIcon("src/resources/principal/services.png"));
         Servicios.setFont(Colors.ButtonText1);
         Servicios.addMouseListener(addFocus(Servicios));
         animacionDerecha(Servicios, x -= 125, Servicios.getX());
         dash.add(Servicios);
 
-        vehiculos = new RButton("▬▬ Vehiculos              ")
+        vehiculos = new RButton("   Vehiculos           ")
                 .setColor(Colors.FONDO_1, Colors.TEMA_BUTTONS)
                 .setTextColor(Color.white, Color.white);
-        vehiculos.setBounds(-18, y = y + 55, 212, 50);
+        vehiculos.setBounds(-18, y = y + 40, 212, 30);
+        vehiculos.setIcon(new ImageIcon("src/resources/principal/vehiculos.png"));
         vehiculos.setForeground(Color.WHITE);
         vehiculos.setFont(Colors.ButtonText1);
         vehiculos.addMouseListener(addFocus(vehiculos));
         animacionDerecha(vehiculos, x -= 125, vehiculos.getX());
         dash.add(vehiculos);
-
-        Mecanicos = new RButton("▬▬ Mecanicos            ")
+        
+        Mecanicos = new RButton("   Mecanicos           ")
                 .setColor(Colors.FONDO_1, Colors.TEMA_BUTTONS)
                 .setTextColor(Color.white, Color.white);
-        Mecanicos.setBounds(-18, y = y + 55, 212, 50);
+                Mecanicos.setBounds(-18, y = y + 40, 212, 30);
         Mecanicos.setForeground(Color.WHITE);
         Mecanicos.setFont(Colors.ButtonText1);
+        Mecanicos.setIcon(new ImageIcon("src/resources/principal/mecanicos.png"));
         Mecanicos.addMouseListener(addFocus(Mecanicos));
         animacionDerecha(Mecanicos, x -= 125, Mecanicos.getX());
         dash.add(Mecanicos);
 
-        Clientes = new RButton("▬▬ Clientes               ")
+        Clientes = new RButton("   Clientes             ")
                 .setColor(Colors.FONDO_1, Colors.TEMA_BUTTONS)
                 .setTextColor(Color.white, Color.white);
-        Clientes.setBounds(-18, y = y + 50, 212, 50);
+        Clientes.setBounds(-18, y = y + 40, 212, 30);
         Clientes.setForeground(Color.WHITE);
         Clientes.setFont(Colors.ButtonText1);
+        Clientes.setIcon(new ImageIcon("src/resources/principal/clientes.png"));
         animacionDerecha(Clientes, x -= 125, Clientes.getX());
         Clientes.addMouseListener(addFocus(Clientes));
         dash.add(Clientes);
-
-        salir_Button = new RButton("▬▬    Salir                   ")
+        
+        consultas = new RButton("   Consultas            ")
+        .setColor(Colors.FONDO_1, Colors.TEMA_BUTTONS)
+        .setTextColor(Color.white, Color.white);
+        consultas.setBounds(-18, y = y + 90, 212, 30);
+        consultas.setFont(Colors.FieldBoldText);
+        consultas.setIcon(new ImageIcon("src/resources/principal/consultas.png"));
+        consultas.setForeground(Color.WHITE);
+        consultas.addMouseListener(addFocus(consultas));
+        animacionDerecha(consultas, x-= 125, consultas.getX());
+        dash.add(consultas);
+        
+        salir_Button = new RButton("   Salir                    ")
                 .setColor(Colors.FONDO_1, Colors.TEMA_BUTTONS)
                 .setTextColor(Color.white, Color.white);
-        salir_Button.setBounds(-18, y = y + 110, 212, 50);
+        salir_Button.setBounds(-18, y = y + 40, 212, 30);
         salir_Button.setForeground(Color.WHITE);
         salir_Button.setFont(Colors.ButtonText1);
+        salir_Button.setIcon(new ImageIcon("src/resources/principal/salir.png"));
         animacionDerecha(salir_Button, x -= 125, salir_Button.getX());
         salir_Button.addMouseListener(addFocus(salir_Button));
         dash.add(salir_Button);

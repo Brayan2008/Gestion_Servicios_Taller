@@ -30,7 +30,7 @@ END
 GO
 
 --ACTUALIZAR
-CREATE OR ALTER PROCEDURE PA_Actualizar_Vehiculo(
+CREATE OR ALTER PROCEDURE PA_ActualizarVehiculo(
     @placa AS CHAR(7),
     @marca AS VARCHAR(20),
     @modelo AS VARCHAR(40),

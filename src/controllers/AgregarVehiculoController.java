@@ -56,10 +56,10 @@ public class AgregarVehiculoController {
 
             txtMarca.setText(tabla.getValueAt(VehiculoViewController.row, 1).toString());
             txtModelo.setText(tabla.getValueAt(VehiculoViewController.row, 2).toString());
-            txtChasis.setText(tabla.getValueAt(VehiculoViewController.row, 2).toString());
-            txtMotor.setText(tabla.getValueAt(VehiculoViewController.row, 2).toString());
-            txtAño.setText(tabla.getValueAt(VehiculoViewController.row, 2).toString());
-            txtColor.setText(tabla.getValueAt(VehiculoViewController.row, 2).toString());
+            txtChasis.setText(tabla.getValueAt(VehiculoViewController.row, 3).toString());
+            txtMotor.setText(tabla.getValueAt(VehiculoViewController.row, 4).toString());
+            txtAño.setText(tabla.getValueAt(VehiculoViewController.row, 5).toString());
+            txtColor.setText(tabla.getValueAt(VehiculoViewController.row, 6).toString());
 
             switch (opcion) {
                 case 1:

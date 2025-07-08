@@ -36,16 +36,6 @@ public class CatalogoServiciosView extends JPanel implements JViews {
     public RTextField buscar;
     public JTable tablaServicios; // tabla para mostrar servicios
 
-    public static void main(String[] args) {
-        JFrame prueba = new JFrame("Gestión de Servicios");
-        ClienteView vista = new ClienteView();
-
-        prueba.add(vista);
-        prueba.setBounds(100, 100, 700, 600);
-        prueba.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        prueba.setVisible(true);
-    }
-
     public CatalogoServiciosView() {
         init();
         agregarComponentes();

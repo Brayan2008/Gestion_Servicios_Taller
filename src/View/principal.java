@@ -22,6 +22,7 @@ import View.utils.JViews;
 import View.utils.RButton;
 import controllers.AccesorioViewController;
 import controllers.ClienteViewController;
+import controllers.DetallesCuentaController;
 import controllers.Mecanico1ViewController;
 import controllers.ServicioViewController;
 //import controllers.VehiculoViewController;
@@ -30,10 +31,11 @@ import controllers.VehiculoViewController;
 public class principal extends JFrame implements JViews {
 
     String nombre;
-
     JLabel icon_config;
     RButton orden, accesorios, Servicios, vehiculos, Mecanicos, Clientes;
     JPanel lado_derecho;
+
+    public static principal puntero;
 
     public static void main(String[] args) {
         Service.getConnection(); 
@@ -42,6 +44,7 @@ public class principal extends JFrame implements JViews {
 
     public principal(String nombre) {
         this.nombre = nombre;
+        this.puntero = this;
         init();
         agregarComponentes();
         addListeners();
@@ -190,7 +193,11 @@ public class principal extends JFrame implements JViews {
         return new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                lado_derecho.setBackground(Color.CYAN);
+                lado_derecho.removeAll();
+                var user_config = new DetallesCuentaController();
+                lado_derecho.add(user_config.getVw()); 
+                revalidate();
+                repaint();
             }
         };
     }

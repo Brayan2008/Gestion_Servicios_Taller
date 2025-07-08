@@ -35,7 +35,7 @@ public class AgregarOrdenView extends JDialog implements JViews {
         this.setSize(500, 700);
         this.setLocationRelativeTo(parent);
         this.setLayout(new BorderLayout(15, 15));
-        this.setVisible(true);
+        // this.setVisible(true); // Quitado para evitar mostrar la ventana antes de tiempo
     }
 
     @Override

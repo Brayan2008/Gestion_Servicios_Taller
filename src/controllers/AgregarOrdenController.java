@@ -8,7 +8,6 @@ import View.utils.RTextField;
 
 import javax.swing.*;
 
-
 public class AgregarOrdenController {
     private final OrdenService os;
     private final AgregarOrdenView view;
@@ -22,12 +21,8 @@ public class AgregarOrdenController {
 
     public AgregarOrdenController(OrdenService os, int opcion) {
         this.view = new AgregarOrdenView(null);
-
-        this.view.setVisible(false);
-        this.view.setModal(false);
-
         this.os = os;
-
+        this.opcion = opcion;
         this.tittle = view.titleLabel;
         this.btnCancelar = view.btnCancelar;
         this.btnGuardar = view.btnGuardar;
@@ -49,10 +44,67 @@ public class AgregarOrdenController {
         this.chkRayado = view.chkRayado;
         this.chkAbollado = view.chkAbollado;
         this.cmbEstado = view.cmbEstado;
-
         addListeners();
-        this.view.setModal(true); // Establece como Modal y luego bloquea
+        this.view.setModal(true);
         this.view.setVisible(true);
+    }
+
+    public AgregarOrdenController(OrdenService os, int opcion, String[] datos) {
+        this(os, opcion);
+        System.out.println("AAAQAA");
+        if (datos != null) {
+            llenarCampos(datos);
+            if (opcion == 2) {
+                tittle.setText("ELIMINAR");
+                btnGuardar.setColor(Colors.TEMA_BUTTONS_ROJO, Colors.BUTTONS_FONDO_ROJO);
+                btnGuardar.setText("Eliminar");
+                btnCancelar.setColor(Colors.TEMA_BUTTONS2, Colors.BUTTONS_FONDO_2);
+                txtOrden.setEditable(false);
+                txtFecha.setEditable(false);
+                txtKilometraje.setEditable(false);
+                txtFechaEntrega.setEditable(false);
+                txtCombustible.setEditable(false);
+                txtObservacion.setEditable(false);
+                chkTarjeta.setEnabled(false);
+                chkManual.setEnabled(false);
+                chkLlave.setEnabled(false);
+                cmbEstado.setEnabled(false);
+                chkQuiniado.setEnabled(false);
+                chkRayado.setEnabled(false);
+                chkAbollado.setEnabled(false);
+                txtDocumento.setEditable(false);
+                txtNroDocumento.setEditable(false);
+                txtMecanico.setEditable(false);
+                txtPlaca.setEditable(false);
+            } else if (opcion == 1) {
+                tittle.setText("EDITAR");
+                btnGuardar.setText("Guardar Cambios");
+            }
+        }
+    }
+
+    private void llenarCampos(String[] datos) {
+        txtOrden.setText(datos[0]);
+        txtFecha.setText(datos[1]);
+        txtKilometraje.setText(datos[2]);
+        txtFechaEntrega.setText(datos[3]);
+        txtCombustible.setText(datos[4]);
+        txtObservacion.setText(datos[5]);
+        chkTarjeta.setSelected("Sí".equals(datos[6]));
+        chkManual.setSelected("Sí".equals(datos[7]));
+        chkLlave.setSelected("Sí".equals(datos[8]));
+        try {
+            cmbEstado.setSelectedIndex(Integer.parseInt(datos[9]));
+        } catch (Exception e) {
+            cmbEstado.setSelectedIndex(0);
+        }
+        chkQuiniado.setSelected("Sí".equals(datos[10]));
+        chkRayado.setSelected("Sí".equals(datos[11]));
+        chkAbollado.setSelected("Sí".equals(datos[12]));
+        txtDocumento.setText(datos[13]);
+        txtNroDocumento.setText(datos[14]);
+        txtMecanico.setText(datos[15]);
+        txtPlaca.setText(datos[16]);
     }
 
     protected void addListeners() {
@@ -66,62 +118,6 @@ public class AgregarOrdenController {
             }
         });
         btnCancelar.addActionListener(e -> view.dispose());
-        
-        if ((opcion == 2 || opcion == 1) && tabla != null) {
-            int row = tabla.getSelectedRow();
-            if (row >= 0) {
-                txtOrden.setText(tabla.getValueAt(row, 0).toString().trim());
-                txtOrden.setFont(Colors.SubTitles);
-                txtOrden.setEditable(false);
-                txtFecha.setText(tabla.getValueAt(row, 1).toString());
-                txtKilometraje.setText(tabla.getValueAt(row, 2).toString());
-                txtFechaEntrega.setText(tabla.getValueAt(row, 3).toString());
-                txtCombustible.setText(tabla.getValueAt(row, 4).toString());
-                txtObservacion.setText(tabla.getValueAt(row, 5).toString());
-                chkTarjeta.setSelected("Sí".equals(tabla.getValueAt(row, 6).toString()));
-                chkManual.setSelected("Sí".equals(tabla.getValueAt(row, 7).toString()));
-                chkLlave.setSelected("Sí".equals(tabla.getValueAt(row, 8).toString()));
-                cmbEstado.setSelectedIndex(Integer.parseInt(tabla.getValueAt(row, 9).toString()));
-                chkQuiniado.setSelected("Sí".equals(tabla.getValueAt(row, 10).toString()));
-                chkRayado.setSelected("Sí".equals(tabla.getValueAt(row, 11).toString()));
-                chkAbollado.setSelected("Sí".equals(tabla.getValueAt(row, 12).toString()));
-                txtDocumento.setText(tabla.getValueAt(row, 13).toString());
-                txtNroDocumento.setText(tabla.getValueAt(row, 14).toString());
-                txtMecanico.setText(tabla.getValueAt(row, 15).toString());
-                txtPlaca.setText(tabla.getValueAt(row, 16).toString());
-                
-                switch (opcion) {
-                    case 1:
-                        tittle.setText("EDITAR");
-                        break;
-                    case 2:
-                        tittle.setText("ELIMINAR");
-                        btnGuardar.setColor(Colors.TEMA_BUTTONS_ROJO, Colors.BUTTONS_FONDO_ROJO);
-                        btnGuardar.setText("Eliminar");
-                        btnCancelar.setColor(Colors.TEMA_BUTTONS2, Colors.BUTTONS_FONDO_2);
-                        txtFecha.setEditable(false);
-                        txtKilometraje.setEditable(false);
-                        txtFechaEntrega.setEditable(false);
-                        txtCombustible.setEditable(false);
-                        txtObservacion.setEditable(false);
-                        chkTarjeta.setEnabled(false);
-                        chkManual.setEnabled(false);
-                        chkLlave.setEnabled(false);
-                        cmbEstado.setEnabled(false);
-                        chkQuiniado.setEnabled(false);
-                        chkRayado.setEnabled(false);
-                        chkAbollado.setEnabled(false);
-                        txtDocumento.setEditable(false);
-                        txtNroDocumento.setEditable(false);
-                        txtMecanico.setEditable(false);
-                        txtPlaca.setEditable(false);
-                        btnGuardar.removeActionListener(btnGuardar.getActionListeners()[0]);
-                        btnGuardar.addActionListener(e -> eliminarOrden());
-                    default:
-                        break;
-                }
-            }
-        }
     }
 
     private void guardarOrden() {
@@ -168,8 +164,8 @@ public class AgregarOrdenController {
                 chkQuiniado.isSelected(),
                 chkRayado.isSelected(),
                 chkAbollado.isSelected(),
-                txtDocumento.getText(),
-                true, // Suponiendo tipo documento true (ajustar según lógica)
+                txtNroDocumento.getText(),
+                Boolean.parseBoolean(txtDocumento.getText()),
                 txtMecanico.getText(),
                 txtPlaca.getText()
             );

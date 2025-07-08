@@ -22,6 +22,7 @@ import View.utils.JViews;
 import View.utils.RButton;
 import controllers.AccesorioViewController;
 import controllers.ClienteViewController;
+import controllers.Mecanico1ViewController;
 import controllers.ServicioViewController;
 //import controllers.VehiculoViewController;
 import controllers.VehiculoViewController;
@@ -211,7 +212,12 @@ public class principal extends JFrame implements JViews {
     }
 
     public void abrirMecanicos() {
+        lado_derecho.removeAll();
         lado_derecho.setBackground(Color.black);
+        var mecanico = new Mecanico1ViewController();
+        lado_derecho.add(mecanico.getVw());
+        revalidate();
+        repaint();
     }
 
     public void abrirOrden() {

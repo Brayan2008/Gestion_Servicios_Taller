@@ -249,7 +249,7 @@ public class principal extends JFrame implements JViews {
     }
 
     public void abrirOrden() {
-        lado_derecho.removeAll();;
+        lado_derecho.removeAll();
         var orden = new OrdenViewController();
         lado_derecho.add(orden.getVw());
         revalidate();

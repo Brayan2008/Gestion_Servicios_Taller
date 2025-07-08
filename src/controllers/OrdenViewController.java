@@ -82,12 +82,14 @@ public class OrdenViewController {
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.print("Entró a listener de Añadir");
                 desactivar();
                 new AgregarOrdenController(vw.os, 0);
             }
         });
 
         btnMod.addActionListener(e -> {
+            System.out.print("Entró a listener de modificar");
             desactivar();
             new AgregarOrdenController(vw.os, 1);
         });

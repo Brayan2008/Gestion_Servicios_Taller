@@ -10,7 +10,10 @@ public class OrdenService extends Service{
     private final String usuario = ConnectionBD.USER;
     private final String clave = ConnectionBD.PASSWORD;
     public static DefaultTableModel modelo;
-    private String[] head = { "Nro. Orden", "Fecha", "Kilometraje","Fecha entregada","Numero de combustible", "Observacion", "Tarjeta", "Manual", "Llave", "Estado", "Quiñado", "Rayado", "Abollado","Documento", "Nro. Documento", "Mecánico", "Placa Vehiculo" };
+    private String[] head = { "Nro. Orden", "Fecha", "Kilometraje","Fecha entregada",
+                            "Numero de combustible", "Observacion", "Tarjeta", "Manual", 
+                            "Llave", "Estado", "Quiñado", "Rayado", "Abollado","Documento", 
+                            "Nro. Documento", "Mecánico", "Placa Vehiculo" };
 
     public DefaultTableModel listarOrdenes() {
         modelo = new DefaultTableModel(head, 0) {

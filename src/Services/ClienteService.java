@@ -21,7 +21,7 @@ public class ClienteService extends Service {
             }
         };
 
-        try (CallableStatement cs = puntero.prepareCall("{call PA_Orden_Obtener}")) {
+        try (CallableStatement cs = puntero.prepareCall("{call PA_Listar_Cliente}")) {
 
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {

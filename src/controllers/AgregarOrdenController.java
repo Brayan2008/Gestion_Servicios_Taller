@@ -3,6 +3,8 @@ package controllers;
 import Services.OrdenService;
 import View.AgregarOrdenView;
 import View.SeleccionarClienteView;
+import View.SeleccionarMecanicoView;
+import View.SeleccionarVehiculoView;
 import View.utils.Colors;
 import View.utils.RButton;
 import View.utils.RTextField;
@@ -98,6 +100,40 @@ public class AgregarOrdenController {
                     }
                 });
             seleccionarCliente.setVisible(true);
+        });
+
+        // Boton seleccionar Mecanico
+        view.btnBuscarMecanico.addActionListener(e-> {
+            SeleccionarMecanicoView selecionarMecanico = new SeleccionarMecanicoView(view);
+            selecionarMecanico.btnSeleccionar1.addActionListener(ev -> {
+                int fila = selecionarMecanico.tablaMecanicos.getSelectedRow();
+                if (fila != - 1){
+                    String CodMeca = selecionarMecanico.tablaMecanicos.getValueAt(fila, 0).toString();
+
+                    txtMecanico.setText(CodMeca);
+                    selecionarMecanico.dispose(); 
+                } else {
+                    JOptionPane.showMessageDialog(selecionarMecanico, "Debe seleccionar una fila.");
+                }
+            });
+            selecionarMecanico.setVisible(true);
+        });
+
+        // Boton seleccionar Vehiculos
+        view.btnBuscarVehiculo.addActionListener(e-> {
+            SeleccionarVehiculoView seleccionarVehiculo = new SeleccionarVehiculoView(view);
+            seleccionarVehiculo.btnSeleccionar2.addActionListener(ev -> {
+                int fila = seleccionarVehiculo.tablaVehiculos.getSelectedRow();
+                if (fila != 1){
+                    String CodVehi = seleccionarVehiculo.tablaVehiculos.getValueAt(fila, 0).toString();
+
+                    txtPlaca.setText(CodVehi);
+                    seleccionarVehiculo.dispose();
+                } else{
+                    JOptionPane.showMessageDialog(seleccionarVehiculo, "Debe seleccionar una fila.");
+                }
+            });
+            seleccionarVehiculo.setVisible(true);
         });
    
     }

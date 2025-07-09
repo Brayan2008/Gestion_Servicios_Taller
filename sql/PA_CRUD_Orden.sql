@@ -131,16 +131,16 @@ AS
         T_Prob AS 'Tarjeta de propiedad',
         Manual_Prob AS 'Manuel de propietario',
         Llave AS 'llave del vehiculo',
-        Estado_Orden,
+        Estado_Orden AS 'Estado de la orden',
         Quiñado,
         Rayado,
         Abollado,
         O.Cod_Mecanico AS 'DNI Mecanico',
-        O.Nro_Cliente,
-        O.Placa_Vehiculo
-    FROM ORDEN AS O INNER JOIN MECANICO AS M ON (O.Cod_Mecanico = M.Cod_Mecanico)
-        INNER JOIN CLIENTE AS C ON (C.Nro_Cliente = O.Nro_Cliente)
-        INNER JOIN VEHICULOS AS V ON (V.Placa_Vehiculo = O.Placa_Vehiculo)
+        O.Nro_Cliente AS 'Doc. Cliente',
+        O.Placa_Vehiculo AS 'Placa'
+    FROM ORDEN AS O LEFT JOIN MECANICO AS M ON (O.Cod_Mecanico = M.Cod_Mecanico) -- LEFT -> INNER  si solo quieres ver los varios a varios
+        LEFT JOIN CLIENTE AS C ON (C.Nro_Cliente = O.Nro_Cliente)
+        LEFT JOIN VEHICULOS AS V ON (V.Placa_Vehiculo = O.Placa_Vehiculo)
 GO
 
 CREATE OR ALTER proc PA_Orden_Obtener

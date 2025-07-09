@@ -60,10 +60,10 @@ begin
         return @@ERROR
     end
 
-    IF NOT EXISTS (SELECT *
+    IF EXISTS (SELECT *
     FROM ORDEN AS O
     WHERE O.Nro_Cliente = @Nro_Cliente AND O.Tipo_Documento = @Tipo_Documento) begin
-        raiserror('No existe un cliente con ese numero', 16,1)
+        raiserror('El cliente entra en conflicto con la tabla orden', 16,1)
         return @@ERROR
     end
 

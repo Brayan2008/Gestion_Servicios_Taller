@@ -1,6 +1,5 @@
 package Services;
 
-import Services.templates.ConnectionBD;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import Services.templates.Service;
@@ -21,7 +20,7 @@ public class OrdenService extends Service{
         };
 
         try (CallableStatement cs = puntero.prepareCall("{call PA_Orden_Obtener}")) {
-            
+            System.out.println("Llega aca");
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
                 String codigoOrden = rs.getString("codigo de orden");

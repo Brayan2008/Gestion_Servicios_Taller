@@ -59,10 +59,12 @@ public class ClienteCRUDController {
         if (opcion == 2 || opcion == 1) {
             var tipo_documento = tabla.getValueAt(ClienteViewController.row, 1).toString().trim();
             tipo_id = tipo_documento.equalsIgnoreCase("DNI") ? true : false; //DNI: true, PASSPORT: false
-
+            
             txtCodigo.setText(tabla.getValueAt(ClienteViewController.row, 0).toString().trim());
             txtCodigo.setFont(Colors.SubTitles);
             tipo_doc.setFont(Colors.SubTitles);
+            tipo_doc.setSelectedItem(tipo_documento);
+            System.out.println(tipo_documento);
             tipo_doc.setEnabled(false);
             txtCodigo.setEditable(false);
 
@@ -95,6 +97,7 @@ public class ClienteCRUDController {
     public void eliminarCliente() {
         var codigo = tabla.getValueAt(ClienteViewController.row, 0).toString().trim();
         try {
+            System.out.println(tipo_id);
             ser.eliminarCliente(codigo, tipo_id);
             JOptionPane.showMessageDialog(av, "Cliente eliminado correctamente.");
             ser.buscarCliente("");
@@ -118,9 +121,10 @@ public class ClienteCRUDController {
             JOptionPane.showMessageDialog(av, "Campos vacios permitidos: Direccion y Distrito");
             return;
         }
+        System.out.println(tipo);
         tipo_id = tipo.equalsIgnoreCase("DNI") ? true:false;
         if (tipo_id){
-            if (!cod.matches("[0-9]{9}")) {
+            if (!cod.matches("[0-9]{8}")) {
                 JOptionPane.showMessageDialog(av, "El código debe tener exactamente 9 caracteres");
                 return;
             }

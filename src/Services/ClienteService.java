@@ -34,7 +34,7 @@ public class ClienteService extends Service {
                 if (Tipo == true) {
                     modelo.addRow(new Object[] { Nro, "DNI", Nombre, telefono, direccion, distrito });
                 } else {
-                    modelo.addRow(new Object[] { Nro, "PASAPORTE", Nombre, telefono, direccion, distrito });
+                    modelo.addRow(new Object[] { Nro, "RUC", Nombre, telefono, direccion, distrito });
                 }
             }
 

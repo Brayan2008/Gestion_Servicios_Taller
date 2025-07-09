@@ -49,14 +49,14 @@ public class AgregarClienteView extends JDialog implements JViews {
         animacionDerecha(tipo_doc_label, x-120, x);
         panelCampos.add(tipo_doc_label);
  
-        String[] tipos = {"DNI", "PASAPORTE"};
+        String[] tipos = {"DNI", "RUC"};
 
         tipo_doc = new JComboBox<>(tipos);
         tipo_doc.setBounds(x, y=y+25, 270, h);
         animacionDerecha(tipo_doc, x-150, x);
         panelCampos.add(tipo_doc);
         
-        JLabel codigo_label = new JLabel("Codigo:");
+        JLabel codigo_label = new JLabel("Nro. Documento:");
         codigo_label.setFont(Colors.FieldBoldText);
         codigo_label.setBounds(x, y=y+30, 270, 20);
         animacionDerecha(codigo_label, x-170, x);

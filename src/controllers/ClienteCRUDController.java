@@ -64,7 +64,6 @@ public class ClienteCRUDController {
             txtCodigo.setFont(Colors.SubTitles);
             tipo_doc.setFont(Colors.SubTitles);
             tipo_doc.setSelectedItem(tipo_documento);
-            System.out.println(tipo_documento);
             tipo_doc.setEnabled(false);
             txtCodigo.setEditable(false);
 
@@ -97,7 +96,6 @@ public class ClienteCRUDController {
     public void eliminarCliente() {
         var codigo = tabla.getValueAt(ClienteViewController.row, 0).toString().trim();
         try {
-            System.out.println(tipo_id);
             ser.eliminarCliente(codigo, tipo_id);
             JOptionPane.showMessageDialog(av, "Cliente eliminado correctamente.");
             ser.buscarCliente("");

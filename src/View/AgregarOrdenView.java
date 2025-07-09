@@ -28,6 +28,7 @@ public class AgregarOrdenView extends JDialog implements JViews {
     public RTextField txtPlacaVehiculo;
     public JLabel titleLabel;
     public RButton btnGuardar, btnCancelar;
+    public RButton btnBuscarCliente, btnBuscarMecanico, btnBuscarVehiculo;
 
     public AgregarOrdenView(JFrame parent) {
         super(parent, "Agregar/Editar Orden");
@@ -153,7 +154,8 @@ public class AgregarOrdenView extends JDialog implements JViews {
         documentoLabel.setBounds(x, y += 40, 200, 20);
         panelCampos.add(documentoLabel);
         txtDocumento = new RTextField(150, 25, Color.WHITE);
-        txtDocumento.setBounds(x, y += 25, 400, h);
+        txtDocumento.setBounds(x, y += 25, 200, h);
+        txtDocumento.setEditable(false);
         panelCampos.add(txtDocumento);
 
         // Nro. Documento
@@ -162,8 +164,16 @@ public class AgregarOrdenView extends JDialog implements JViews {
         nroDocumentoLabel.setBounds(x, y += 40, 200, 20);
         panelCampos.add(nroDocumentoLabel);
         txtNroDocumento = new RTextField(150, 25, Color.WHITE);
-        txtNroDocumento.setBounds(x, y += 25, 400, h);
+        txtNroDocumento.setBounds(x, y += 25, 200, h);
+        txtNroDocumento.setEditable(false);
         panelCampos.add(txtNroDocumento);
+
+        // Boton Agregar Clientes
+        btnBuscarCliente = new RButton("Agregar Cliente")
+        .setTamaño(140, h)
+        .setColor(Colors.BUTTONS_FONDO_3, Colors.BUTTONS_FONDO_2);
+        btnBuscarCliente.setBounds(x + 270, y - 30, 140, h); 
+        panelCampos.add(btnBuscarCliente);
 
         // Mecánico
         JLabel mecanicoLabel = new JLabel("Mecánico:");
@@ -171,8 +181,16 @@ public class AgregarOrdenView extends JDialog implements JViews {
         mecanicoLabel.setBounds(x, y += 40, 200, 20);
         panelCampos.add(mecanicoLabel);
         txtMecanico = new RTextField(150, 25, Color.WHITE);
-        txtMecanico.setBounds(x, y += 25, 400, h);
+        txtMecanico.setBounds(x, y += 25, 200, h);
+        txtMecanico.setEditable(false);
         panelCampos.add(txtMecanico);
+
+        // Boton Agregar Mecanico
+        btnBuscarMecanico = new RButton("Agregar Mecanico")
+        .setTamaño(140, h)
+        .setColor(Colors.BUTTONS_FONDO_3, Colors.BUTTONS_FONDO_2);
+        btnBuscarMecanico.setBounds(x + 270, y, 140, h); 
+        panelCampos.add(btnBuscarMecanico);
 
         // Placa Vehículo
         JLabel placaVehiculoLabel = new JLabel("Placa Vehículo:");
@@ -180,8 +198,16 @@ public class AgregarOrdenView extends JDialog implements JViews {
         placaVehiculoLabel.setBounds(x, y += 40, 200, 20);
         panelCampos.add(placaVehiculoLabel);
         txtPlacaVehiculo = new RTextField(150, 25, Color.WHITE);
-        txtPlacaVehiculo.setBounds(x, y += 25, 400, h);
+        txtPlacaVehiculo.setBounds(x, y += 25, 200, h);
+        txtPlacaVehiculo.setEditable(false);
         panelCampos.add(txtPlacaVehiculo);
+
+        // Boton Agregar Vehiculo
+        btnBuscarVehiculo = new RButton("Agregar Vehiculo")
+        .setTamaño(140, h)
+        .setColor(Colors.BUTTONS_FONDO_3, Colors.BUTTONS_FONDO_2);
+        btnBuscarVehiculo.setBounds(x + 270, y, 140, h); 
+        panelCampos.add(btnBuscarVehiculo);
 
         // BOTONES
         JPanel panelBotones = new JPanel();

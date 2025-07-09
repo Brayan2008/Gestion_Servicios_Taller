@@ -1,13 +1,9 @@
 package Services;
-import Services.templates.ConnectionBD;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import Services.templates.Service;
 
 public class VehiculoService extends Service {
-    private final String cadenaConexion = ConnectionBD.URL;
-    private final String usuario = ConnectionBD.USER;
-    private final String clave = ConnectionBD.PASSWORD;
     public static DefaultTableModel modelo;
     private String[] head = { "Placa", "Marca", "Modelo","Chasis","Numero de motor", "Año", "Color" };
 
@@ -42,8 +38,7 @@ public class VehiculoService extends Service {
     public void insertarVehiculo(String placa, String marca, String modelo, String chasis, String motor, int año, String color) throws Exception {
         String sql = "{call PA_Crear_Vehiculo(? ,?, ?, ?, ?, ?, ?)}";
 
-        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
-        CallableStatement cs = con.prepareCall(sql)) {
+        try (CallableStatement cs = puntero.prepareCall(sql)){
             cs.setString(1, placa);
             cs.setString(2, marca);
             cs.setString(3, modelo);
@@ -62,8 +57,7 @@ public class VehiculoService extends Service {
     public void buscarVehiculo(String cadena) throws Exception {
         String sql = "{call PA_FiltrarVehiculo(?)}";
         
-        try (Connection con = DriverManager.getConnection(cadenaConexion, usuario, clave);
-        CallableStatement cs = con.prepareCall(sql)) {            
+        try (CallableStatement cs = puntero.prepareCall(sql)) {            
             cs.setString(1, cadena);
             cs.execute();            
             

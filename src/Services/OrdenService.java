@@ -6,9 +6,6 @@ import java.sql.*;
 import Services.templates.Service;
 
 public class OrdenService extends Service{
-    private final String cadenaConexion = ConnectionBD.URL;
-    private final String usuario = ConnectionBD.USER;
-    private final String clave = ConnectionBD.PASSWORD;
     public static DefaultTableModel modelo;
     private String[] head = { "Nro. Orden", "Fecha", "Kilometraje","Fecha entregada",
                             "Numero de combustible", "Observacion", "Tarjeta", "Manual", 

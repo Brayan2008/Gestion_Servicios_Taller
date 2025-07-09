@@ -2,6 +2,7 @@ package controllers;
 
 import Services.OrdenService;
 import View.AgregarOrdenView;
+import View.SeleccionarClienteView;
 import View.utils.Colors;
 import View.utils.RButton;
 import View.utils.RTextField;
@@ -15,7 +16,7 @@ public class AgregarOrdenController {
     int opcion; // 0=agregar, 1=modificar, 2=eliminar
     JTable tabla;
     JLabel tittle;
-    RButton btnGuardar, btnCancelar;
+    RButton btnGuardar, btnCancelar, btnBuscarCliente, btnBuscarMecanico, btnBuscarVehiculo;
     RTextField txtOrden, txtFecha, txtKilometraje, txtFechaEntrega, txtCombustible, txtObservacion, txtDocumento, txtNroDocumento, txtMecanico, txtPlaca;
     JCheckBox chkTarjeta, chkManual, chkLlave, chkQuiniado, chkRayado, chkAbollado;
     JComboBox<String> cmbEstado;
@@ -77,9 +78,28 @@ public class AgregarOrdenController {
             txtFechaEntrega.setText(tabla.getValueAt(OrdenViewController.row, 4).toString());
             txtCombustible.setText(tabla.getValueAt(OrdenViewController.row, 5).toString());
             txtObservacion.setText(tabla.getValueAt(OrdenViewController.row, 6).toString());
-
-
         }
+
+        // Evento seleccionar Cliente
+        view.btnBuscarCliente.addActionListener(e -> {
+            SeleccionarClienteView seleccionarCliente = new SeleccionarClienteView(view);
+            seleccionarCliente.btnSeleccionar.addActionListener(ev -> {
+                int fila = seleccionarCliente.tablaClientes.getSelectedRow();
+                if (fila != -1) {
+                    String tipoDoc = seleccionarCliente.tablaClientes.getValueAt(fila, 1).toString(); 
+                    String nroDoc = seleccionarCliente.tablaClientes.getValueAt(fila, 0).toString();  
+
+                    txtDocumento.setText(tipoDoc);
+                    txtNroDocumento.setText(nroDoc);
+
+                    seleccionarCliente.dispose(); 
+                    } else {
+                        JOptionPane.showMessageDialog(seleccionarCliente, "Debe seleccionar una fila.");
+                    }
+                });
+            seleccionarCliente.setVisible(true);
+        });
+   
     }
 
     private void guardarOrden() {
@@ -147,4 +167,6 @@ public class AgregarOrdenController {
             JOptionPane.showMessageDialog(view, "Error al eliminar la orden: " + ex.getMessage());
         }
     }
+
+    
 } 

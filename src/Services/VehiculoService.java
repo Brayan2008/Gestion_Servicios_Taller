@@ -15,7 +15,7 @@ public class VehiculoService extends Service {
             }
         };
 
-        try (CallableStatement cs = puntero.prepareCall("{call PA_Listar_Vehiculos}")) {
+        try (CallableStatement cs = puntero.prepareCall("{call PA_Vehiculo_Obtener}")) {
             
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
@@ -36,7 +36,7 @@ public class VehiculoService extends Service {
     }
 
     public void insertarVehiculo(String placa, String marca, String modelo, String chasis, String motor, int año, String color) throws Exception {
-        String sql = "{call PA_Crear_Vehiculo(? ,?, ?, ?, ?, ?, ?)}";
+        String sql = "{call PA_Vehiculo_Agregar(? ,?, ?, ?, ?, ?, ?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)){
             cs.setString(1, placa);
@@ -55,7 +55,7 @@ public class VehiculoService extends Service {
     }
 
     public void buscarVehiculo(String cadena) throws Exception {
-        String sql = "{call PA_FiltrarVehiculo(?)}";
+        String sql = "{call PA_Vehiculo_Filtrar(?)}";
         
         try (CallableStatement cs = puntero.prepareCall(sql)) {            
             cs.setString(1, cadena);
@@ -81,7 +81,7 @@ public class VehiculoService extends Service {
     }
 
     public void actualizarVehiculo(String placa, String marca, String modelo, String chasis, String motor, int año, String color) throws SQLException {
-        String sql = "{call PA_ActualizarVehiculo(?, ?, ?, ?, ?, ?, ?)}";
+        String sql = "{call PA_Vehiculo_Update(?, ?, ?, ?, ?, ?, ?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, placa);
@@ -99,7 +99,7 @@ public class VehiculoService extends Service {
     }
 
     public void eliminarVehiculo(String placaVeh) throws SQLException {
-        String sql = "{call PA_Eliminar_Vehiculo(?)}";
+        String sql = "{call PA_Vehiculo_Eliminar(?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, placaVeh);

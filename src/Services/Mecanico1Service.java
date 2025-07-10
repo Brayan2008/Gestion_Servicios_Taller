@@ -21,7 +21,7 @@ public class Mecanico1Service extends Service {
             }
         };
 
-        try (CallableStatement cs = puntero.prepareCall("{call PA_CRUD_ListarMecanico}")) {
+        try (CallableStatement cs = puntero.prepareCall("{call PA_Mecanico_Obtener}")) {
 
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
@@ -40,7 +40,7 @@ public class Mecanico1Service extends Service {
     }
 
     public void insertarMecanico(String codmec, String nommec, String telemec, String dirmec) throws Exception {
-        String sql = "{call PA_CRUD_InsertarMecanico(?, ?, ?, ?)}";
+        String sql = "{call PA_Mecanico_Agregar(?, ?, ?, ?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
 
@@ -56,7 +56,7 @@ public class Mecanico1Service extends Service {
     }
 
     public void buscarMecanico(String cadena) throws Exception {
-        String sql = "{call PA_FiltrarMecanico(?)}";
+        String sql = "{call PA_Mecanico_Filtrar(?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, cadena);
@@ -78,7 +78,7 @@ public class Mecanico1Service extends Service {
     }
 
     public void actualizarMecanico(String codmec, String nommec, String telemec, String dirmec) throws SQLException {
-        String sql = "{call PA_CRUD_ModificarMecanico(?, ?, ?, ?)}";
+        String sql = "{call PA_Mecanico_Update(?, ?, ?, ?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, codmec);
@@ -94,7 +94,7 @@ public class Mecanico1Service extends Service {
     }
 
     public void eliminarMecanico(String codmec) throws SQLException {
-        String sql = "{call PA_CRUD_EliminarMecanico(?)}";
+        String sql = "{call PA_Mecanico_Eliminar(?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, codmec);

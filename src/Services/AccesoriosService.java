@@ -21,7 +21,7 @@ public class AccesoriosService extends Service {
             }
         };
 
-        try (CallableStatement cs = puntero.prepareCall("{call PA_CRUD_ListarAccesorios}")) {
+        try (CallableStatement cs = puntero.prepareCall("{call PA_Accesorio_Obtener}")) {
 
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
@@ -38,7 +38,7 @@ public class AccesoriosService extends Service {
     }
 
     public void insertarServicio(String codser, String nomser) throws Exception {
-        String sql = "{call PA_CRUD_InsertarAccesorio(?, ?)}";
+        String sql = "{call PA_Accesorio_Agregar(?, ?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
 
@@ -52,7 +52,7 @@ public class AccesoriosService extends Service {
     }
 
     public void buscarCliente(String cadena) throws Exception {
-        String sql = "{call PA_FiltrarAccesorio(?)}";
+        String sql = "{call PA_Accesorio_Filtrar(?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, cadena);
@@ -72,7 +72,7 @@ public class AccesoriosService extends Service {
     }
 
     public void actualizarCliente(String codser, String nomser) throws SQLException {
-        String sql = "{call PA_CRUD_ModificarAccesorio(?, ?)}";
+        String sql = "{call PA_Accesorio_Update(?, ?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, codser);
@@ -86,7 +86,7 @@ public class AccesoriosService extends Service {
     }
 
     public void eliminarCliente(String codser) throws SQLException {
-        String sql = "{call PA_CRUD_EliminarAccesorio(?)}";
+        String sql = "{call PA_Accesorio_Eliminar(?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, codser);

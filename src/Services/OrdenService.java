@@ -135,7 +135,7 @@ public class OrdenService extends Service {
     }
 
     public void buscarOrden(String cadena) throws Exception {
-        String sql = "{call PA_FiltrarOrden(?)}";
+        String sql = "{call PA_Orden_Filtrar(?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, cadena);

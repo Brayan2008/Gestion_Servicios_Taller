@@ -21,7 +21,7 @@ public class ClienteService extends Service {
             }
         };
 
-        try (CallableStatement cs = puntero.prepareCall("{call PA_Listar_Cliente}")) {
+        try (CallableStatement cs = puntero.prepareCall("{call PA_Cliente_Obtener}")) {
 
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
@@ -46,7 +46,7 @@ public class ClienteService extends Service {
 
     public void insertarClientes(String Nro_Cliente, Boolean Tipo_Documento, String Nombre, String Telefono,
             String Direccion, String Distrito) throws Exception {
-        String sql = "{call PA_CREAR_CLIENTE(?, ?, ?, ?, ?, ?)}";
+        String sql = "{call PA_Cliente_Agregar(?, ?, ?, ?, ?, ?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
 
@@ -65,7 +65,7 @@ public class ClienteService extends Service {
     }
 
     public void buscarCliente(String cadena) throws Exception {
-        String sql = "{call PA_FiltrarCliente(?)}";
+        String sql = "{call PA_Cliente_Filtrar(?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, cadena);
@@ -99,7 +99,7 @@ public class ClienteService extends Service {
                                   String direccion,
                                   String distrito) throws SQLException {
         
-        String sql = "{call PA_ALTERAR_CLIENTE(?, ?, ?, ?, ?, ?)}";
+        String sql = "{call PA_Cliente_Update(?, ?, ?, ?, ?, ?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, nro_cliente);
@@ -117,7 +117,7 @@ public class ClienteService extends Service {
     }
 
     public void eliminarCliente(String nro_cliente, boolean tipo_documento) throws SQLException {
-        String sql = "{call PA_ELIMINAR_CLIENTE(?, ?)}";
+        String sql = "{call PA_ECliente_Eliminar(?, ?)}";
 
         try (CallableStatement cs = puntero.prepareCall(sql)) {
             cs.setString(1, nro_cliente);

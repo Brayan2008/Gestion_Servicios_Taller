@@ -1,6 +1,6 @@
 package View;
 
-import Services.VehiculoService;
+import View.utils.Colors;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,13 @@ public class SeleccionarVehiculoView extends JDialog {
         setSize(800, 400);
         setLayout(new BorderLayout());
 
-        tablaVehiculos = new JTable(new VehiculoService().listarVehiculos());
+        JLabel lista_label = new JLabel("Lista de Vehiculos");
+        lista_label.setFont(Colors.Titles);
+        add(lista_label, BorderLayout.NORTH);
+
+        new VehiculoView();
+
+        tablaVehiculos = VehiculoView.tablaVehiculos;
         add(new JScrollPane(tablaVehiculos), BorderLayout.CENTER);
         setLocationRelativeTo(parent);
 

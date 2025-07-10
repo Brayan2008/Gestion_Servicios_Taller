@@ -1,4 +1,4 @@
-USE TALLER
+USE TALLER3
 GO
 --Insertar
 CREATE OR ALTER PROCEDURE PA_Crear_Vehiculo
@@ -105,4 +105,3 @@ BEGIN
     SELECT *
     FROM Vw_Listar_Vehiculos
 END
-

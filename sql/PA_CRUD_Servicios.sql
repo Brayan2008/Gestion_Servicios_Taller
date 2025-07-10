@@ -1,4 +1,4 @@
-USE TALLER
+USE TALLER3
 GO
 
 CREATE OR ALTER PROC PA_CRUD_InsertarServicio
@@ -22,10 +22,6 @@ BEGIN
         (@codser, @nomser, @precser)
 END 
 GO
-
-Exec PA_CRUD_InsertarServicio 'A1', 'paco', 50.00
-Exec PA_CRUD_InsertarServicio 'Z9', 'paco', 50.00
-go
 
 CREATE OR ALTER PROCEDURE PA_CRUD_ModificarServicio
     (@codser AS CHAR(2),
@@ -72,18 +68,17 @@ WHERE Cod_Servicio=@codser
 END
 GO
 
+CREATE OR ALTER VIEW Vw_ListarServicios
+AS
+    SELECT Cod_Servicio as 'Codigo', Nom_Servicio AS 'Nombre del Servicio',
+        Precio_Servicio AS 'Precio del servicio'
+    FROM CATALOGO_SERVICIOS
+GO
+
 CREATE OR ALTER PROCEDURE PA_CRUD_ListarServicios
 AS
 BEGIN
     SELECT *
     FROM Vw_ListarServicios
 END
-GO
-
-
-CREATE OR ALTER VIEW Vw_ListarServicios
-AS
-    SELECT Cod_Servicio as 'Codigo', Nom_Servicio AS 'Nombre del Servicio',
-        Precio_Servicio AS 'Precio del servicio'
-    FROM CATALOGO_SERVICIOS
 GO

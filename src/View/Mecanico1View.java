@@ -35,7 +35,7 @@ public class Mecanico1View extends JPanel implements JViews {
                                 .setTamaño(120, 25);
     public JPanel PCentral = new JPanel();
     public RTextField buscar;
-    public JTable tablaMecanicos; // tabla para mostrar servicios
+    public static JTable tablaMecanicos; // tabla para mostrar servicios
 
     public static void main(String[] args) {
         JFrame prueba = new JFrame("Gestión de Accesorios");

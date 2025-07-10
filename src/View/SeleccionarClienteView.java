@@ -1,6 +1,6 @@
 package View;
 
-import Services.ClienteService;
+import View.utils.Colors;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,13 @@ public class SeleccionarClienteView extends JDialog {
         setSize(800, 400);
         setLayout(new BorderLayout());
 
-        tablaClientes = new JTable(new ClienteService().listarClientes());
+        JLabel lista_label = new JLabel("Lista de Clientes");
+        lista_label.setFont(Colors.Titles);
+        add(lista_label, BorderLayout.NORTH);
+
+        new ClienteView();
+
+        tablaClientes = ClienteView.tablaServicios;
         add(new JScrollPane(tablaClientes), BorderLayout.CENTER);
         setLocationRelativeTo(parent);
 

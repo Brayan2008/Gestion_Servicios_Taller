@@ -32,7 +32,7 @@ public class OrdenView extends JPanel implements JViews {
                                 .setTamaño(120, 25);
     public JPanel PCentral = new JPanel();
     public RTextField buscar;
-    public JTable tablaOrdenes;
+    public static JTable tablaOrdenes;
 
 
     public OrdenView() {
@@ -63,6 +63,7 @@ public class OrdenView extends JPanel implements JViews {
         btnDel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         tablaOrdenes = new JTable(os.listarOrdenes());
+        tablaOrdenes.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tablaOrdenes.setGridColor(Colors.LIGHT_GRAY);
         tablaOrdenes.setRowHeight(23);
         tablaOrdenes.setRowMargin(5);
@@ -78,6 +79,7 @@ public class OrdenView extends JPanel implements JViews {
         tablaOrdenes.getColumnModel().getColumn(2).setCellRenderer(tb);
 
         JScrollPane scrollPane = new JScrollPane(tablaOrdenes);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollPane.setBorder(new EmptyBorder(5,5, 5, 5));
         gbc.gridy = 2;
         gbc.gridx = 0;

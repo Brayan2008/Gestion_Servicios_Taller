@@ -24,6 +24,7 @@ import View.utils.JViews;
 import View.utils.RButton;
 import controllers.AccesorioViewController;
 import controllers.ClienteViewController;
+import controllers.ConsultaViewController;
 import controllers.DetallesCuentaController;
 import controllers.Mecanico1ViewController;
 import controllers.ServicioViewController;
@@ -230,6 +231,7 @@ public class principal extends JFrame implements JViews {
         orden.addActionListener(e -> abrirOrden());
         Servicios.addActionListener(e -> abrirServicios());
         vehiculos.addActionListener(e -> abrirVehiculos());
+        consultas.addActionListener(e -> abrirConsultas());
         salir_Button.addActionListener(e -> {
             int respuesta = JOptionPane.showConfirmDialog(this,
                     "¿Estás seguro de salir?",
@@ -302,6 +304,14 @@ public class principal extends JFrame implements JViews {
         lado_derecho.add(vehiculo.getVw());
         revalidate();
         repaint();
+    }
+
+    public void abrirConsultas() {
+        lado_derecho.removeAll();
+        var consultas = new ConsultaViewController();
+        lado_derecho.add(consultas.getVw());
+        revalidate();
+        repaint(); 
     }
     // #endregion
 }

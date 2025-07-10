@@ -1,9 +1,10 @@
-use TALLER
+use TALLER3
 go
---Procedimiento para insertar
 
+--Procedimiento para insertar
 create OR ALTER procedure PA_CRUD_InsertarOrden_Accesorio
-    (@Cod_Orden as char(6),
+    (
+    @Cod_Orden as char(6),
     @Cod_Accesorio as char(2),
     @Cant_Accesorio as tinyint,
     @Obser_Accesorio as varchar(50),
@@ -40,7 +41,6 @@ end
 go
 
 --Procedimiento para modificar
-
 CREATE OR ALTER PROCEDURE PA_CRUD_ModificarOrden_Accesorio
     (@Cod_Orden as char(6),
     @Cod_Accesorio as char(2),

@@ -26,7 +26,7 @@ public class Mecanico1ViewController {
     public Mecanico1ViewController() {
         this.vw = new Mecanico1View();
         text = vw.buscar;
-        table = vw.tablaMecanicos;
+        table = Mecanico1View.tablaMecanicos;
         btnAdd = vw.btnAdd;
         btnMod = vw.btnMod;
         btnDel = vw.btnDel;

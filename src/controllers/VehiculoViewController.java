@@ -25,7 +25,7 @@ public class VehiculoViewController {
     public VehiculoViewController() {
         this.vw = new VehiculoView();
         text = vw.buscar;
-        table = vw.tablaVehiculos;
+        table = VehiculoView.tablaVehiculos;
         btnAdd = vw.btnAdd;       
         btnMod = vw.btnMod;       
         btnDel = vw.btnDel;

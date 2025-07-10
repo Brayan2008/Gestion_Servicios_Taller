@@ -32,7 +32,7 @@ public class VehiculoView extends JPanel implements JViews{
                                 .setTamaño(120, 25);
     public JPanel PCentral = new JPanel();
     public RTextField buscar;
-    public JTable tablaVehiculos;
+    public static JTable tablaVehiculos;
 
     public VehiculoView(){
         init();

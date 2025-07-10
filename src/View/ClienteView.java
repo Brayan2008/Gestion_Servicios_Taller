@@ -33,7 +33,7 @@ public class ClienteView extends JPanel implements JViews {
                                 .setTamaño(120, 25);
     public JPanel PCentral = new JPanel();
     public RTextField buscar;
-    public JTable tablaServicios; 
+    public static JTable tablaServicios; 
 
     public ClienteView() {
         init();

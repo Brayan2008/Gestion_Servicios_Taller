@@ -123,7 +123,7 @@ public class ClienteCRUDController {
         tipo_id = tipo.equalsIgnoreCase("DNI") ? true:false;
         if (tipo_id){
             if (!cod.matches("[0-9]{8}")) {
-                JOptionPane.showMessageDialog(av, "El código debe tener exactamente 9 caracteres");
+                JOptionPane.showMessageDialog(av, "El código debe tener exactamente 8 caracteres");
                 return;
             }
         } else {
@@ -137,10 +137,10 @@ public class ClienteCRUDController {
             // llamamos al servicio (1.- Editar)
             if (opcion == 1) {
                 ser.actualizarCliente(cod, tipo_id, nombre, telf, direccion, distrito);
-                JOptionPane.showMessageDialog(av, "Servicio actualizado correctamente.");
+                JOptionPane.showMessageDialog(av, "Cliente actualizado correctamente.");
             } else {
                 ser.insertarClientes(cod, tipo_id, nombre, telf, direccion, distrito);
-                JOptionPane.showMessageDialog(av, "Servicio agregado correctamente.");
+                JOptionPane.showMessageDialog(av, "Cliente agregado correctamente.");
             }
             ser.buscarCliente("");
             av.dispose();

@@ -25,7 +25,7 @@ public class OrdenViewController {
     public OrdenViewController() {
         this.vw = new OrdenView();
         text = vw.buscar;
-        table = vw.tablaOrdenes;
+        table = OrdenView.tablaOrdenes;
         btnAdd = vw.btnAdd;       
         btnMod = vw.btnMod;       
         btnDel = vw.btnDel;

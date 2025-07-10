@@ -1,8 +1,8 @@
-USE TALLER
+USE TALLER3
 go
 
 --CREATE
-CREATE PROCEDURE PA_Crear_OrdenServicio (
+CREATE OR ALTER PROCEDURE PA_Crear_OrdenServicio (
 	@codServicio AS CHAR(2),
 	@codOrden AS CHAR(6),
 	@observaciones AS VARCHAR (50)
@@ -130,3 +130,12 @@ CREATE OR ALTER PROCEDURE PA_Listar_Servicio_Orden
 	SELECT* FROM Vw_Lista_Servicios_Orden
 	END
 GO
+
+
+SELECT * FROM CATALOGO_SERVICIOS
+SELECT * FROM ORDEN
+
+EXEC PA_Crear_OrdenServicio 'T1', 'OR0001', 'Nada por el momento'
+EXEC PA_Actualizar_OrdenServicio 'OR0001', 'T1', 'T2', 'Todo bien'
+EXEC PA_Eliminar_OrdenServicio 'OR0001', 'T2'
+EXEC PA_Listar_OrdenServicio 'OR0001'

@@ -1,5 +1,6 @@
-USE TALLER
+USE TALLER3
 GO
+
 /* 
 CREATE TABLE Usuarios(
     idUser char(8) not null,

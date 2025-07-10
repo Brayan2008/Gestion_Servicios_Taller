@@ -1,4 +1,4 @@
-USE TALLER
+USE TALLER3
 GO
 -- Vistas
 CREATE or ALTER view Vw_ClientesFiltrados
@@ -14,7 +14,7 @@ AS
 GO
 
 -- PA
-alter PROC PA_FiltrarServicio
+create or alter PROC PA_FiltrarServicio
     (@Cadena varchar(50))
 AS
 	BEGIN
@@ -69,16 +69,5 @@ CREATE OR ALTER PROC PA_FiltrarVehiculo (@Cadena varchar(50)) AS
 	BEGIN 
 		SELECT * FROM Vw_VehiculosFiltrados 
 		WHERE (Placa_Vehiculo+Modelo_Vehiculo+Marca_Vehiculo + Mod_Chasis + Num_Motor + Color_Vehiculo) LIKE ('%'+@Cadena +'%')
-	END
-GO
-
-CREATE OR ALTER VIEW Vw_OrdenFiltradas AS
-	SELECT Cod_Orden, Estado_Orden, Nro_Cliente, Tipo_Documento, Cod_Mecanico, Placa_Vehiculo FROM ORDEN
-GO
-
-CREATE OR ALTER PROC PA_FiltrarOrden (@cadena varchar (50)) AS
-	BEGIN
-		SELECT* FROM Vw_OrdenFiltradas 
-		WHERE (Cod_Orden+Estado_Orden+Nro_Cliente+Tipo_Documento+Cod_Mecanico+Placa_Vehiculo) LIKE ('%'+@cadena+'%')
 	END
 GO

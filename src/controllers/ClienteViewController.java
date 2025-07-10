@@ -26,7 +26,7 @@ public class ClienteViewController {
     public ClienteViewController() {
         this.vw = new ClienteView();
         text = vw.buscar;
-        table = vw.tablaServicios;
+        table = ClienteView.tablaServicios;
         btnAdd = vw.btnAdd;
         btnMod = vw.btnMod;
         btnDel = vw.btnDel;

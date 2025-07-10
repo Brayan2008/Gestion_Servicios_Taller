@@ -5,7 +5,6 @@ import View.AgregarOrdenView;
 import View.SeleccionarClienteView;
 import View.SeleccionarMecanicoView;
 import View.SeleccionarVehiculoView;
-import View.utils.Colors;
 import View.utils.RButton;
 import View.utils.RTextField;
 
@@ -106,9 +105,9 @@ public class AgregarOrdenController {
         view.btnBuscarMecanico.addActionListener(e-> {
             SeleccionarMecanicoView selecionarMecanico = new SeleccionarMecanicoView(view);
             selecionarMecanico.btnSeleccionar1.addActionListener(ev -> {
-                int fila = selecionarMecanico.tablaMecanicos.getSelectedRow();
+                int fila = selecionarMecanico.tabla_Mecanicos.getSelectedRow();
                 if (fila != - 1){
-                    String CodMeca = selecionarMecanico.tablaMecanicos.getValueAt(fila, 0).toString();
+                    String CodMeca = selecionarMecanico.tabla_Mecanicos.getValueAt(fila, 0).toString();
 
                     txtMecanico.setText(CodMeca);
                     selecionarMecanico.dispose(); 
